@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>click and update</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007afd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .content {
+            display: none;
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+
+        .cards .red {
+            background-color: #f43f5e;
+        }
+
+        .cards .blue {
+            background-color: #3b82f6;
+        }
+
+        .cards .green {
+            background-color: #22c55e;
+        }
+
+        .cards .purple {
+            background-color: #9c27b0;
+        }
+
+        .cards .orange {
+            background-color: #ff8c00;
+        }
+
+        .cards .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            height: 100px;
+            width: 250px;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: 400ms transform, 400ms box-shadow, 400ms background-color;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cards .card a { /* Style the link inside the card */
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cards .card p.tip {
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        .cards .card p.second-text {
+            font-size: 0.7em;
+        }
+
+        .cards .card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #333;
+        }
+
+        .cards:hover > .card:not(:hover) {
+            filter: blur(10px);
+            transform: scale(0.9);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-button {
+        opacity: 0;
+        transition: opacity 0.4s ease; /* Add a transition effect for smooth visibility change */
+    }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loader"></div>
+    </div>
+    <div class="content">
+        <div class="cards">
+            <div class="card red">
+                <a href="/info/bot/var/alive">
+                    <p class="tip">Custom Alive</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card blue">
+                <a href="/info/bot/var/mention">
+                <p class="tip">Custom Mention</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            
+            <div class="card green">
+                <a href="/info/bot/var/welcome_1">
+                <p class="tip">Custom Welcome</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card purple">
+                <a href="/info/bot/var/goodbye_1">
+                <p class="tip">Custom Goodbye</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card orange">
+                <a href="/info/bot/var/antilink_1">
+                <p class="tip">Custom Antilink</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card red">
+                <a href="/info/bot/var/mention_1">
+                    <p class="tip">Custom Prefix</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card blue">
+                <a href="/info/bot/var/mention_1">
+                <p class="tip">Custom Bio</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card orange">
+                <a href="/info/bot/var/antilink_1">
+                <p class="tip">bot info</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card orange">
+                <a href="/info/bot/var/antilink_1">
+                <p class="tip">Worktype</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card green">
+                <a href="/info/bot/var/mention_1">
+                <p class="tip">aduio data</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card purple">
+                <a href="/info/bot/var/mention_1">
+                <p class="tip">Sticker data</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+            <div class="card orange">
+                <a href="/info/bot/var/mention_1">
+                <p class="tip">sudo</p>
+                    <button class="card-button">button</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        setTimeout(function () {
+            document.querySelector('.loading-container').style.display = 'none';
+            document.querySelector('.content').style.display = 'block';
+        }, 3000);
+    </script>
+</body>
+</html>

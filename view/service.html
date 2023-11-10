@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>inrl apies page</title>
+      <style>
+     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+  body {
+  background: #808080;
+  }      
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  
+}
+.wrapper{
+  height: 100%;
+  width: 500px;
+  position: relative;
+  text-align:center;
+}
+.wrapper .menu-btn{
+  position: absolute;
+  left: 60px;
+  top: 30px;
+  background: #4a4a4a;
+  color: #a8fff8;
+  height: 65px;
+  width: 65px;
+  z-index: 9999;
+  border: 3px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.9s ease;
+}
+#btn:checked ~ .menu-btn{
+  left: 280px;
+}
+.wrapper .menu-btn i{
+  position: absolute;
+  transform: ;
+  font-size: 33px;
+  transition: all 0.3s ease;
+}
+.wrapper .menu-btn i.fa-times{
+  opacity: 0;
+}
+#btn:checked ~ .menu-btn i.fa-times{
+  opacity: 1;
+  transform: rotate(-180deg);
+}
+#btn:checked ~ .menu-btn i.fa-bars{
+  opacity: 0;
+  transform: rotate(180deg);
+}
+#sidebar{
+  position: absolute;
+  background: #00ffff;
+  color: #00ffff;
+  height: 100%;
+  width: 350px;
+  overflow: center;
+  left: -350px;
+  transition: all 0.3s ease;
+}
+#btn:checked ~ #sidebar{
+  left: 0;
+}
+#sidebar .title{
+  line-height: 50px;
+  text-align: center;
+  background: #ffff00;
+  font-size: 45px;
+  font-weight: 600;
+  color: #ff0000;
+  border-bottom: 1px solid #00ff00;
+}
+#sidebar .list-items{
+  position: flex;
+  background: #00ffff;
+  color: #00ffff;
+  width: 100%;
+  height: 100%;
+  list-style: absolute;
+}
+#sidebar .list-items li{
+  padding-left: 0px;
+  line-height: 80px;
+  border-top: 2px solid rgba(255,255,255,0.1);
+  border-bottom: 2px solid #333;
+  transition: all 0.3s ease;
+}
+#sidebar .list-items li:hover{
+  border-top: 3px solid #FF0000;
+  border-bottom: 3px solid #FF0000;
+  box-shadow: 0 0px 15px 3px #FF0000;
+}
+#sidebar .list-items li:first-child{
+  border-top: 3px solid #00ffff;;
+}
+#sidebar .list-items li a{
+  background: #99FFFF;
+  color: #000000;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 500;
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+#sidebar .list-items li a i{
+  margin-right: 30px;
+}
+#sidebar .list-items .icons{
+  width: 100%;
+  height: 40px;
+  text-align: break-word;
+  position: down;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#sidebar .list-items .icons a{
+  height: 100%;
+  width: 40px;
+  display: block;
+  margin: 0 15px;
+  font-size: 18px;
+  color: #59c9b3;
+  background: #000000;
+  border-radius: 16px;
+  border: 2px solid #ff0000;
+  transition: all 0.3s ease;
+}
+#sidebar .list-items .icons a:hover{
+  background: #00ffff;
+}
+.list-items .icons a:first-child{
+  margin-left: 0px;
+}
+.content{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #000000;
+  background: #808080;
+  z-index: -1;
+  width: 100%;
+  text-align: center;
+}
+.content .header{
+  font-size: 70px;
+  font-weight: 700;
+}
+.content p{
+  font-size: 50px;
+  font-weight: 500;
+}
+     </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="wrapper">
+         <input type="checkbox" id="btn" hidden>
+         <label for="btn" class="menu-btn">
+         <i class="fas fa-bars"></i>
+         <i class="fas fa-times"></i>
+         </label>
+         <nav id="sidebar">
+            <div class="title">
+               List of Our Service
+            </div>
+            <ul class="list-items">
+               <li><a href="#"><i class="fas fa-download"></i>Instagram</a></li>
+               <li><a href="#"><i class="fas fa-download"></i>twitter</a></li>
+               <li><a href="#"><i class="fas fa-download"></i>facebook</a></li>
+               <li><a href="#"><i class="fas fa-download"></i>YouTube</a></li>
+               <li><a href="#"><i class="fas fa-download"></i>mediafire</a></li>
+               <li><a href="/details/truecaller"><i class="fas fa-search"></i>truecaller</a></li>
+               <li><a href="#"><i class="fas fa-search"></i>session id</a></li>
+               <li><a href="#"><i class="fas fa-search"></i> github</a></li>
+               <li><a href="#"><i class="fas fa-search"></i>  film  </a></li>
+               <li><a href="#"><i class="fas fa-bolt"></i> webss </a></li>
+               <li><a href="#"><i class="fas fa-bolt"></i> fancyText </a></li>
+               <li><a href="#"><i class="fas fa-bolt"></i> fancyText </a></li>
+               <li><a href="#"><i class="fas fa-bolt"></i> textToSpeech </a></li>
+               <li><a href="#"><i class="fas fa-bolt"></i>qrcode</a></li>
+               <li><a href="/server/scan"><i class="fas fa-qrcode"></i>scan qr</a></li>
+               <li><a href="https://youtu.be/jwTQAQBH5mM"><i class="fab fa-youtube"></i>tutorial</a></li>
+               <li><a href="/support/donate"><i class="fas fa-donate"></i>donate</a></li>
+               <li><a href="#"><i class="fas fa-hand-holding"></i>helper's</a></li>
+               <li><a href="/"><i class="fas fa-hand-holding"></i> about </a></li>
+               <div class="icons">
+                  <a href="https://instagram.com/mhd__fasweeh?igshid=ZDdkNTZiNTM="><i class="fab fa-instagram"></i></a>
+                  <a href="https://github.com/Inrl-official"><i class="fab fa-github"></i></a>
+                  <a href="/viwe/contact"><i class="fab fa-whatsapp"></i></a>
+               </div>
+            </ul>
+         </nav>
+      </div>
+      <div class="content">
+         <div class="header">
+            INRL-OFFICIAL
+         </div>
+         <p>
+            You are a dev or WhatsApp bot builder. You can use INRL apies. Also you can contribute new apies to my project. Don't forget to inform the creator if there is any error in the scripting only
+         </p>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Title Here</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to bottom, #e7e7e7, #e4e4e4);
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box {
+      width: 300px;
+      height: 350px;
+      padding: 20px;
+      position: relative;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 10px;
+      transform: perspective(1000px) rotateY(0deg);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    #text {
+      color: #333;
+    }
+
+    .blueButton {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .blueButton:hover {
+      background-color: #2980b9;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <button class="blueButton" onclick="copyText()"><i class="fa fa-clone"></i></button>
+      <div id="text">
+        <p><br>
+            termux-setup-storage<br>
+            apt update<br>
+            apt upgrade<br>
+            pkg update && pkg upgrade<br>
+            pkg install python<br>
+            pkg install python2<br>
+            pkg install bash<br>
+            pkg install libwebp<br>
+            pkg install git -y<br>
+            pkg install nodejs -y <br>
+            pkg install ffmpeg -y <br>
+            pkg install wget<br>
+            pkg install imagemagick -y<br>
+            git clone Your Forked Github Url<br>
+            cd inrl-bot-md<br>
+            npm i<br>
+            npm start<br>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function copyText() {
+      const textToCopy = document.getElementById("text").innerText;
+      const textArea = document.createElement("textarea");
+      textArea.value = textToCopy;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+
+      const copyButton = document.querySelector(".blueButton");
+      copyButton.innerHTML = '<i class="fa fa-check"></i> Copied';
+      copyButton.disabled = true;
+    }
+  </script>
+</body>
+</html>

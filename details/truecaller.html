@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>api pages</title>
+    <style>
+   /* Google Font CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+body{
+  min-height: 100vh;
+  width: 100%;
+  background: #D3D3D3;
+}
+.text-boxes{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction:column;
+  align-items: cener;
+  padding: 0 40px;
+  margin-bottom: 160px;
+}
+.text-boxes .text-box{
+  height: 380px;
+  max-width: 660px;
+  width: 100%;
+  margin: 55px 0;
+}
+.text-boxes .text-box .topic{
+  font-size: 18px;
+  font-weight: 600;
+  color: #ff0000;
+  margin: 4px;
+}
+.text-boxes .text-box textarea{
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  border: 3px solid #ffff00;
+  border-radius: 8px;
+  background: #00ffff;
+}
+.text-box textarea::-webkit-scrollbar{
+  display: none;
+}
+.text-boxes .text-box button{
+  height: 45px;
+  width: 155px;
+  color: #fff;
+  background: #000000;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 400;
+  margin: 8px 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.text-boxes .text-box button:hover{
+  background: #ffff00;
+}
+@media (max-width: 400px) {
+  .text-boxes .text-box button{
+    width: 100%;
+  }
+}
+   </style>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="text-boxes">
+    <div class="text-box HTMLBox">
+      <div class="topic">note :</div>
+      <textarea id="HTMLBox" readonly >
+truecaller!. this api is used to fetch number details of a user
+        
+        data bases on truecaller result. trucaller is Indian based number detiles fetching application
+      </textarea>
+      
+    </div>
+    <div class="text-box CSSBox">
+      <div class="topic">script :- </div>
+      <textarea id="CSSBox" readonly >
+const got = require('got');
+async function getNumData(number){
+let {body} = await got('inrl-web.onrender.com/api/truecaller?number='+number)
+body = JSON.parse(body);
+const {name,score,access,city,country,carrier,type,format,access,format} = body;
+return {name,score,access,city,country,carrier,type,format,access,format}
+}
+      </textarea>
+      <button id="CSSButton">Copy Codes</button>
+    </div>
+  <script>
+      let CSSBox = document.getElementById("CSSBox");
+      let CSSButton = document.getElementById("CSSButton");
+
+      CSSButton.onclick = function() {
+        CSSBox.select();
+        document.execCommand("copy");
+        CSSButton.innerText = "Codes Copied"
+      }
+  </script>
+</body>
+</html>

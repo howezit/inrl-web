@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pair with me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to bottom, #ffffff, #ebebeb);
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box {
+      width: 300px;
+      height: 320px;
+      padding: 20px;
+      position: relative;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 10px;
+      transform: perspective(1000px) rotateY(0deg);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    #text {
+  color: #000; /* Set the text color to black (#000) */
+}
+
+.input-container input {
+  color: #000; /* Set the text color to black (#000) */
+}
+
+.centered-text {
+  color: #000; /* Set the text color to black (#000) */
+}
+
+  
+    .input-container {
+      display: flex;
+      background: white;
+      border-radius: 1rem;
+      background: linear-gradient(45deg, #c5c5c5 0%, #ffffff 100%);
+      box-shadow: 20px 20px 20px #d8d8d8, -10px -10px 20px #f8f8f8;
+      padding: 0.3rem;
+      gap: 0.3rem;
+      max-width: 300px; /* Set your desired maximum width */
+      width: 100%;
+    }
+
+    .input-container input {
+      border-radius: 0.8rem 0 0 0.8rem;
+      background: #e8e8e8;
+      box-shadow: inset 13px 13px 10px #dcdcdc, inset -13px -13px 10px #f4f4f4;
+      width: 100%;
+      flex-basis: 75%;
+      padding: 1rem;
+      border: none;
+      border-left: 2px solid #4998FF;
+      color: #5e5e5e;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .input-container input:focus {
+      border-left: 2px solid #4998FF;
+      outline: none;
+      box-shadow: inset 13px 13px 10px #BFF0FA, inset -13px -13px 10px #f4f4f4;
+    }
+
+    .input-container button {
+      flex-basis: 25%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%);
+      font-weight: 900;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+      color: white;
+      border: none;
+      width: 100%;
+      border-radius: 0 1rem 1rem 0;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .input-container button:hover {
+      background: linear-gradient(135deg, #BFF0FA 0%, #4998ffc4 100%);
+    }
+
+    @media (max-width: 500px) {
+      .input-container {
+        flex-direction: column;
+      }
+
+      .input-container input {
+        border-radius: 0.8rem;
+      }
+
+      .input-container button {
+        padding: 1rem;
+        border-radius: 0.8rem;
+      }
+    }
+
+    .centered-text {
+    text-align: center;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <div class="box" id="box">
+        <div id="text">
+          <i class="fa fa-user"></i>
+          <p>
+            <h3 class="centered-text">Link with phone number</h3>
+            <br>
+            <h6>Enter your number with a country code.</h6>
+            <div class="input-container">
+                <input placeholder="917025673121" type="number" id="number" placeholder="enter your phone number with a country code" name="">
+                <button id="submit">submit</button>
+              </div>
+             
+              <a id="waiting-message" class="centered-text" style="display: none;">Please wait for some time</a>
+              <br>
+              <br>
+              <main id="pair"></main>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+></script>
+  <script>
+    const _0x58ab49=_0x5d13;(function(_0x1d1111,_0x401b25){const _0x2fb461=_0x5d13,_0x581464=_0x1d1111();while(!![]){try{const _0x4eb81f=parseInt(_0x2fb461(0xe4))/0x1*(parseInt(_0x2fb461(0xde))/0x2)+parseInt(_0x2fb461(0xdc))/0x3+-parseInt(_0x2fb461(0xdd))/0x4*(-parseInt(_0x2fb461(0xf6))/0x5)+parseInt(_0x2fb461(0xfa))/0x6+parseInt(_0x2fb461(0xe0))/0x7*(-parseInt(_0x2fb461(0xe9))/0x8)+-parseInt(_0x2fb461(0xf7))/0x9+-parseInt(_0x2fb461(0xf5))/0xa;if(_0x4eb81f===_0x401b25)break;else _0x581464['push'](_0x581464['shift']());}catch(_0x9f956b){_0x581464['push'](_0x581464['shift']());}}}(_0x22e4,0x9b421));function hi(){const _0x5496fa=_0x5d13;console[_0x5496fa(0xee)]('Hello\x20World!');}function _0x22e4(){const _0x40bc99=['<font\x20id=\x22copy\x22\x20onclick=\x22Copy()\x22\x20style=\x22color:red;font-weight:bold\x22\x20size=\x225\x22>CODE:\x20<span\x20style=\x22color:black;font-weight:bold\x22>','text','click','1778721bBIrJI','52MlFFoF','1948682QCicFo','innerHTML','2879023pyYPpl','<a\x20style=\x22color:black;font-weight:bold\x22>Please\x20wait\x20for\x20some\x20time</a><br><br>','Service\x20Unavailable','color:black;font-weight-bold','1mjVdUX','<a\x20style=\x22color:black;font-weight:bold\x22>invalid\x20number\x20format</a><br><br>','copy','COPIED','addEventListener','8yLmnya','/pair/code?number=','split','</span></font><br><br><br>','value','log','length','box','color:blue;font-weight:bold','size','style','number','8463880hmgmpu','146895dZpins','4618926HyzWXJ','code','clipboard','2745918FnZQYg','submit','type','writeText','getElementById','map','innerText','pair','replace'];_0x22e4=function(){return _0x40bc99;};return _0x22e4();}hi();let a=document['getElementById'](_0x58ab49(0x101)),b=document['getElementById'](_0x58ab49(0xfb)),c=document[_0x58ab49(0xfe)](_0x58ab49(0xf4)),box=document[_0x58ab49(0xfe)](_0x58ab49(0xf0));async function Copy(){const _0x4a4230=_0x58ab49;let _0x5b3885=document[_0x4a4230(0xfe)](_0x4a4230(0xe6))[_0x4a4230(0x100)],_0xccde7=document[_0x4a4230(0xfe)](_0x4a4230(0xe6));await navigator[_0x4a4230(0xf9)][_0x4a4230(0xfd)](_0xccde7[_0x4a4230(0x100)][_0x4a4230(0x102)]('CODE:\x20','')),_0xccde7['innerText']=_0x4a4230(0xe7),_0xccde7[_0x4a4230(0xf3)]=_0x4a4230(0xf1),_0xccde7[_0x4a4230(0xf2)]='5',setTimeout(()=>{const _0x5cf23a=_0x4a4230;_0xccde7['innerText']=_0x5b3885,_0xccde7[_0x5cf23a(0xf3)]=_0x5cf23a(0xe3),_0xccde7[_0x5cf23a(0xf2)]='5';},0x1f4);}function _0x5d13(_0x3cb2ea,_0x23c1dc){const _0x22e492=_0x22e4();return _0x5d13=function(_0x5d139f,_0x1d8175){_0x5d139f=_0x5d139f-0xd9;let _0x533411=_0x22e492[_0x5d139f];return _0x533411;},_0x5d13(_0x3cb2ea,_0x23c1dc);}b[_0x58ab49(0xe8)](_0x58ab49(0xdb),async _0x4033e2=>{const _0x1f5337=_0x58ab49;_0x4033e2['preventDefault']();if(!c[_0x1f5337(0xed)])a[_0x1f5337(0xdf)]='<a\x20style=\x22color:black;font-weight:bold\x22>enter\x20your\x20WhatsApp\x20number\x20with\x20a\x20country\x20code</a><br><br>';else{if(c['value'][_0x1f5337(0x102)](/[^0-9]/g,'')[_0x1f5337(0xef)]<0xb)a[_0x1f5337(0xdf)]=_0x1f5337(0xe5);else{const _0x350bb6=c[_0x1f5337(0xed)]['replace'](/[^0-9]/g,'');let _0x54a13d='',_0x372095='';const _0x4035d3=_0x350bb6[_0x1f5337(0xeb)]('');_0x4035d3[_0x1f5337(0xff)](_0x2d39c3=>{const _0x46993a=_0x1f5337;_0x372095+=_0x2d39c3;if(_0x372095[_0x46993a(0xef)]==0x3)_0x54a13d+='\x20'+_0x2d39c3;else _0x372095[_0x46993a(0xef)]==0x8?_0x54a13d+='\x20'+_0x2d39c3:_0x54a13d+=_0x2d39c3;}),c[_0x1f5337(0xfc)]=_0x1f5337(0xda),c[_0x1f5337(0xed)]='+'+_0x54a13d,c[_0x1f5337(0xf3)]='color:black;font-size:20px',a['innerHTML']=_0x1f5337(0xe1);let {data:_0x411d31}=await axios(_0x1f5337(0xea)+_0x350bb6),_0x451755=_0x411d31[_0x1f5337(0xf8)]||_0x1f5337(0xe2);a[_0x1f5337(0xdf)]=_0x1f5337(0xd9)+_0x451755+_0x1f5337(0xec);}}});
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deploy Inrl Now</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Ensure full viewport height */
+            margin: 0;
+            font-family: 'Pacifico', cursive; /* Apply the Pacifico font */
+        }
+
+        .button {
+            width: 150px;
+            height: 60px;
+            border: 3px solid #315cfd;
+            border-radius: 45px;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 550;
+            margin: 10px; /* Add margin to create space between buttons */
+        }
+
+        .button-blue {
+            background: white;
+            color: #315cfd;
+        }
+
+        .button-blue:hover {
+            background: #315cfd;
+            color: white;
+            font-size: 1.5em;
+        }
+
+        .button-red {
+            background: #fff;
+            color: #f70000;
+            border: 3px solid #f70000; /* Red border */
+        }
+
+        .button-red:hover {
+            background: #f70000;
+            color: #fff;
+            font-size: 1.5em;
+        }
+
+        .button-yellow {
+            background: #fffffd; /* Yellow background */
+            color: #ffd700;
+            border: 3px solid #ffd700; /* Yellow border */
+        }
+
+        .button-yellow:hover {
+            background: #e0d900; /* Black background on hover */
+            color: #fcfcfc; /* Yellow text on hover */
+            font-size: 1.5em;
+        }
+
+        .loading-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white; /* Opaque white background */
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007afd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading page -->
+    <div class="loading-container">
+        <div class="loader"></div>
+    </div>
+
+    <a href="/session/qr" style="text-decoration: none;">
+        <button class="button button-blue">via qr</button>
+    </a>
+
+    <a href="/session/code" style="text-decoration: none;">
+        <button class="button button-red">via code</button>
+    </a>
+
+    <a href="/session/deploy" style="text-decoration: none;">
+        <button class="button button-yellow">deploy</button>
+    </a>
+
+    <script>
+        // Simulate loading delay (3 seconds in this example)
+        setTimeout(function () {
+            document.querySelector('.loading-container').style.display = 'none';
+            document.querySelectorAll('.button').forEach(function(btn) {
+                btn.style.display = 'block';
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2B2E33;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        .box {
+            position: relative;
+            width: 310px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid white;
+            border-radius: 10px;
+            text-align: center; /* Center-align the text within the boxes */
+        }
+        .copyContent {
+            color: white;
+        }
+        .copyButton {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            color: white;
+            background-color: transparent;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .copyButton:hover {
+            background-color: transparent;
+        }
+        .animated-button {
+            background-color: white; /* Change button color to green */
+            border: none;
+            color: black;
+            padding: 10px 20px; /* Make the button smaller */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px; /* Adjust the font size */
+            margin: 10px 2px; /* Adjust margins */
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            border-radius: 5px; /* Smaller border radius */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .animated-button:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+
+        .animated-button:hover:after {
+            width: 210px;
+            height: 200px;
+            opacity: 1;
+        }
+
+        .animated-button:focus {
+            outline: none;
+        }
+
+        .animated-button:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+       .right-button {
+    background-color: green;
+    border: none;
+    color: #ffffff;
+    padding: 10px 10px; /* Reduce the padding to make it smaller */
+    font-size: 14px; /* Reduce the font size */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 3px 2px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.right-button:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+}
+
+.right-button:hover:after {
+    width: 210px;
+    height: 200px;
+    opacity: 1;
+}
+
+.right-button:focus {
+    outline: none;
+}
+
+.right-button:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+    </style>
+    <title>Setup Custom Alive Now</title>
+</head>
+<body>
+    <h1>Alive Messages</h1>
+    <h4>There we Show Some alive format's, companies this and create better one with your idea</h4>
+    <p>In the format below, the `&sender` changes to mention</p>
+    <div class="box">
+        <div class="copyContent">
+            alive _hey &sender_
+        </div>
+        <button class="copyButton" onclick="copyText(this)"><i class="far fa-clone"></i> Copy</button>
+    </div>
+    <p>In the below format, the `&speed` changes to response speed. remembers thet its not too accurate!</p>
+    <div class="box">
+        <div class="copyContent">
+            alive ```hey &speed```
+        </div>
+        <button class="copyButton" onclick="copyText(this)"><i class="far fa-clone"></i> Copy</button>
+    </div>
+    <p>In the below format, the `&time` & `&date` & `&prefix` changes to their similar values</p>
+    <div class="box">
+        <div class="copyContent">
+        	alive <br>
+            Hey &sender<br>
+            I AM ALIVE!<br>
+            RUNTIME: &time<br>
+            SPEED: &date<br>
+            PLATFORM: &prefix
+        </div>
+        <button class="copyButton" onclick="copyText(this)"><i class="far fa-clone"></i> Copy</button>
+    </div>
+    <p>in below we show all the elements thets can be customizable</p>
+    <div class="box">
+        <div class="copyContent">
+            alive <br>
+            Hey &sender<br>
+            I AM ALIVE!<br>
+            TIME: &time<br>
+            DATE: &date<br>
+            PREFIX: &prefix<br>
+            MOD: &mode<br>
+            RAM: &ram<br>
+            PLATFORM: &platform
+        </div>
+        <button class="copyButton" onclick="copyText(this)"><i class="far fa-clone"></i> Copy</button>
+    </div>
+    <p>In the below format, we show send imageMessage on alive command</p>
+    <div class="box">
+        <div class="copyContent">
+            alive <br>
+            Hey &sender<br>
+            I AM ALIVE!<br>
+            TIME: &time<br>
+            DATE: &date<br>
+            PREFIX: &prefix<br>
+            MOD: &mode<br>
+            RAM: &ram<br>
+            PLATFORM: &platform<br>
+            https://i.imgur.com/U2PPfjL.jpeg
+        </div>
+        <button class="copyButton" onclick="copyText(this)"><i class="far fa-clone"></i> Copy</button>
+    </div>
+    <p>In the below format, we show send videoMessage on alive command</p>
+    <div class="box">
+        <div class="copyContent">
+            alive<br>
+            Hey &sender<br>
+            I AM ALIVE!<br>
+            TIME: &time<br>
+            DATE: &date<br>
+            PREFIX: &prefix<br>
+            MOD: &mode<br>
+            RAM: &ram<br>
+            PLATFORM: &platform<br>
+            https://i.imgur.com/KV9nEvB.mp4
+        </div>
+        <button class="copyButton" onclick="copyText(this)"><i class="far fa-clone"></i> Copy</button>
+    </div>
+    <p>In the below format, we show send gifMessage on alive command. its work by adding `&gif` and replace &gif from thet aluve caption</p>
+    <div class="box">
+        <div class="copyContent">
+            alive <br>
+            Hey &sender<br>
+            I AM ALIVE!<br>
+            TIME: &time<br>
+            DATE: &date<br>
+            PREFIX: &prefix<br>
+            MOD: &mode<br>
+            RAM: &ram<br>
+            PLATFORM: &platform<br>
+            https://i.imgur.com/KV9nEvB.mp4<br>
+            &gif
+        </div>
+        <button class="copyButton" onclick="copyText(this)"><i class="far fa-clone"></i> Copy</button>
+    </div>
+    <h4>You Can Aslo set LinkPreview Messages on Alive</h4>
+    <p>we showing your alive message with full feature. means with `adreply, thumbnail, title, body,etc.. ` check alive format and add or removed unwanted things properly!</p>
+    <div class="box">
+        <div class="copyContent">
+            alive <br>
+            Hey &sender<br>
+            I AM ALIVE!<br>
+            TIME: &time<br>
+            DATE: &date<br>
+            PREFIX: &prefix<br>
+            MOD: &mode<br>
+            RAM: &ram<br>
+            PLATFORM: &platform<br>
+            https://i.imgur.com/U2PPfjL.jpeg<br>
+            &gif<br>
+            #title\hy#<br>
+            #body\linkPreview Body Content's#<br>
+            #largethumb\true#<br>
+            #adreply\true#<br>
+            #sourceUrl\https://inrl-web.onrender.com#<br>
+            #mediaUrl\https://inrl-web.onrender.com#<br>
+            #thumb\https://i.imgur.com/U2PPfjL.jpeg#
+        </div>
+        <button class="copyButton" onclick="copyText(this)"><i class="far fa-clone"></i> Copy</button>
+    </div>
+    <p>in the above formats we uses adreply for ad message and thumb for thumbnail, etc.. you can alsonuse actule values thet Bailey's givens!!</p>
+   <a href="/info/bot/vars" class="animated-button">Back</a>
+    <script>
+        function _0x394a(){const _0x412306=['2790015oxCVYu','96NANBDW','130fTRBsb','62847mFMViy','1177440AJKwrM','parentElement','1896122CddObN','<i\x20class=\x22fas\x20fa-check\x22></i>\x20Copied','body','169295iRjHFj','select','createElement','execCommand','221804UgsFjV','textarea','.copyContent','<i\x20class=\x22far\x20fa-clone\x22></i>\x20Copy','12321880qXFBGb','870xqCGEJ','innerHTML','appendChild'];_0x394a=function(){return _0x412306;};return _0x394a();}function _0x12ae(_0x54af7c,_0x27bbac){const _0x394a97=_0x394a();return _0x12ae=function(_0x12ae7f,_0x3ada33){_0x12ae7f=_0x12ae7f-0xe1;let _0x5df939=_0x394a97[_0x12ae7f];return _0x5df939;},_0x12ae(_0x54af7c,_0x27bbac);}(function(_0x3a5d85,_0x382d88){const _0x54b4cd=_0x12ae,_0x21cce3=_0x3a5d85();while(!![]){try{const _0x2ac977=-parseInt(_0x54b4cd(0xe1))/0x1+parseInt(_0x54b4cd(0xe3))/0x2+parseInt(_0x54b4cd(0xf2))/0x3+parseInt(_0x54b4cd(0xea))/0x4*(parseInt(_0x54b4cd(0xf4))/0x5)+parseInt(_0x54b4cd(0xf3))/0x6*(-parseInt(_0x54b4cd(0xe6))/0x7)+-parseInt(_0x54b4cd(0xee))/0x8+parseInt(_0x54b4cd(0xf5))/0x9*(parseInt(_0x54b4cd(0xef))/0xa);if(_0x2ac977===_0x382d88)break;else _0x21cce3['push'](_0x21cce3['shift']());}catch(_0x542bc5){_0x21cce3['push'](_0x21cce3['shift']());}}}(_0x394a,0xc8d96));function copyText(_0x20de12){const _0x5d1064=_0x12ae,_0x574afe=_0x20de12[_0x5d1064(0xe2)],_0x2483a7=_0x574afe['querySelector'](_0x5d1064(0xec))['innerText'],_0x1151c7=document[_0x5d1064(0xe8)](_0x5d1064(0xeb));_0x1151c7['value']=_0x2483a7,document[_0x5d1064(0xe5)][_0x5d1064(0xf1)](_0x1151c7),_0x1151c7[_0x5d1064(0xe7)](),document[_0x5d1064(0xe9)]('copy'),document[_0x5d1064(0xe5)]['removeChild'](_0x1151c7),_0x20de12[_0x5d1064(0xf0)]=_0x5d1064(0xe4),setTimeout(()=>{const _0x2216b6=_0x5d1064;_0x20de12['innerHTML']=_0x2216b6(0xed);},0x2ee);}
+    </script>
+</body>
+</html>

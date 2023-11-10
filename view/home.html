@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #454545;
+}
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 370px;
+  width: 100%;
+  background: #fff;
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40%;
+  width: 100%;
+  border-radius: 24px 24px 0 0;
+  background-color: #ffff00;
+}
+.image {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: #00ffff;
+  padding: 2px;
+  margin-bottom: 50px;
+}
+.image .profile-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+.profile-card .text-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+}
+.text-data .name {
+  font-size: 22px;
+  font-weight: 500;
+}
+.text-data .job {
+  font-size: 15px;
+  font-weight: 400;
+}
+.profile-card .media-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.media-buttons .link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background-color: #ff00ff;
+  text-decoration: none;
+}
+.profile-card .buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+.buttons .button {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 24px;
+  margin: 0 10px;
+  padding: 8px 24px;
+  background-color: #7a7a7a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-card .analytics {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+.analytics .data {
+  display: flex;
+  align-items: center;
+  color: #333;
+  padding: 0 20px;
+  border-right: 2px solid #e7e7e7;
+}
+.data i {
+  font-size: 18px;
+  margin-right: 6px;
+}
+.data:last-child {
+  border-right: none;
+}
+    </style>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="profile-card">
+      <div class="image">
+      <img src="https://i.ibb.co/7tyDQSq/66286ef855cd.jpg" alt="INRL-OFFICIAL" class="profile-img" />
+      </div>
+      <div class="text-data">
+        <span class="name">INRL-OFFICIAL</span>
+      </div>
+      <div class="media-buttons">
+        <a style="text-decoration:none" href="/viwe/service" style="background: #4267b2" class="link">
+           API
+        </a>
+        <a href=https://instagram.com/mhd__fasweeh?igshid=ZDdkNTZiNTM="" style="background: #e1306c" class="link">
+          <i class="bx bxl-instagram"></i>
+        </a>
+        <a href="/viwe/contact" style="background: #ff0000" class="link">
+          <i class="bx bxl-whatsapp"></i>
+        </a>
+        <a href="/support/donate" style="background: #1da1f2" class="link">
+          <i class='bx bxl-paypal'></i>
+          </a>
+      </div>
+      <div class="buttons">
+        <a style="text-decoration:none" href="/server/scan" class="button">SCAN QR</a>
+        <a style="text-decoration:none" href="https://youtu.be/jwTQAQBH5mM" class="button">DEPLOY</a>
+      </div>
+        <br>
+          <p>I am a student from India. I love programming. My ultimate project is WhatsApp bot. This is the official page I made for this bot . Also my rest apies are available here</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
