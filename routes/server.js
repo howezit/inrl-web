@@ -66,7 +66,7 @@ router.get('/scan', async (req, res) => {
                     }))
                 }
                 if (connection == "open") {
-                await delay(10000);
+                await delay(20000);
                     let data = await readFile('./temp/'+id+'/creds.json','utf-8')
                     let a = await octokit.request("POST /gists", {
                         files: {
