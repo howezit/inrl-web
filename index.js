@@ -18,6 +18,7 @@ let main = require('./routes/main'),
     server = require('./routes/server'),
     code = require('./routes/pair'),
     info = require('./routes/info/info'),
+    db = require('./routes/user'),
     post = require('./routes/post'),
     logo = require('./routes/logo'),
     vars = require('./routes/info/var')
@@ -55,6 +56,7 @@ app.use('/pair', code);
 app.use('/info', info)
 app.use('/post', post);
 app.use('/logo', logo);
+app.use('/db', db);
 
 
 app.use(function (req, res, next) {
