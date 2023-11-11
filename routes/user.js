@@ -7,9 +7,25 @@ const {
 const octokit = new Octokit({
         auth: "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",
 })
+
+const getUser = async () => {
+        let {data} = await octokit.request('GET /repos/inrl-md/session/contents/user.js', {
+                owner: 'inrl-md',
+                repo: 'session',
+                private: true,
+                path: 'session/user.js',
+                headers: {
+                        'X-GitHub-Api-Version': '2022-11-28'
+                }
+        })
+data.content = new Array(atob(data.content).replace(/\n/g,''));
+  return data
+}
+
 const saveUser = async (c) => {
   const res = await getUser();
-  if(!res.contents.includes(c)) res.content.push(c);
+  //if(!res.contents.includes
+     res.content.push(c);
         const data = await octokit.request('PUT /repos/inrl-md/session/contents/user.js', {
                 owner: 'inrl-md',
                 repo: 'session',
@@ -27,20 +43,6 @@ const saveUser = async (c) => {
                 }
         })
         return 'saved'
-}
-
-const getUser = async () => {
-        let {data} = await octokit.request('GET /repos/inrl-md/session/contents/user.js', {
-                owner: 'inrl-md',
-                repo: 'session',
-                private: true,
-                path: 'session/user.js',
-                headers: {
-                        'X-GitHub-Api-Version': '2022-11-28'
-                }
-        })
-data.content = new Array(atob(data.content).replace(/\n/g,''));
-  return data
 }
 
 router.get('/get', async (req, res) => {
