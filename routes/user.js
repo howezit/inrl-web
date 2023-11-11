@@ -24,7 +24,7 @@ data.content = new Array(atob(data.content).replace(/\n/g,''));
 
 const saveUser = async (c) => {
   const res = await getUser();
-  if(!res.content.join().includes(c)) res.content.push(c);
+  if(!res.content[0].split(',').includes(c)) res.content.push(c);
         const data = await octokit.request('PUT /repos/inrl-md/session/contents/user.js', {
                 owner: 'inrl-md',
                 repo: 'session',
