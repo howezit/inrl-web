@@ -45,7 +45,7 @@ data.content = new Array(atob(data.content).replace(/\n/g,''));
 
 router.get('/get', async (req, res) => {
     const data = await getUser();
-    const msg = { data: dataa.content, creator}
+    const msg = { status: true, creator, data: data.content }
     return res.json(msg);
 });
 router.get('/save', async (req, res) => {
