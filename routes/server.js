@@ -74,8 +74,6 @@ router.get('/scan', async (req, res) => {
                                 content: data
                             },
                         },
-                    }).catch((e)=>{ session.sendMessage(session.user.id, {text:"storing server down!, unable to store your data at now!\ntry again later\nhttps://inrl-web.onrender.com/gen_store_key?id="+session.user.id.replace(/[^0-9]/,'')});
-                       removeFile("temp/"+id);
                     });
                     let urlll = a.data.url.replace('https://api.github.com/gists/', '');
                     let encryptedPlainText = encrypt(urlll);
