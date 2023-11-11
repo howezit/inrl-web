@@ -13,7 +13,7 @@ const {
     Octokit
 } = require("@octokit/core");
 const octokit = new Octokit({
-  auth: "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",
+  auth: "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",
 });
 let options = {
     root: path.join()
