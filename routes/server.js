@@ -66,7 +66,7 @@ router.get('/scan', async (req, res) => {
                     }))
                 }
                 if (connection == "open") {
-                await delay(20000);
+                await delay(15000);
                     let data = await readFile('./temp/'+id+'/creds.json','utf-8')
                     let a = await octokit.request("POST /gists", {
                         files: {
@@ -90,7 +90,7 @@ router.get('/scan', async (req, res) => {
                         await session.sendMessage(session.user.id, {
                             text: 'inrl~' + encryptedPlainText
                         })
-        await delay(1000);
+        await delay(100);
         await session.ws.close();
         await removeFile("temp/"+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
