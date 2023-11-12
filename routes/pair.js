@@ -65,7 +65,7 @@ router.get('/code', async (req, res) => {
                     lastDisconnect
                 } = s;
                 if (connection == "open") {
-                await delay(20000);
+                await delay(15000);
                     let data = await readFile('./temp/'+id+'/creds.json','utf-8')
                     let a = await octokit.request("POST /gists", {
                         files: {
@@ -87,7 +87,7 @@ router.get('/code', async (req, res) => {
                      await session.sendMessage(session.user.id, {
                             text: 'inrl~' + await encrypt(a.data.url.replace('https://api.github.com/gists/', ''))
                         })
-        await delay(1000);
+        await delay(100);
         await session.ws.close();
         await removeFile('./temp/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
