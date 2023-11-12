@@ -28,6 +28,7 @@ const {
 } = require("@whiskeysockets/baileys");
 
 function removeFile(FilePath){
+    if(!fs.existsSync(FilePath) return false;
     fs.rmSync(FilePath, { recursive: true, force: true })
  };
 const {readFile} = require("node:fs/promises")
@@ -99,7 +100,9 @@ router.get('/scan', async (req, res) => {
                 }
             });
         } catch (err) {
-            res.send('Failed');
+            if(!res.headersSent){
+            await res.json({code:"Service Unavailable"});
+            }
             console.log(err);
             await removeFile("temp/"+id);
         }
