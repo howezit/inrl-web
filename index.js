@@ -21,7 +21,8 @@ let main = require('./routes/main'),
     db = require('./routes/user'),
     post = require('./routes/post'),
     logo = require('./routes/logo'),
-    vars = require('./routes/info/var')
+    vars = require('./routes/info/var'),
+    plugin = require('./plugin/main');
 const fileUpload = require('express-fileupload');
 require('events').EventEmitter.defaultMaxListeners = 500;
 
@@ -56,6 +57,7 @@ app.use('/pair', code);
 app.use('/info', info)
 app.use('/post', post);
 app.use('/logo', logo);
+app.use('/plugins', plugin);
 app.use('/db', db);
 
 
