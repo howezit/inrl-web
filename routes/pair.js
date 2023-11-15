@@ -29,7 +29,7 @@ const {
 } = require("@whiskeysockets/baileys");
 
 function removeFile(FilePath){
-    if(!fs.existsSync(FilePath) return false;
+    if(!fs.existsSync(FilePath)) return false;
     fs.rmSync(FilePath, { recursive: true, force: true })
  };
 const {readFile} = require("node:fs/promises")
