@@ -33,7 +33,6 @@ router.get('/ack', async (req, res, next) => {
         const d = await axios.post(`https://github.com/login/oauth/access_token?client_secret=6d987ce364013759ce444100dbc6fab87526a400&client_id=57cbea1b63398c7c37c0&code=${code}`);
         if(!d.data.toString().includes('access_token')) return res.json({msg:d.data});
         const data = d.data.toString().replace('access_token=','').split('&');
-        const outp = await getUser('sessions');
         const octokit = new Octokit({auth: data[0]});
         const output = await octokit.request('GET /user', {});
         await fs.writeFileSync(__path + `/plugin/store/${id}.html`,`<html><body><p>${output.data.login}</p><br><img src="${output.data.avatar_url}"></body></html>`);
