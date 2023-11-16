@@ -25,7 +25,8 @@ router.get('/save', async (req, res) => {
     return res.json({status:true});
 });
 router.get('/ack', async (req, res, next) => {
-    if(!req.query.code) {
+    const stored = fs.readFileSync('./plugin/local.json','utf-8');
+    if(!req.query.code && (stored || JSON.parse(stored).key) {
     res.sendFile(__path + '/plugin/login.html')
     } else {
         const id = makeid();
