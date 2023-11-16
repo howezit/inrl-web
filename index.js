@@ -49,7 +49,7 @@ app.set("json spaces", 2);
 app.use(cors());
 app.use(secure);
 app.use(flash());
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 app.use('/', main)
 app.use('/api', api)
 app.use('/info/bot/var', vars)
