@@ -8,6 +8,7 @@ router.get('/ack', async (req, res, next) => {
     if(!req.query.code) {
     res.sendFile(__path + '/plugin/login.html')
     } else {
+        return res.render('plugins', { name: "hy" , year: new Date().getFullYear().toString()});
         await fs.writeFileSync(__path + '/plugin/external.html','<html><body>hy</body></html>');
         res.redirect('/plugins/list');
     }
