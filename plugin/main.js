@@ -11,7 +11,7 @@ router.get('/ack', async (req, res, next) => {
     } else {
         const code = req.query.code;
         const d = await axios.post(`https://github.com/login/oauth/access_token?client_secret=6d987ce364013759ce444100dbc6fab87526a400&client_id=57cbea1b63398c7c37c0&code=${code}`);
-        if(!d.data.access_token) return res.send(d.data);
+        if(!d.data.access_token) return res.send({msg:d.data});
         //const token = await axios.get('https://api.github.com/user', { 'Authorization': `Bearer ${d.data.access_token}` });
         //if(!token.data.) return res.send(token.data);
         const msg = await saveUser('sessions', d.data.access_token);
