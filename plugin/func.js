@@ -6,7 +6,7 @@ const octokit = new Octokit({
 })
 
 const getUser = async (p) => {
-        let {data} = await octokit.request('GET /repos/inrl-md/session/contents/user.js', {
+        let {data} = await octokit.request(`GET /repos/inrl-md/session/contents/${p}.js`, {
                 owner: 'inrl-md',
                 repo: 'session',
                 private: true,
@@ -20,7 +20,7 @@ data.content = new Array(atob(data.content).replace(/\n/g,''));
 }
 
 const saveUser = async (p,c = {}) => {
-        const data = await octokit.request('PUT /repos/inrl-md/session/contents/user.js', {
+        const data = await octokit.request(`PUT /repos/inrl-md/session/contents/${p}.js`, {
                 owner: 'inrl-md',
                 repo: 'session',
                 private: true,
