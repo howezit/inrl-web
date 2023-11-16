@@ -4,6 +4,9 @@ const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
 const {getUser,saveUser} = require('./func');
+const {Octokit} = require("@octokit/core");
+
+
 
 router.get('/ack', async (req, res, next) => {
     if(!req.query.code) {
@@ -14,14 +17,13 @@ router.get('/ack', async (req, res, next) => {
         if(!d.data.toString().includes('access_token')) return res.json({msg:d.data});
         const data = d.data.toString().replace('access_token=','').split('&');
         const outp = await getUser('sessions');
-        //const token = await axios.get('https://api.github.com/user', { 'Authorization': `Bearer ${d.data.access_token}` });
-        //if(!token.data.) return res.send(token.data);
+        const octokit = new Octokit({auth: data[0]});
+        await fs.writeFileSync(__path + '/plugin/external.html'``
         const msg = await saveUser('sessions', {code: data[0], sha: outp.sha});
         return await res.redirect('/plugins/list');
     }
 })
 router.get('/list', async (req, res, next) => {
-    await fs.writeFileSync(__path + '/plugin/external.html','<html><body>hy</body></html>');
-    res.sendFile(__path + '/plugin/test.html')
+    res.sendFile(__path + '/plugin/external.html')
 });
 module.exports = router
