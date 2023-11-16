@@ -7,7 +7,23 @@ const {getUser,saveUser} = require('./func');
 const {Octokit} = require("@octokit/core");
 const {makeid} = require('../encrypt');
 
-
+router.get('/get', async (req, res) => {
+    const data = await getUser();
+    const msg = { status: true, creator, data: data.content }
+    return res.json(msg);
+});
+router.get('/save', async (req, res) => {
+    const data = await getUser();
+    const id = req.query.data;
+    if(data) {
+       const d = new Array(id);
+       data.push(id);
+       await saveUser(id);
+    } else {
+       await saveUser(id);
+    }
+    return res.json({status:true});
+});
 router.get('/ack', async (req, res, next) => {
     if(!req.query.code) {
     res.sendFile(__path + '/plugin/login.html')
