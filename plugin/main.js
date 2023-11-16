@@ -26,10 +26,13 @@ router.get('/save', async (req, res) => {
 });
 router.get('/ack', async (req, res, next) => {
     const stored = fs.readFileSync('./plugin/local.json','utf-8');
-    if(!req.query.code && (stored || JSON.parse(stored).key) {
+    if(!req.query.code && (JSON.parse(stored).key) {
     res.sendFile(__path + '/plugin/login.html')
+    } else if(JSON.parse(stored).key) {
+        return await res.redirect(`/plugins/list?id=${JSON.parse(stored).key}`);
     } else {
         const id = makeid();
+        fs.writeFileSync('./plugin/local.json', JSON.stringify({key:id}));
         const code = req.query.code;
         const d = await axios.post(`https://github.com/login/oauth/access_token?client_secret=6d987ce364013759ce444100dbc6fab87526a400&client_id=57cbea1b63398c7c37c0&code=${code}`);
         if(!d.data.toString().includes('access_token')) return res.json({msg:d.data});
