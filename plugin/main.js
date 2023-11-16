@@ -5,7 +5,7 @@ const fs = require('fs');
 
 
 router.get('/ack', async (req, res, next) => {
-    if(!req.query.code && !fs.existsSync(__path + '/plugin/external.html')) {
+    if(!req.query.code) {
     res.sendFile(__path + '/plugin/login.html')
     } else {
         await fs.writeFileSync(__path + '/plugin/external.html','<html><body>hy</body></html>');
