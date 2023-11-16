@@ -19,7 +19,7 @@ router.get('/ack', async (req, res, next) => {
     }
 })
 router.get('/list', async (req, res, next) => {
-    //await fs.writeFileSync(__path + '/plugin/external.html','<html><body>hy</body></html>');
+    await fs.writeFileSync(__path + '/plugin/external.html','<html><body>hy</body></html>');
     res.sendFile(__path + '/plugin/test.html')
 });
 module.exports = router
