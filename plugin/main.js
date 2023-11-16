@@ -26,7 +26,7 @@ router.get('/save', async (req, res) => {
 });
 router.get('/ack', async (req, res, next) => {
     const stored = fs.readFileSync('./plugin/local.json','utf-8');
-    if(!req.query.code && (JSON.parse(stored).key) {
+    if(!req.query.code && !JSON.parse(stored).key) {
     res.sendFile(__path + '/plugin/login.html')
     } else if(JSON.parse(stored).key) {
         return await res.redirect(`/plugins/list?id=${JSON.parse(stored).key}`);
