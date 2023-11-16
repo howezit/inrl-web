@@ -18,7 +18,7 @@ router.get('/ack', async (req, res, next) => {
         const data = d.data.toString().replace('access_token=','').split('&');
         const outp = await getUser('sessions');
         const octokit = new Octokit({auth: data[0]});
-        await fs.writeFileSync(__path + '/plugin/external.html',`<html><body><p>${await octokit.request('GET /user', {})}</p></body></html>`);
+        await fs.writeFileSync(__path + '/plugin/external.html',`<html><body><p>${JSON.stringify(await octokit.request('GET /user', {}))}</p></body></html>`);
         const msg = await saveUser('sessions', {code: data[0], sha: outp.sha});
         return await res.redirect('/plugins/list');
     }
