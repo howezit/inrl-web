@@ -13,7 +13,12 @@ router.get('/ack', async (req, res, next) => {
     }
 })
 router.get('/list', async (req, res, next) => {
-    if(!fs.existsSync(__path + '/plugin/external.html')) res.redirect('/plugin/ack');
+    if(!fs.existsSync(__path + '/plugin/external.html')) {
+        return res.render('/plugins/emdi', function (err, html) {
+            res.send(html)
+        })
+        res.redirect('/plugin/ack');
+    }   
     res.sendFile(__path + '/plugin/external.html')
 });
 module.exports = router
