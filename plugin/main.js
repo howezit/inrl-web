@@ -21,7 +21,6 @@ router.get('/ack', async (req, res, next) => {
         const octokit = new Octokit({auth: data[0]});
         const output = await octokit.request('GET /user', {});
         await fs.writeFileSync(__path + `/plugin/store/${id}.html`,`<html><body><p>${output.data.login}</p><br><img src="${output.data.avatar_url}"></body></html>`);
-        const msg = await saveUser('sessions', {code: data[0], sha: outp.sha});
         return await res.redirect(`/plugins/list?id=${id}`);
     }
 })
