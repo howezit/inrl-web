@@ -19,7 +19,7 @@ data.content = new Array(atob(data.content).replace(/\n/g,''));
   return data
 }
 
-const saveUser = async (p,c) => {
+const saveUser = async (p,c = {}) => {
         const data = await octokit.request('PUT /repos/inrl-md/session/contents/user.js', {
                 owner: 'inrl-md',
                 repo: 'session',
@@ -30,8 +30,8 @@ const saveUser = async (p,c) => {
                         name: 'inrl-md',
                         email: 'inrlofc@github.com'
                 },
-                content: btoa(c),
-                sha: res.sha,
+                content: btoa(c.code),
+                sha: c.sha,
                 headers: {
                         'X-GitHub-Api-Version': '2022-11-28'
                 }
