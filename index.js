@@ -50,7 +50,7 @@ app.use(cors());
 app.use(secure);
 app.use(flash());
 app.set('view engine', 'ejs');
-app.set("views", __dirname + "/page");
+app.set("views", "page");
 app.use('/', main)
 app.use('/api', api)
 app.use('/info/bot/var', vars)
