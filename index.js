@@ -42,7 +42,7 @@ app.use(
 );
 app.use(csrf());
 app.use(passport.initialize());
-app.use(express.static("public"));
+//app.use(express.static("public"));
 app.use(passport.session());
 app.set("trust proxy", true);
 app.set("json spaces", 2);
