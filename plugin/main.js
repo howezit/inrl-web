@@ -10,19 +10,19 @@ const {makeid} = require('../encrypt');
 
 router.get('/get', async (req, res) => {
     const data = await getUser('plugins');
-    const msg = { status: true, creator, data: data.content.split(',').map(a=>JSON.parse(a)) }
+    const msg = { status: true, creator, data: data.content.split(',,').map(a=>JSON.parse(a)) }
     return res.json(msg);
 });
 router.get('/save', async (req, res) => {
     const data = await getUser('plugins');
     const id = req.query.n;
-    const d = data.content.split(',').map(a=>JSON.parse(a));
+    const d = data.content.split(',,').map(a=>JSON.parse(a));
        if(!d.like.includes(id)) {
            d.like.push(id);
-           await saveUser('plugins', {c:d.join(','), sha:data.sha});
+           await saveUser('plugins', {c:d.join(',,'), sha:data.sha});
        } else {
            d.like = d.like.filter(a=> a!=id)
-           await saveUser('plugins', {c:d.join(','), sha:data.sha});
+           await saveUser('plugins', {c:d.join(',,'), sha:data.sha});
        }
     return res.json({status:true});
 });
