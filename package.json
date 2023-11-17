@@ -9,7 +9,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "^6.5.0",
+    "@whiskeysockets/baileys": "^6.4.0",
     "express-fileupload": "^1.4.0",
     "moment-timezone": "^0.5.34",
     "countries-and-timezones": "^3.5.1",
