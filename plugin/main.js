@@ -39,14 +39,14 @@ router.get('/ack', async (req, res, next) => {
         const octokit = new Octokit({auth: data[0]});
         const output = await octokit.request('GET /user', {});
         const outp = (await axios("https://inrl-web-fkns.onrender.com/plugins/get")).data;
-        const json = outp.data.map(a=> `<div><a href="${a.url}">${a.cmd}</a><br><p>${a.desc}</p><br><a href="${creator.u}">${creator.n}</a><br><br><button onclick="m(output.data.login,a.cmd)">likes: ${a.like.length}</button>`);
-        await fs.writeFileSync(__path + `/plugin/store/${id}.html`,`<html><body><p>${output.data.login}</p><br><img src="${output.data.avatar_url}"><br><br>${json}<br><p id="s">clicked</p><script>function m() {document.getElementById("s").innerText= "emdi"}</script></body></html>`);
+        const json = outp.data.map(a=> `<div><a href="${a.url}">${a.cmd}</a><br><p>${a.desc}</p><br><a href="${creator.u}">${creator.n}</a><br><br><button onclick="m(${a.cmd},${output.data.login})">likes: ${a.like.length}</button>`);
+        await fs.writeFileSync(__path + `/public/${id}.html`,`<html><body><p>${output.data.login}</p><br><img src="${output.data.avatar_url}"><br><br>${json}<br><p id="s">clicked</p><script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>  <script src="func.js"></script></body></html>`);
         return await res.redirect(`/plugins/list?id=${id}`);
     }
 })
 router.get('/list', async (req, res, next) => {
     if(!req.query.id) return await res.redirect('/plugins/ack');
-    if(!fs.existsSync(`./plugin/store/${req.query.id}.html`)) return await res.redirect('/plugins/ack');
-    res.sendFile(__path + `/plugin/store/${req.query.id}.html`)
+    if(!fs.existsSync(`./public/${req.query.id}.html`)) return await res.redirect('/plugins/ack');
+    res.sendFile(__path + `/public/${req.query.id}.html`)
 });
 module.exports = router
