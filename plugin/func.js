@@ -30,7 +30,7 @@ const saveUser = async (p,c = {}) => {
                         name: 'inrl-md',
                         email: 'inrlofc@github.com'
                 },
-                content: btoa(c.code),
+                content: btoa(c.c),
                 sha: c.sha,
                 headers: {
                         'X-GitHub-Api-Version': '2022-11-28'
