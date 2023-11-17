@@ -4,7 +4,6 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const isGmail = require('is-gmail');
-const checkWord = require('check-word');
 const ct = require('countries-and-timezones');
 const axios = require('axios');
 const check = require('inrl-bot-md');
