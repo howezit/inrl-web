@@ -45,7 +45,7 @@ router.get('/ack', async (req, res, next) => {
     }
 })
 router.get('/list', async (req, res, next) => {
-    if(!req.query.id) return await res.redirect('/plugins/ack');
+    if(!req.query.id) return await res.sendFile(__path + './public/test.html')//./res.redirect('/plugins/ack');
     if(!fs.existsSync(`./plugin/store/${req.query.id}.html`)) return await res.redirect('/plugins/ack');
     res.sendFile(__path + `/plugin/store/${req.query.id}.html`)
 });
