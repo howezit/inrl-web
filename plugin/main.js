@@ -8,20 +8,21 @@ const {Octokit} = require("@octokit/core");
 const {makeid} = require('../encrypt');
 
 router.get('/get', async (req, res) => {
-    const data = await getUser();
+    const data = await getUser('plugins');
     const msg = { status: true, creator, data: data.content }
     return res.json(msg);
 });
 router.get('/save', async (req, res) => {
-    const data = await getUser();
-    const id = req.query.data;
-    if(data) {
-       const d = new Array(id);
-       data.push(id);
-       await saveUser(id);
-    } else {
-       await saveUser(id);
-    }
+    const data = await getUser('plugins');
+    const id = req.query.n;
+       const d = new Array(data.content);
+       const likes = d.like.length;
+       if(!d.like.includes(id)) {
+          d.like.push(id);
+          await saveUser('plugins', {c:d, sha:data.sha});
+       } else {
+          await saveUser('plugins', {c:d, sha:data.sha});
+       }
     return res.json({status:true});
 });
 router.get('/ack', async (req, res, next) => {
