@@ -42,14 +42,14 @@ app.use(
 );
 app.use(csrf());
 app.use(passport.initialize());
-//app.use(express.static("public"));
+app.use(express.static("public"));
 app.use(passport.session());
 app.set("trust proxy", true);
 app.set("json spaces", 2);
 app.use(cors());
 app.use(secure);
 app.use(flash());
-app.set('view engine', 'html');
+//app.set('view engine', 'html');
 //app.set("views", "page");
 app.use('/', main)
 app.use('/api', api)
