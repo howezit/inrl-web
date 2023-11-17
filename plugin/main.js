@@ -15,13 +15,14 @@ router.get('/get', async (req, res) => {
 });
 router.get('/save', async (req, res) => {
     const data = await getUser('plugins');
-    const id = req.query.n;
+    const id = req.query.id;
+    const p = req.query.p;
     const d = data.content.split(',,').map(a=>JSON.parse(a));
-       if(!d.like.includes(id)) {
-           d.like.push(id);
+       if(!d.filter(a=>a.cmd==p)[0].like.includes(id)) {
+           d.filter(a=>a.cmd==p)[0].like.push(id);
            await saveUser('plugins', {c:d.join(',,'), sha:data.sha});
        } else {
-           d.like = d.like.filter(a=> a!=id)
+           d.filter(a=>a.cmd==p)[0].like = d.filter(a=>a.cmd==p)[0].like.filter(a=> a!=id)
            await saveUser('plugins', {c:d.join(',,'), sha:data.sha});
        }
     return res.json({status:true});
