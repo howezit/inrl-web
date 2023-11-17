@@ -15,7 +15,7 @@ const getUser = async (p) => {
                         'X-GitHub-Api-Version': '2022-11-28'
                 }
         })
-data.content = new Array(atob(data.content).replace(/\n/g,''));
+  data.content = atob(data.content).replace(/\n/g,'')
   return data
 }
 
