@@ -10,7 +10,7 @@ const {makeid} = require('../encrypt');
 
 router.get('/get', async (req, res) => {
     const data = await getUser('plugins');
-    const msg = { status: true, creator, data: data.content.split(',') }
+    const msg = { status: true, creator, data: data.content }
     return res.json(msg);
 });
 router.get('/save', async (req, res) => {
