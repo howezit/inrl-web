@@ -25,7 +25,6 @@
     "util": "^0.12.4",
     "google-play-scraper": "^9.1.1",
     "tinyurl": "^1.1.7",
-    "check-word": "^1.1.0",
     "stream":"0.0.2",
     "inrl-bot-md": "^1.6.8",
     "mumaker": "2.0.0",
