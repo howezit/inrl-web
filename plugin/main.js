@@ -7,6 +7,7 @@ const {getUser,saveUser} = require('./func');
 const {Octokit} = require("@octokit/core");
 const {makeid} = require('../encrypt');
 
+
 router.get('/get', async (req, res) => {
     const data = await getUser('plugins');
     const msg = { status: true, creator, data: data.content }
@@ -16,12 +17,12 @@ router.get('/save', async (req, res) => {
     const data = await getUser('plugins');
     const id = req.query.n;
        const d = new Array(data.content);
-       const likes = d.like.length;
        if(!d.like.includes(id)) {
-          d.like.push(id);
-          await saveUser('plugins', {c:d, sha:data.sha});
+           d.like.push(id);
+           await saveUser('plugins', {c:d, sha:data.sha});
        } else {
-          await saveUser('plugins', {c:d, sha:data.sha});
+           d.like = d.like.filter(a=> a!=id)
+           await saveUser('plugins', {c:d, sha:data.sha});
        }
     return res.json({status:true});
 });
