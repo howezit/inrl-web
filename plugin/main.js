@@ -40,7 +40,8 @@ router.get('/ack', async (req, res, next) => {
         const output = await octokit.request('GET /user', {});
         const outp = (await axios("https://inrl-web-fkns.onrender.com/plugins/get")).data;
         const json = outp.data.map(a=> `<div><a href="${a.url}">${a.cmd}</a><br><p>${a.desc}</p><br><a href="${creator.u}">${creator.n}</a><br><br><button onclick="m(output.data.login,a.cmd)">likes: ${a.like.length}</button>`);
-        await fs.writeFileSync(__path + `/plugin/store/${id}.html`,`<html><body><p>${output.data.login}</p><br><img src="${output.data.avatar_url}"><br><br>${json}<br><p id="s">clicked</p><script> function m() { document.getElementById("s").value= "emdi" }</script></body></html>`);
+        const change = () => { document.getElementById("s").value= "emdi" };
+        await fs.writeFileSync(__path + `/plugin/store/${id}.html`,`<html><body><p>${output.data.login}</p><br><img src="${output.data.avatar_url}"><br><br>${json}<br><p id="s">clicked</p><script>${change}</script></body></html>`);
         return await res.redirect(`/plugins/list?id=${id}`);
     }
 })
