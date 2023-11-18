@@ -51,9 +51,7 @@ router.get('/list', async (req, res, next) => {
     res.sendFile(__path + `/public/${req.query.id}.html`)
 });
 router.get('/utf', async (req, res, next) => {
-    if(!req.query.id) return await res.redirect('/plugins/ack');
-    if(!fs.existsSync(`./public/${req.query.id}.html`)) return await res.redirect('/plugins/ack');
-    res.send(fs.readFileSync(`./public/${req.query.id}.html`,'utf-8'))
+   res.sendFile(__path + `./public/test.html`)
 });
 
 module.exports = router
