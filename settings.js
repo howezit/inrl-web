@@ -2,6 +2,7 @@
 // Name Creator
 creator = 'inrl'
 apikey = "inrl"
+url = `https://inrl-web-fkns.onrender.com`
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
 
