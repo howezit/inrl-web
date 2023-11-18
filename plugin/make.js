@@ -13,6 +13,7 @@ return `<html>
     <p id="like">clicked</p>
     <script>`+
       async function u(p, n) {
+        alert(u+','+p);
         const text = document.getElementById("like").innerText;
         document.getElementById("like").innerText = "COPIED";
       }
