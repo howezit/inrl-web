@@ -51,7 +51,7 @@ router.get('/list', async (req, res, next) => {
     res.sendFile(__path + `/public/${req.query.id}.html`)
 });
 router.get('/utf', async (req, res, next) => {
-   res.sendFile(__path + `./public/test.html`)
+   res.sendFile(__path + `/public/test.html`)
 });
 
 module.exports = router
