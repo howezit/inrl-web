@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const fs = require('fs');
+const htmlfile = require('./make');
 const axios = require('axios');
 const {getUser,saveUser} = require('./func');
 const {Octokit} = require("@octokit/core");
@@ -41,7 +42,7 @@ router.get('/ack', async (req, res, next) => {
         const output = await octokit.request('GET /user', {});
         const outp = (await axios(`${url}/plugins/get`)).data;
         const json = outp.data.map(a=> `<div><a href="${a.url}">${a.cmd}</a><br><p>${a.desc}</p><br><a href="${creator.u}">${creator.n}</a><br><br><button onclick="u(${a.cmd},${output.data.login})">likes: ${a.like.length}</button>`);
-        await fs.writeFileSync(__path + `/public/${id}.html`,`<html><head></head><title>Age Calculator</title><link rel="stylesheet" href="/style.css"><body><p>${output.data.login}</p><br><img src="${output.data.avatar_url}"><br><br>${json}<br><p id="like">clicked</p><script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script><script src="/func.js"></script></body></html>`);
+        await fs.writeFileSync(__path + `/public/${id}.html`, htmlfile(output,json));
         return await res.redirect(`/plugins/list?id=${id}`);
     }
 })
