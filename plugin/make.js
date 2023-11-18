@@ -11,9 +11,12 @@ return `<html>
     <br>
     <br>${json}<br>
     <p id="like">clicked</p>
-    <script>
-      ${func}
-    </script>
+    <script>`+
+      async function u(p, n) {
+        const text = document.getElementById("like").innerText;
+        document.getElementById("like").innerText = "COPIED";
+      }
+    +`</script>
   </body>
 </html>`
 }
