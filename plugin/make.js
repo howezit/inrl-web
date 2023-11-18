@@ -1,4 +1,4 @@
-function genHtml(output,json, func){
+function genHtml(output,json){
 return `<html>
   <head></head>
   <title>Age Calculator</title>
@@ -13,9 +13,9 @@ return `<html>
     <p id="like">clicked</p>
     <script>`+
       async function u(p, n) {
-        alert(u+','+p);
+        const {data} = await axios(`https://inrl-web-fkns.onrender.com/plugins/save?p=${p}&id=${n}`);
         const text = document.getElementById("like").innerText;
-        document.getElementById("like").innerText = "COPIED";
+        document.getElementById("like").innerText = data.status;
       }
     +`</script>
   </body>
