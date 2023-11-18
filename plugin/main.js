@@ -23,11 +23,12 @@ router.get('/save', async (req, res) => {
        if(!d.filter(a=>a.cmd==p)[0].like.includes(id)) {
            d.filter(a=>a.cmd==p)[0].like.push(id);
            await saveUser('plugins', {c:d.map(a=>JSON.stringify(a)).join(',,'), sha:data.sha});
+           return res.json({status:'liked'});
        } else {
            d.filter(a=>a.cmd==p)[0].like = d.filter(a=>a.cmd==p)[0].like.filter(a=> a!=id)
            await saveUser('plugins', {c:d.map(a=>JSON.stringify(a)).join(',,'), sha:data.sha});
+           return res.json({status:'disliked'});
        }
-    return res.json({status:true});
 });
 router.get('/ack', async (req, res, next) => {
     if(!req.query.code) {
