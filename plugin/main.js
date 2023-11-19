@@ -42,11 +42,11 @@ router.get('/ack', async (req, res, next) => {
         const octokit = new Octokit({auth: data[0]});
         const output = await octokit.request('GET /user', {});
         const outp = (await axios(`${url}/plugins/get`)).data;
-        const json = outp.data.map(a => `<div class="text-box">
-  <i class="bx bx-heart like-icon" id="${a.cmd}" onclick="u('${a.cmd}','${output.data.login}')"></i>
+        const json = outp.data.map(a => `<div class="text-box" id="${a.cmd}">
+  <i class="bx bx-heart like-icon" onclick="ulike('${a.cmd}','${output.data.login}')"></i>
   <div class="like-count">${a.like.length}</div>
   <div class="text-maker">${a.cmd}</div>
-  <div class="by-cyran" onclick="window.location.href='${a.creator.u}';">${a.creator.n}</div>
+  <div class="by-cyran">${a.creator.n}</div>
   <div id="description">${a.desc}</div>
   <button class="copy-button" onclick="copyText('${a.url}')">Copy</button>
 </div>`);
