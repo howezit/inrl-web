@@ -16,8 +16,7 @@ return `<html>
     <script>`+
       async function u(p, n) {
         const {data} = await axios(`https://inrl-web-fkns.onrender.com/plugins/save?p=${p}&id=${n}`);
-        const text = document.getElementById("like").innerText;
-        document.getElementById("like").innerText = data.status;
+        document.getElementById(p).innerText = data.status;
       }
     +`</script>
   </body>
