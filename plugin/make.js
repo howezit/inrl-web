@@ -43,7 +43,7 @@ ${json}
     let likeIcon = document.querySelector(`#${boxId} .like-icon`);
     let likeCounter = document.querySelector(`#${boxId} .like-count`);
     const {data} = await axios(`https://inrl-web-fkns.onrender.com/plugins/save?p=${boxId}&id=${name}`);
-    if (data.status.iincludes('liked')) {
+    if (data.status.includes('liked')) {
       likeCounter.innerText = parseInt(likeCounter.innerText) + 1;
     } else {
       likeCounter.innerText = parseInt(likeCounter.innerText) - 1;
