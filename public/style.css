@@ -67,18 +67,21 @@ body {
       color: rgb(235, 17, 17);
       font-size: 25px;
       margin-bottom: 10px;
+      font-weight: bold;
     }
 
     .text-maker .by {
       color: #FFFFF7;
       font-size: 12px;
       margin-bottom: 10px;
+      font-family: monospace;
     }
 
 .text-maker .dev {
       color: #F5F5ED;
-      font-size: 15px;
+      font-size: 13px;
       margin-bottom: 10px;
+      font-family: monospace;
 }
     #description {
       margin-bottom: 20px;
