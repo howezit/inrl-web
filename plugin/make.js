@@ -7,17 +7,16 @@ return `<html>
     <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <link rel="stylesheet" href="/style.css">
 <script>`+
-  function copyText(link) {
-    alert(link);
+  function copyText(link, key) {
     let textArea = document.createElement("textarea");
     textArea.value = link;
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand('copy');
     document.body.removeChild(textArea);
+    document.getElementById(key).innerText = 'Copied!';
   }+
   async function ulike(boxId, name) {
-    alert(boxId+','+name);
     let likeIcon = document.querySelector(`#${boxId} .like-icon`);
     let likeCounter = document.querySelector(`#${boxId} .like-count`);
     const {data} = await axios(`https://inrl-web-fkns.onrender.com/plugins/save?p=${boxId}&id=${name}`).catch(e=>console.log(e));
