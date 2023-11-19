@@ -20,7 +20,7 @@ return `<html>
     let likeIcon = document.querySelector(`#${boxId} .like-icon`);
     let likeCounter = document.querySelector(`#${boxId} .like-count`);
     const {data} = await axios(`https://inrl-web-fkns.onrender.com/plugins/save?p=${boxId}&id=${name}`).catch(e=>console.log(e));
-    likeIcon.disabled = true;
+    likeIcon.onclick = return false;
     if (data.status.includes('disliked')) {
       likeCounter.innerText = parseInt(likeCounter.innerText) - 1;
     } else {
