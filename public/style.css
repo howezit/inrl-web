@@ -65,16 +65,21 @@ body {
 
     .text-maker {
       color: rgb(235, 17, 17);
-      font-size: 18px;
+      font-size: 25px;
       margin-bottom: 10px;
     }
 
-    .by-cyran {
-      font-style: italic;
-      color: rgb(44, 129, 5);
-      margin-bottom: 20px;
+    .text-maker .by {
+      color: #FFFFF7;
+      font-size: 12px;
+      margin-bottom: 10px;
     }
 
+.text-maker .dev {
+      color: #F5F5ED;
+      font-size: 15px;
+      margin-bottom: 10px;
+}
     #description {
       margin-bottom: 20px;
       color: rgb(255, 255, 255);
