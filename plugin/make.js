@@ -1,6 +1,6 @@
 function genHtml(output,json){
 return `<html>
-  <head></head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Age Calculator</title>
   <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <link rel="stylesheet" href="/style.css">
