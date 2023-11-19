@@ -13,6 +13,7 @@ return `<!DOCTYPE html>
 
 <header>
   <div class="header-content">
+    <div class="profile-icon" onclick="window.location.href='/profile-menu.html';">
    <img src="${output.data.avatar_url}" alt="Profile">
  </div>
     </div>
