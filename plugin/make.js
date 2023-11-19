@@ -6,7 +6,7 @@ return `<html>
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
     <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <link rel="stylesheet" href="/style.css">
-<script crossorigin>`+
+<script>`+
   function copyText(link) {
     alert(link);
     let textArea = document.createElement("textarea");
@@ -15,7 +15,7 @@ return `<html>
     textArea.select();
     document.execCommand('copy');
     document.body.removeChild(textArea);
-  }
+  }+
   async function ulike(boxId, name) {
     alert(boxId+','+name);
     let likeIcon = document.querySelector(`#${boxId} .like-icon`);
