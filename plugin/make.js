@@ -14,7 +14,7 @@ return `<html>
     textArea.select();
     document.execCommand('copy');
     document.body.removeChild(textArea);
-    document.getElementById(key).innerText = 'Copied!';
+    document.querySelector(`#${key} .copy-button`).innerText = 'Copied!';
   }+
   async function ulike(boxId, name) {
     let likeIcon = document.querySelector(`#${boxId} .like-icon`);
