@@ -1,7 +1,6 @@
 function genHtml(output,json){
 return `<html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EXTERNAL pluginS</title>
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
     <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
