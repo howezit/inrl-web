@@ -72,16 +72,18 @@ body {
 
     .text-maker .by {
       color: #FFFFF7;
-      font-size: 12px;
+      font-size: 10px;
       margin-bottom: 10px;
       font-family: monospace;
+      font-style: italic;
     }
 
 .text-maker .dev {
       color: #F5F5ED;
-      font-size: 13px;
+      font-size: 11px;
       margin-bottom: 10px;
       font-family: monospace;
+      font-style: italic;
 }
     #description {
       margin-bottom: 20px;
@@ -99,17 +101,4 @@ body {
 
     .copy-button:hover {
       background-color: #45a049;
-    }
-
-    .copy-button-copied {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: not-allowed;
-    }
-
-    .copy-button-copied:hover {
-      background-color: #4CAF50;
     }
