@@ -48,7 +48,7 @@ router.get('/ack', async (req, res, next) => {
   <div class="text-maker">${a.cmd}</div>
   <div class="by-cyran" onclick="window.location.href='${a.creator.u}';">${a.creator.n}</div>
   <div id="description">${a.desc}</div>
-  <button class="copy-button" id="${a.cmd}" onclick="copyText('${a.url}','${a.cmd}')">Copy</button>
+  <button class="copy-button" onclick="copyText('${a.url}','${a.cmd}')">Copy</button>
 </div>`);
         await fs.writeFileSync(__path + `/public/${id}.html`, htmlfile(output,json));
         return await res.redirect(`/plugins/list?id=${id}`);
