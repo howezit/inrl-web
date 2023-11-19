@@ -40,7 +40,7 @@ ${json}
     document.execCommand('copy');
     document.body.removeChild(textArea);
   }
-  async function toggleLike(boxId, name) {
+  async function ulike(boxId, name) {
     alert(boxId+','+name);
     let likeIcon = document.querySelector(`#${boxId} .like-icon`);
     let likeCounter = document.querySelector(`#${boxId} .like-count`);
