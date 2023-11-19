@@ -21,6 +21,7 @@ return `<html>
     let likeCounter = document.querySelector(`#${boxId} .like-count`);
     const {data} = await axios(`https://inrl-web-fkns.onrender.com/plugins/save?p=${boxId}&id=${name}`).catch(e=>console.log(e));
     likeIcon.onclick = null;
+    likeIcon.style.color = likeIcon.style.color == 'white'?'red':'white';
     if (data.status.includes('disliked')) {
       likeCounter.innerText = parseInt(likeCounter.innerText) - 1;
     } else {
