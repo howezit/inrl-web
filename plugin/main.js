@@ -46,7 +46,7 @@ router.get('/ack', async (req, res, next) => {
   <i class="bx bx-heart like-icon" onclick="ulike('${a.cmd}','${output.data.login}')"></i>
   <div class="like-count">${a.like.length}</div>
   <div class="text-maker">${a.cmd}</div>
-  <div class="by-cyran" onclick="window.location.href='${a.creator.u}';">${a.creator.n}</div>
+  <div class="by-cyran">${a.creator.n}</div>
   <div id="description">${a.desc}</div>
   <button class="copy-button" onclick="copyText('${a.url}')">Copy</button>
 </div>`);
