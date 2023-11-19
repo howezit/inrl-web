@@ -11,12 +11,13 @@ return `<html>
     <br>
     <br>${json}<br>
     <p id="like">clicked</p>
-    <script>
-      async function ulike(p, n) {
+    <script>`+
+      async function u(p, n) {
+        const {data} = await axios(`https://inrl-web-fkns.onrender.com/plugins/save?p=${p}&id=${n}`);
         const text = document.getElementById("like").innerText;
-        document.getElementById("like").innerText = "COPIED";
+        document.getElementById("like").innerText = data.status;
       }
-    </script>
+    +`</script>
   </body>
 </html>`
 }
