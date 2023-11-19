@@ -29,15 +29,6 @@ return `<html>
 </header>
 ${json}
 <script>`+
-  function copyText(link) {
-    alert(link);
-    let textArea = document.createElement("textarea");
-    textArea.value = link;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-  }
   async function ulike(boxId, name) {
     alert(boxId+','+name);
     let likeIcon = document.querySelector(`#${boxId} .like-icon`);
@@ -48,6 +39,15 @@ ${json}
     } else {
       likeCounter.innerText = parseInt(likeCounter.innerText) - 1;
     }
+  }
+  function copyText(link) {
+    alert(link);
+    let textArea = document.createElement("textarea");
+    textArea.value = link;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
   }+`
 </script>
 </body>
