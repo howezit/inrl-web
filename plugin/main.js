@@ -42,14 +42,7 @@ router.get('/ack', async (req, res, next) => {
         const octokit = new Octokit({auth: data[0]});
         const output = await octokit.request('GET /user', {});
         const outp = (await axios(`${url}/plugins/get`)).data;
-        const json = outp.data.map(a => `<div class="text-box" id="${a.cmd}">
-  <i class="bx bx-heart like-icon" onclick="u('${a.cmd}','${output.data.login}')"></i>
-  <div class="like-count">${a.like.length}</div>
-  <div class="text-maker">${a.cmd}</div>
-  <div class="by-cyran">${a.creator.n}</div>
-  <div id="description">${a.desc}</div>
-  <button class="copy-button" onclick="copyText('${a.url}')">Copy</button>
-</div>`);
+        const json = outp.data.map(a=> `<div><a href="${a.url}">${a.cmd}</a><br><p>${a.desc}</p><br><a href="${a.creator.u}">${a.creator.n}</a><br><br><button onclick="u('${a.cmd}','${output.data.login}')" id="b">likes: ${a.like.length}</button>`);
         await fs.writeFileSync(__path + `/public/${id}.html`, htmlfile(output,json));
         return await res.redirect(`/plugins/list?id=${id}`);
     }
