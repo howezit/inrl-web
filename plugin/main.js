@@ -45,7 +45,7 @@ router.get('/ack', async (req, res, next) => {
         const json = outp.data.map(a => `<div class="text-box" id="${a.cmd}">
   <i class="fa fa-heart like-icon" style="color: ${a.like.includes(output.data.login)?'red':'white'}" onclick="ulike('${a.cmd}','${output.data.login}')"></i>
   <div class="like-count">${a.like.length}</div>
-  <div class="text-maker" onclick="window.location.href='${a.url}';">${a.cmd}<span class="by"> by </span><span class="dev" onclick="window.location.href='${a.creator.u}';">${a.creator.n}</span></div>
+  <div class="text-maker"><span onclick="window.location.href='${a.url}';">${a.cmd}</span><span class="by"> by </span><span class="dev" onclick="window.location.href='${a.creator.u}';">${a.creator.n}</span></div>
   <div id="description">${a.desc}</div>
   <button class="copy-button" onclick="copyText('${a.url}','${a.cmd}')">Copy</button>
 </div>`);
