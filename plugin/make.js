@@ -33,20 +33,14 @@ return `<html>
 <body>
 <header>
   <div class="header-content">
-    <div class="profile-icon" onclick="window.location.href='/profile-menu.html';">
+    <div class="profile-icon" onclick="window.location.href='/plugins';">
 <img src="${output.data.avatar_url}" alt="Profile" style="width: 30px; height: 30px;">
-
  </div>
     </div>
     <div class="external-plugins-text">External Plugins</div>
-    <div class="filter-container">
-      <label for="sortFilter">Sort by:</label>
-      <select id="sortFilter" name="sortFilter">
-        <option value="all">All</option>
-      </select>
-    </div>
   </div>
 </header>
+<br><br>
 ${json}
 </body>
 </html>`
