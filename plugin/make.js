@@ -31,17 +31,14 @@ return `<html>
 </script>
 </head>
 <body>
-
 <header>
   <div class="header-content">
     <div class="profile-icon" onclick="window.location.href='/profile-menu.html';">
-   <img src="${output.data.avatar_url}" alt="Profile">
+<img src="${output.data.avatar_url}" alt="Profile" style="width: 30px; height: 30px;">
+
  </div>
     </div>
-    <div class="empty-center"></div>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search" oninput="performSearch(this.value)">
-    </div>
+    <div class="external-plugins-text">External Plugins</div>
     <div class="filter-container">
       <label for="sortFilter">Sort by:</label>
       <select id="sortFilter" name="sortFilter">
