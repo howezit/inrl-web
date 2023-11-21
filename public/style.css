@@ -38,20 +38,6 @@ body {
   border-radius: 50%;
 }
 
-.filter-container {
-  display: flex;
-  align-items: center;
-}
-
-.filter-container label {
-  margin-right: 10px;
-  color: white;
-}
-
-.filter-container select {
-  padding: 5px;
-}
-
     .text-box {
       top: 2rem;
       width: 300px;
