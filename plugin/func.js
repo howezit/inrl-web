@@ -1,8 +1,9 @@
+require('../settings');
 const {
         Octokit
 } = require("@octokit/core");
 const octokit = new Octokit({
-        auth: "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",
+        auth: git_id,
 })
 
 const getUser = async (p) => {
