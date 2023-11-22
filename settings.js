@@ -2,7 +2,8 @@
 // Name Creator
 creator = 'inrl'
 apikey = "inrl"
-url = `https://inrl-web-fkns.onrender.com`
+url = `https://inrl-web-fkns.onrender.com`;
+git_id = `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`;
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
 
