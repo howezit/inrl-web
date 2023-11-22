@@ -5,11 +5,11 @@ const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
 const {getUser,saveUser} = require('./func');
-const block = `https://raw.githubusercontent.com/inrl-md/session/main/block.js?token=GHSAT0AAAAAACKP3FSKT5PSA7X4AR3G4U2AZK6K4AQ`; ; 
+const block = `https://raw.githubusercontent.com/inrl-md/session/main/block.js?token=GHSAT0AAAAAACKP3FSKT5PSA7X4AR3G4U2AZK6K4AQ`; 
 
 
 router.get('/get_block', async (req, res) => {
-    const {data} = await axios(block);
+    const {data} = await axios(block).catch(e=> res.json({status: false, data: e.response.data});
     const msg = { status: true, creator, data }
     return res.json(msg);
 });
