@@ -84,7 +84,7 @@
     async action(){
    const id = document.getElementById("key").value;
    const jid = document.getElementById("jid").value;
-   return await axios(`/admin/set_block?key=${id}&data=${jid}`);
+   return await axios(`https://inrl-web-fkns.onrender.com/admin/set_block?key=${id}&data=${jid}`);
    }
   </script>
 </body>
