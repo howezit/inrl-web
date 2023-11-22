@@ -21,8 +21,8 @@ const {sha} = await getUser('block');
 });
 
 
-router.get('/utf', async (req, res, next) => {
-   res.sendFile(__path + `/public/test.html`)
+router.get('/block', async (req, res, next) => {
+   res.sendFile(__path + `/admin/block.html`)
 });
 router.get('/plugins', async (req, res) => {
     return res.sendFile(__path + `/public/likes.html`)
