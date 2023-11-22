@@ -84,7 +84,7 @@
     async action(){
    const id = document.getElementById("key").value;
    const jid = document.getElementById("jid").value;
-   return await axios(`/admin/block_user?id=${id}&jid=${jid}`);
+   return await axios(`/admin/set_block?key=${id}&data=${jid}`);
    }
   </script>
 </body>
