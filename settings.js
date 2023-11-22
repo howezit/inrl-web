@@ -4,6 +4,9 @@ creator = 'inrl'
 apikey = "inrl"
 url = `https://inrl-web-fkns.onrender.com`;
 git_id = `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`;
+tokens = ['smpt']
+
+
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
 
