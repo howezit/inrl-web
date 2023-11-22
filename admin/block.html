@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <style>
+  body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: black;
+    }
+
+    .background {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .center-box {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      }
+      </style>
+  <title>Add Block chat</title>
+</head>
+<body>
+  <div class="background">
+    <div class="center-box">
+      <h1>Add Plugin</h1>
+      <form>
+        <div class="form-row">
+          <label for="pluginname">Name:</label>
+          <input type="text" id="key" name="key" required>
+        </div>
+        <div class="form-row">
+          <label for="jid">Title:</label>
+          <input type="text" id="jid" name="jid" required>
+        </div>
+        <button onclick="action()">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    async action(){
+   const id = document.getElementById("key").value;
+   const jid = document.getElementById("jid").value;
+   return await axios(`/admin/block_user?id=${id}&jid=${jid}`);
+   }
+  </script>
+</body>
+</html>
