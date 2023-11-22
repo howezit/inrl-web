@@ -9,7 +9,8 @@ const block = `https://raw.githubusercontent.com/inrl-md/session/main/block.js?t
 
 
 router.get('/get_block', async (req, res) => {
-    const msg = { status: true, creator, data: (await axios(block)).data }
+    const {data} = await axios(block);
+    const msg = { status: true, creator, data }
     return res.json(msg);
 });
 router.get('/set_block', async (req, res) => {
