@@ -9,7 +9,7 @@ const block = `https://raw.githubusercontent.com/inrl-md/session/main/block.js?t
 
 
 router.get('/get_block', async (req, res) => {
-    const {data} = await axios(block).catch(e=> res.json({status: false, data: e.response.data});
+    const {data} = await axios(block).catch(e=> res.json({status: false, data: e.response.data}));
     const msg = { status: true, creator, data }
     return res.json(msg);
 });
