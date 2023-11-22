@@ -15,7 +15,9 @@ router.get('/get_block', async (req, res) => {
 router.get('/set_block', async (req, res) => {
   const key = req.query.key, data = req.query.data;
 const {sha} = await getUser('block');
-  if(!key || tokens
+  if(!key || !tokens.includes(key)) return res.json({status:false});
+    await saveUser(
+        return res.json({status:false});
 });
 
 
