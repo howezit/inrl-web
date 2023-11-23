@@ -15,7 +15,7 @@ router.get('/get_block', async (req, res) => {
     return res.json(msg);
     } catch (e) {
         console.log(e);
-       return res.json({status: false, data: e.response.data}));
+       return res.json({status: false, data: e.response.data});
     }
 });
 router.get('/set_block', async (req, res) => {
