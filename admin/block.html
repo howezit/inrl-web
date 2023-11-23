@@ -75,7 +75,7 @@
           <label for="jid">jid thet want to be block:</label>
           <input type="text" id="jid" name="jid" required>
         </div>
-        <button onclick="action()">Submit</button>
+        <button onclick="action()" id="btn">Submit</button>
       </form>
     </div>
   </div>
@@ -84,7 +84,8 @@
     async action(){
    const id = document.getElementById("key").value;
    const jid = document.getElementById("jid").value;
-   return await axios(`https://inrl-web-fkns.onrender.com/admin/set_block?key=${id}&data=${jid}`);
+   const {data} = await axios(`https://inrl-web-fkns.onrender.com/admin/set_block?key=${id}&data=${jid}`);
+   document.getElementById("btn").innerText = data.status;
    }
   </script>
 </body>
