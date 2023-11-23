@@ -5,13 +5,12 @@ const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
 const {getUser,saveUser} = require('./func');
-const block = `https://raw.githubusercontent.com/inrl-md/session/main/block.js?token=GHSAT0AAAAAACKP3FSKT5PSA7X4AR3G4U2AZK6K4AQ`; 
 
 
 router.get('/get_block', async (req, res) => {
     try {
-    const {data} = await axios(block);
-    const msg = { status: true, creator, data }
+    const {content} = await getUser('block');
+    const msg = { status: true, creator, data: content }
     return res.json(msg);
     } catch (e) {
         console.log(e);
