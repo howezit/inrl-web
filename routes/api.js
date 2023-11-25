@@ -21,6 +21,7 @@ const {
     xvideosSearch,
     xvideosDown,
     ytv,
+    news24,
     ai_image,
     gis,
     BufferToFile,
@@ -135,6 +136,15 @@ router.get('/checkword', async (req, res) => {
         result: check(id)
     })
 })
+
+router.get('/new24', async (req, res) =>{
+    return await res.json({
+        status: true,
+        creator: `${creator}`,
+        result: await news24())
+    })
+})
+
 router.get('/ig', async (req, res) => {
     let id = req.query.name;
     if (!id) return res.json({
