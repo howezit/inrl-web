@@ -137,7 +137,7 @@ router.get('/checkword', async (req, res) => {
     })
 })
 
-router.get('/new24', async (req, res) =>{
+router.get('/news24', async (req, res) =>{
     return await res.json({
         status: true,
         creator: `${creator}`,
