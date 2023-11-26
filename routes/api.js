@@ -141,7 +141,7 @@ router.get('/new24', async (req, res) =>{
     return await res.json({
         status: true,
         creator: `${creator}`,
-        result: await news24())
+        result: await news24()
     })
 })
 
