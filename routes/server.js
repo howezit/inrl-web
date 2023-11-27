@@ -64,7 +64,7 @@ errorCorrectionLevel: "H",
                         color: {
                             dark: '#000000', // black dots
                             light: '#FFFFFF' // white background
-                        }, "Base64", "qrlogo.png",
+                        }}, "Base64", "qrlogo.png",
     async function(b64) {
         await res.end(Buffer.from(b64, 'base64'));
     })
