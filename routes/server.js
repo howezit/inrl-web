@@ -68,6 +68,7 @@ errorCorrectionLevel: "H",
     async function(b64) {
         await res.end(Buffer.from(b64, 'base64'));
     })
+                }
          if (connection == "open") {
                 await delay(15000);
                     let data = await readFile('./temp/'+id+'/creds.json','utf-8')
