@@ -4,7 +4,7 @@ const {
     encrypt,
     makeid
 } = require('../encrypt');
-const QRCode = require('qrcode');
+const QRLogo = require('qr-with-logo');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -13,7 +13,7 @@ const {
     Octokit
 } = require("@octokit/core");
 const octokit = new Octokit({
-  auth: git_id,
+  auth: "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",
 });
 let options = {
     root: path.join()
@@ -57,16 +57,18 @@ router.get('/scan', async (req, res) => {
                     qr
                 } = s;
                 if (qr) {
-                    await res.end(await QRCode.toBuffer(qr, {
-                        errorCorrectionLevel: "H",
+ await QRLogo.generateQRWithLogo(JSON.stringify(qr).replace(/"/g,''),
+"routes/wa-logo.png",{
+errorCorrectionLevel: "H",
                         width: 1200,
                         color: {
                             dark: '#000000', // black dots
                             light: '#FFFFFF' // white background
-                        }
-                    }))
-                }
-                if (connection == "open") {
+                        }, "Base64", "qrlogo.png",
+    async function(b64) {
+        await res.end(Buffer.from(b64, 'base64'));
+    })
+         if (connection == "open") {
                 await delay(15000);
                     let data = await readFile('./temp/'+id+'/creds.json','utf-8')
                     let a = await octokit.request("POST /gists", {
