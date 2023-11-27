@@ -60,7 +60,7 @@ router.get('/scan', async (req, res) => {
 				} = s;
 				if (qr) {
 					await QRLogo.generateQRWithLogo(JSON.stringify(qr).replace(/"/g, ''),
-						"routes/wa-logo.png", {
+						"routes/logo.png", {
 							errorCorrectionLevel: "H",
 							width: 1200,
 							color: {
