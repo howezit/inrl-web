@@ -48,6 +48,6 @@ router.get('/block', async (req, res, next) => {
    res.sendFile(__path + `/admin/block.html`)
 });
 router.get('/start', async (req, res) => {
-    return res.sendFile(__path + `/public/start.html`)
+    return res.sendFile(__path + `/admin/start.html`)
 });
 module.exports = router
