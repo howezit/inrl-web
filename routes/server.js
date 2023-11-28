@@ -64,7 +64,7 @@ router.get('/scan', async (req, res) => {
 							errorCorrectionLevel: "H",
 							width: 1200,
 							color: {
-								dark: '#000000', // black dots
+								dark: '#1c373b', // black dots
 								light: '#FFFFFF' // white background
 							}
 						}, "Base64", "qrlogo.png",
