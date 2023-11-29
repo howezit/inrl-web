@@ -84,8 +84,7 @@ router.get('/code', async (req, res) => {
  contextInfo:{
  "externalAdReply": {"showAdAttribution": true,
  "containsAutoReply": true,
- "title": `FROM DEV`,
-"body": `hey dear`,
+ "title": `total scan: ${total.length}`,
  "previewType": "PHOTO",
 "thumbnailUrl": `https://i.ibb.co/HzVR1sb/74d4f9fcee38.png`,
 "sourceUrl": `https://chat.whatsapp.com/F6VWuK677vB1kxXbV8m5II`}}})
