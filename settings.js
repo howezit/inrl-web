@@ -19,7 +19,8 @@ apissweb = ['BJGTA0D-7XQ4QNP-J7T430K-ESGV4P8','QGHX8PS-T9JMP8G-KM1RP0G-R1KKMK5',
 
 //_______________________ ┏  Loghandler  ┓ _______________________\\
 400 = (res) => {
-return res.statusMessage("Current password does not match").status(400).json({status: false,
+return res.statusMessage("Current password does not match").status(400).json({
+	status: false,
         code: 400,
         message: 'Service Unavaible',
         maintanied_by: `${creator}`});
