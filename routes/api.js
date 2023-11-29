@@ -3,11 +3,9 @@ const QRCode = require('qrcode');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const isGmail = require('is-gmail');
 const ct = require('countries-and-timezones');
 const axios = require('axios');
 const check = require('inrl-bot-md');
-const qs = require("qs");
 const cheerio = require('cheerio');
 const fancy = require('../lib/fancy');
 const mem = require('../lib/memes');
@@ -35,7 +33,6 @@ const {
     generate,
     Insta
 } = require('../lib');
-const truecallerjs = require('truecallerjs');
 const {
     facebook,
     tiktok
@@ -43,11 +40,7 @@ const {
 const {
     phone
 } = require('phone');
-let TinyURL = require('tinyurl');
 let router = express.Router()
-let options = {
-    root: path.join()
-}
 const getBuffer = async (url, options) => {
     try {
         options ? options : {}
@@ -66,7 +59,6 @@ const getBuffer = async (url, options) => {
         return err
     }
 }
-const datauri = require('datauri');
 //insta
 router.get('/country_info', async (req, res) => {
     let id = req.query.code;
@@ -159,105 +151,6 @@ router.get('/ig', async (req, res) => {
     })
 })
 
-router.get('/truecaller', async (req, res, next) => {
-    let number = req.query.number;
-    let key = req.query.key;
-    try {
-        if (!key) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "request filed with status code 403"
-        })
-        if (!number) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need phone number to get their data"
-        })
-        if (!number.replace(/[^0-9]/g, '')) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need phone number to get their data"
-        })
-        if (number.replace(/[^0-9]/g, '').length < 10) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need phone number to get their data"
-        });
-        let perfix = phone("+" + number);
-        let searchData = {
-            number: number.toString(),
-            countryCode: perfix.countryIso2,
-            installationId: key,
-        }
-        let sn = await truecallerjs.search(searchData);
-        let rslt = sn.json();
-        if (!rslt.data) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "request filed with status code 503"
-        })
-        if (req.query.bulkresult) {
-            const {
-                name,
-                score,
-                access,
-                enhanced,
-                phones,
-                addresses
-            } = rslt.data[0];
-            const {
-                e164Format,
-                numberType,
-                nationalFormat,
-                dialingCode,
-                countryCode,
-                carrier,
-                type
-            } = phones[0];
-            const {
-                city,
-                timeZone
-            } = addresses[0];
-            return res.json({
-                status: true,
-                creator: `${creator}`,
-                name,
-                score,
-                access,
-                enhanced,
-                e164Format,
-                numberType,
-                nationalFormat,
-                dialingCode,
-                countryCode,
-                carrier,
-                type,
-                city,
-                timeZone
-            });
-        }
-        res.json({
-            status: true,
-            creator: `${creator}`,
-            name: `${rslt.data[0].name}`,
-            score: `${rslt.data[0].score}`,
-            "alternativeName": `${rslt.data[0].altName}`,
-            "access": `${rslt.data[0].access}`,
-            "type": `${rslt.data[0].phones[0].numberType}`,
-            "country": `${rslt.data[0].phones[0].countryCode}`,
-            "carrier": `${rslt.data[0].phones[0].carrier}`,
-            "city": `${rslt.data[0].addresses[0].city}`,
-            "timeZone": `${rslt.data[0].addresses[0].timeZone}`,
-            format: `${rslt.data[0].phones[0].nationalFormat}`
-        });
-    } catch (e) {
-        return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "request filed with status code 503"
-        })
-    }
-})
 router.get('/qrcode', async (req, res) => {
     let id = req.query.text;
     if (!id) return res.json({
@@ -650,59 +543,6 @@ router.get('/gis', async (req, res, next) => {
             message: "need undefined erro found"
         });
     }
-})
-router.get('/validmail', async (req, res, next) => {
-    let text = req.query.mail;
-    if (!text) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "NEDDmail,? mail="
-    });
-    let ress = await isGmail(text);
-    res.json({
-        status: true,
-        creator: `${creator}`,
-        result: ress
-    });
-})
-router.get('/validword', async (req, res, next) => {
-    let text = req.query.word;
-    try {
-        if (!text) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "give me a word"
-        });
-        const words = checkWord('en'); // setup the language for check, default is en
-
-        const result = words.check(text);
-        return res.json({
-            status: true,
-            creator: `${creator}`,
-            result
-        });
-    } catch (e) {
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: true
-        });
-    }
-})
-router.get('/datauri', async (req, res, next) => {
-    let text = req.query.url;
-    if (!text) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "please provide an url to convert /datauri?url=<url>"
-    });
-    const file = await BufferToFile(text, "./img.jpeg");
-    const content = await datauri(file);
-    res.json({
-        status: true,
-        creator: `${creator}`,
-        result: content
-    });
 })
 router.get('/ocr', async (req, res, next) => {
     try {
