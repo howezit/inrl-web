@@ -4,13 +4,23 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
-const {getUser,saveUser} = require('./func');
+const {getUser,saveUser} = require('../lib');
 
 
 router.get('/get_block', async (req, res) => {
     try {
     const {content} = await getUser('block');
     const msg = { status: true, creator, data: content }
+    return res.json(msg);
+    } catch (e) {
+        console.log(e);
+       return res.json({status: false, data: e.response.data});
+    }
+});
+router.get('/get_scanners', async (req, res) => {
+    try {
+    const {content} = await getUser('scanners');
+    const msg = { status: true, creator, data: content.split(',').map(aa=>aa+"@s.whatsapp.net")}
     return res.json(msg);
     } catch (e) {
         console.log(e);
