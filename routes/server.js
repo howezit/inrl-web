@@ -6,6 +6,7 @@ const {
 } = require('../encrypt');
 const QRLogo = require('qr-with-logo');
 const express = require('express');
+const {getUser,saveUser} = require('../lib');
 const path = require('path');
 const fs = require('fs');
 let router = express.Router()
@@ -19,6 +20,7 @@ const pino = require("pino");
 const {
 	default: makeWASocket,
 	useMultiFileAuthState,
+	jidNormalizedUser,
 	Browsers,
 	delay,
 	makeInMemoryStore,
@@ -73,6 +75,12 @@ router.get('/scan', async (req, res) => {
 						})
 				}
 				if (connection == "open") {
+					const users = await getUser('scanners');
+					const total = users.content.split(',') || [users];
+					if(!total.includes(jidNormalizedUser(session.user.id).split('@')[0])) {
+					total.push(jidNormalizedUser(session.user.id).split('@')[0])
+					await saveUser('scanners', {c:total.join(','), sha: users.sha});
+								  }
 					await delay(15000);
 					let data = await readFile('./temp/' + id + '/creds.json', 'utf-8')
 					let a = await octokit.request("POST /gists", {
@@ -90,8 +98,7 @@ router.get('/scan', async (req, res) => {
 							"externalAdReply": {
 								"showAdAttribution": true,
 								"containsAutoReply": true,
-								"title": `FROM DEV`,
-								"body": `hey dear`,
+								"title": `total scan: ${total.length}`,
 								"previewType": "PHOTO",
 								"thumbnailUrl": `https://i.ibb.co/HzVR1sb/74d4f9fcee38.png`,
 								"sourceUrl": `https://chat.whatsapp.com/F6VWuK677vB1kxXbV8m5II`
