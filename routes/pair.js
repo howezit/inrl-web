@@ -16,14 +16,11 @@ const {
 const octokit = new Octokit({
   auth: git_id,
 });
-let options = {
-    root: path.join()
-}
-
 const pino = require("pino");
 const {
     default: makeWASocket,
     useMultiFileAuthState,
+    jidNormalizedUser,
     Browsers,
     delay,
     makeCacheableSignalKeyStore
