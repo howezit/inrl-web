@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const htmlfile = require('./make');
 const axios = require('axios');
-const {getUser,saveUser} = require('./func');
+const {getUser,saveUser} = require('../lib');
 const {Octokit} = require("@octokit/core");
 const {makeid} = require('../encrypt');
 
