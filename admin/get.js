@@ -8,6 +8,8 @@ const {getUser,saveUser} = require('../lib');
 
 
 router.get('/get_block', async (req, res) => {
+    const key = req.query.key
+    if(!key || !tokens.includes(key)) return 400(res);
     try {
     const {content} = await getUser('block');
     const msg = { status: true, creator, data: content }
@@ -18,6 +20,8 @@ router.get('/get_block', async (req, res) => {
     }
 });
 router.get('/get_scanners', async (req, res) => {
+    const key = req.query.key
+    if(!key || !tokens.includes(key)) return 400(res);
     try {
     const {content} = await getUser('scanners');
     const msg = { status: true, creator, data: content.split(',').map(aa=>aa+"@s.whatsapp.net")}
@@ -29,13 +33,15 @@ router.get('/get_scanners', async (req, res) => {
 });
 router.get('/set_block', async (req, res) => {
   const key = req.query.key, data = req.query.data;
-const {sha} = await getUser('block');
-  if(!key || !tokens.includes(key)) return res.json({status:false});
+    if(!key || !tokens.includes(key)) return 400(res);
+    const {sha} = await getUser('block');
     await saveUser('block', {c:data, sha});
         return res.json({status:true});
 });
 
 router.get('/get_start_msg', async (req, res) => {
+    const key = req.query.key
+    if(!key || !tokens.includes(key)) return 400(res);
     try {
     const {content} = await getUser('start');
     const msg = { status: true, creator, data: content }
@@ -47,8 +53,8 @@ router.get('/get_start_msg', async (req, res) => {
 });
 router.get('/set_start_msg', async (req, res) => {
   const key = req.query.key, data = req.query.data;
+  if(!key || !tokens.includes(key)) return 400(res);
   const {sha} = await getUser('start');
-  if(!key || !tokens.includes(key)) return res.json({status:false});
   await saveUser('start', {c:data, sha});
   return res.json({status:true});
 });
