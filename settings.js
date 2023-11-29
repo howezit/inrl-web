@@ -28,7 +28,7 @@ error400 = (res) => {
 }
 
 error500 = (res, msg) => {
-        res.statusMessage = "Current password does not match";
+        res.statusMessage = "temporarily unavailable!";
 	return res.status(500).json({
 	status: false,
         code: 500,
