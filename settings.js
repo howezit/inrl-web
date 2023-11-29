@@ -18,7 +18,7 @@ apibitly = ['6cfc18e9bfa554714fadc10a1f6aff7555642348','2243940c230ad0d748059aee
 apissweb = ['BJGTA0D-7XQ4QNP-J7T430K-ESGV4P8','QGHX8PS-T9JMP8G-KM1RP0G-R1KKMK5','ARNKJD1-HW8M0JF-NZNT8SH-D92J35C','MQG5H3G-X9GMF8J-M1QQ52Q-Z511QFG','5378V5A-DA0MWYY-J5WK76K-00Y5EQ2','8KZA62F-0FM4T6A-HK4X0YA-W1XRNEC','BZQPB3J-DG7436X-MW21EW1-EP0DMGM','5FTSA4G-WSEMHX7-QCGCATV-CYKJZRX','0XPA3XK-T6G4435-KAVV1R0-HX089Y1','40GH6M0-JP4MSAZ-PPJYP3Z-1G5SM3K']
 
 //_______________________ ┏  Loghandler  ┓ _______________________\\
-400 = (res) => {
+error400 = (res) => {
 return res.statusMessage("Current password does not match").status(400).json({
 	status: false,
         code: 400,
