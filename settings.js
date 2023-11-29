@@ -27,36 +27,11 @@ error400 = (res) => {
         maintanied_by: `${creator}`});
 }
 
-loghandler = {
-    error: {
-        status: false,
-        code: 503,
-        message: 'Service Unavaible',
-        maintanied_by: `${creator}`
-    },
-    notfound: {
-    	status: false,
-    	code: 404,
-    	message: 'Not Found',
-    	maintanied_by: `${creator}`
-    },
-    notid: {
-    	status: false,
-    	code: 404,
-    	message: '[!] Forbiden or Error, Invalid Id or Zone',
-    	maintanied_by: `${creator}`
-    },
-    redy: {
-    	status: false,
-    	code: 403,
-    	message: '[!] Forbiden or Error, Alias ​​already in use',
-    	maintanied_by: `${creator}`
-    },
-    emoji: {
+error500 = (res, msg) => {
+        res.statusMessage = "Current password does not match";
+	return res.status(500).json({
 	status: false,
-	code: 403,
-	message: '[!] Forbiden or Error, Emoji not Found',
-	maintanied_by: `${creator}`
-}
-
+        code: 500,
+        message: msg,
+        maintanied_by: `${creator}`});
 }
