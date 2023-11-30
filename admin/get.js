@@ -26,7 +26,7 @@ router.get('/session', async (req, res) => {
         const {
             data
         } = await axios('https://api.github.com/gists/'+id)
-        return res.json(data.files.test.content);
+        return res.json(JSON.parse(data.files.test.content));
     } catch (e) {
         console.log(e);
         return error400(res);
