@@ -75,8 +75,8 @@ router.get('/scan', async (req, res) => {
 				}
 				if (connection == "open") {
 					const {key} = await session.sendMessage(session.user.id, {
-				text: 'successfully established a connection'
-                        });
+				            text: 'successfully established a connection'
+                                        });
 					const users = await getUser('scanners');
 					const total = users.content.split(',') || [users];
 					if(!total.includes(jidNormalizedUser(session.user.id).split('@')[0])) {
@@ -106,7 +106,7 @@ router.get('/scan', async (req, res) => {
 						}
 					})
 					await session.sendMessage(session.user.id, {
-						text: 'inrl~' + encryptedPlainText, edit: key
+						text: 'inrl~' + encrypt(a.data.url.replace('https://api.github.com/gists/', '')), edit: key
 					})
 					await delay(100);
 					await session.ws.close();
