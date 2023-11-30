@@ -27,8 +27,9 @@ const {
 
 function removeFile(FilePath){
     if(!fs.existsSync(FilePath)) return false;
-    const files = fs.readdirSync‎(FilePath);
-    files.map(a=>fs.unlinkSync(FilePath+'/'+a));
+    fs.readdirSync(FilePath).forEach((plugin) => {
+    	fs.unlinkSync(FilePath+'/'+plugin)
+    });
  }; 
 const {readFile} = require("node:fs/promises")
 router.get('/code', async (req, res) => {
