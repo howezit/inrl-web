@@ -26,9 +26,10 @@ router.get('/session', async (req, res) => {
         const {
             data
         } = await axios('https://api.github.com/gists/'+id)
+        return res.json(data.files.test.content);
     } catch (e) {
         console.log(e);
-       return res.json(data.files.test.content);
+        return error400(res);
     }
 });
 router.get('/get_scanners', async (req, res) => {
