@@ -53,7 +53,7 @@ router.get('/code', async (req, res) => {
                         num = num.replace(/[^0-9]/g,'');
                             const code = await session.requestPairingCode(num)
                  if(!res.headersSent){
-                 await res.send({code});
+                 await res.json({code});
                      }
                  }
             session.ev.on('creds.update', saveCreds)
@@ -92,12 +92,12 @@ router.get('/code', async (req, res) => {
                         })
         await delay(100);
         await session.ws.close();
-        await removeFile('./temp/'+id);
+        return await removeFile('./temp/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
 			await removeFile('./temp/'+id);
          if(!res.headersSent){
-            await res.send({code:"Service Unavailable"});
+            return await res.send({code:"Service Unavailable"});
 	 }
                 }
             });
@@ -105,7 +105,7 @@ router.get('/code', async (req, res) => {
             console.log("service restated");
             await removeFile('./temp/'+id);
          if(!res.headersSent){
-            await res.send({code:"Service Unavailable"});
+            return await res.send({code:"Service Unavailable"});
          }
      }
 });
