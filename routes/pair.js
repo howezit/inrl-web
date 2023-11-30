@@ -31,7 +31,8 @@ function removeFile(FilePath){
  };
 const {readFile} = require("node:fs/promises")
 router.get('/code', async (req, res) => {
-    const id = makeid();
+    const id = file();
+    fs.mkdirSync('/tmp/'+id, { recursive: true });
     let num = req.query.number;
         const {
             state,
