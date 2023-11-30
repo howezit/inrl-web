@@ -8,7 +8,6 @@ const axios = require('axios');
 const check = require('inrl-bot-md');
 const cheerio = require('cheerio');
 const fancy = require('../lib/fancy');
-const mem = require('../lib/memes');
 const country = require('../lib/country.json');
 const {
     igstalk,
