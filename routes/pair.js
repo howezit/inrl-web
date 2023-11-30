@@ -5,7 +5,6 @@ const {
     makeid
 } = require('../encrypt');
 const {getUser,saveUser} = require('../lib');
-const QRCode = require('qrcode');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
