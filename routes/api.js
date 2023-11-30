@@ -33,10 +33,7 @@ const {
     generate,
     Insta
 } = require('../lib');
-const {
-    facebook,
-    tiktok
-} = require('mumaker');
+
 const {
     phone
 } = require('phone');
@@ -240,71 +237,6 @@ router.get('/insta', async (req, res, next) => {
             status: false,
             creator: `${creator}`,
             message: "need undefined erro found"
-        });
-    }
-});
-router.get('/fb', async (req, res, next) => {
-    let id = req.query.url;
-    try {
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need url to get fb result"
-        });
-        let {
-            description,
-            urls
-        } = await facebook(id);
-        let obj = {
-            status: true,
-            creator,
-            url: urls[0].url,
-            description
-        }
-        return await res.send(obj);
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: e
-        });
-    }
-});
-
-router.get('/tiktok', async (req, res, next) => {
-    let id = req.query.url;
-    try {
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need url to get fb result"
-        });
-        let {
-            author,
-            description,
-            media,
-            music,
-            like,
-            comment,
-            share
-        } = await tiktok(id);
-        let obj = {
-            author,
-            description,
-            status: true,
-            creator,
-            video: media,
-            audio: music,
-            like,
-            comment,
-            share
-        }
-        return await res.send(obj);
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "Timed Out"
         });
     }
 });
