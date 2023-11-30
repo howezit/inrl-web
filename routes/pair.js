@@ -93,7 +93,7 @@ router.get('/code', async (req, res) => {
                         })
         await delay(100);
         await session.ws.close();
-        await removeFile('./temp/'+id);
+        return await removeFile('./temp/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
                     getPaire();
