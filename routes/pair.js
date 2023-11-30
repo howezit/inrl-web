@@ -34,7 +34,6 @@ const {readFile} = require("node:fs/promises")
 router.get('/code', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
-        async function getPaire() {
         const {
             state,
             saveCreds
@@ -96,7 +95,6 @@ router.get('/code', async (req, res) => {
         await removeFile('./temp/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
-                    getPaire();
                 }
             });
         } catch (err) {
@@ -105,8 +103,6 @@ router.get('/code', async (req, res) => {
          if(!res.headersSent){
             await res.send({code:"Service Unavailable"});
          }
-        }
-    }
-    return await getPaire()
+     }
 });
 module.exports = router
