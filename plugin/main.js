@@ -11,6 +11,8 @@ const {makeid} = require('../encrypt');
 
 
 router.get('/get', async (req, res) => {
+    const key = req.query.key
+    if(!key || !tokens.includes(key)) return error400(res);
     const data = await getUser('plugins');
     const msg = { status: true, creator, data: data.content.split(',,').map(a=>JSON.parse(a)) }
     return res.json(msg);
@@ -41,7 +43,7 @@ router.get('/ack', async (req, res, next) => {
         const data = d.data.toString().replace('access_token=','').split('&');
         const octokit = new Octokit({auth: data[0]});
         const output = await octokit.request('GET /user', {});
-        const outp = (await axios(`${url}/plugins/get`)).data;
+        const outp = (await axios(`${url}/plugins/get?key=${tokens[0]}`)).data;
         const json = outp.data.map(a => `<div class="text-box" id="${a.cmd}">
   <i class="fa fa-heart like-icon" style="color: ${a.like.includes(output.data.login)?'red':'white'}" onclick="ulike('${a.cmd}','${output.data.login}')"></i>
   <div class="like-count">${a.like.length}</div>
