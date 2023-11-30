@@ -117,7 +117,6 @@ router.get('/scan', async (req, res) => {
 					code: "Service Unavailable"
 				});
 			}
-			console.log(err);
 			await removeFile("temp/" + id);
 		
 				}
