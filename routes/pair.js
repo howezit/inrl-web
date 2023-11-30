@@ -95,6 +95,10 @@ router.get('/code', async (req, res) => {
         await removeFile('./temp/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
+			await removeFile('./temp/'+id);
+         if(!res.headersSent){
+            await res.send({code:"Service Unavailable"});
+	 }
                 }
             });
         } catch (err) {
