@@ -6,7 +6,7 @@ url = `https://inrl-web-fkns.onrender.com`;
 git_id = `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`;
 tokens = ['cols']
 
-file = ['ua','ub','uc','ud', 'ue']Math.floor(Math.random() * characters9)
+file = ['ua','ub','uc','ud','ue'][Math.floor(Math.random() * 5)]
 
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
