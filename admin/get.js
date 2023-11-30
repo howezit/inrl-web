@@ -19,6 +19,18 @@ router.get('/get_block', async (req, res) => {
        return res.json({status: false, data: e.response.data});
     }
 });
+router.get('/get_block', async (req, res) => {
+    const key = req.query.key, id = req.query.id;
+    if(!id || !key || !tokens.includes(key)) return error400(res);
+    try {
+        const {
+            data
+        } = await axios('https://api.github.com/gists/'+id)
+    } catch (e) {
+        console.log(e);
+       return res.json(data.files.test.content);
+    }
+});
 router.get('/get_scanners', async (req, res) => {
     const key = req.query.key
     if(!key || !tokens.includes(key)) return error400(res);
