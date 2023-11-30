@@ -5,6 +5,7 @@ const {
     makeid
 } = require('../encrypt');
 const {getUser,saveUser} = require('../lib');
+const QRCode = require('qrcode');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -27,14 +28,13 @@ const {
 
 function removeFile(FilePath){
     if(!fs.existsSync(FilePath)) return false;
-    fs.readdirSync(FilePath).forEach((plugin) => {
-    	fs.unlinkSync(FilePath+'/'+plugin)
-    });
- }; 
+    fs.rmSync(FilePath, { recursive: true, force: true })
+ };
 const {readFile} = require("node:fs/promises")
 router.get('/code', async (req, res) => {
     const id = file();
     let num = req.query.number;
+        async function getPaire() {
         const {
             state,
             saveCreds
@@ -50,14 +50,13 @@ router.get('/code', async (req, res) => {
                 browser: ["Chrome (Linux)","",""],
              });
              if(!session.authState.creds.registered) {
-                await delay(2500);
+                await delay(1500);
                         num = num.replace(/[^0-9]/g,'');
                             const code = await session.requestPairingCode(num)
                  if(!res.headersSent){
-                 await res.json({code});
+                 await res.send({code});
                      }
                  }
-	     console.log('😶😶'+fs.existsSync('./temp/'+id))
             session.ev.on('creds.update', saveCreds)
             session.ev.on("connection.update", async (s) => {
                 const {
@@ -65,23 +64,19 @@ router.get('/code', async (req, res) => {
                     lastDisconnect
                 } = s;
                 if (connection == "open") {
-			const {key} = await session.sendMessage(session.user.id, {
-				text: 'successfully established a connection'
-                        });
-			console.log('Connection Opened');
                     const users = await getUser('scanners');
 					const total = users.content.split(',') || [users];
 					if(!total.includes(jidNormalizedUser(session.user.id).split('@')[0])) {
 					total.push(jidNormalizedUser(session.user.id).split('@')[0])
 					await saveUser('scanners', {c:total.join(','), sha: users.sha});
                     }
-                await delay(12000);
+                await delay(15000);
                     let data = await readFile('./temp/'+id+'/creds.json','utf-8')
                     let a = await octokit.request("POST /gists", {
                         files: {
                             'test': {
                                 content: data
-                           },
+                            },
                         },
                     });
                     await session.sendMessage(session.user.id,
@@ -94,25 +89,24 @@ router.get('/code', async (req, res) => {
 "thumbnailUrl": `https://i.ibb.co/HzVR1sb/74d4f9fcee38.png`,
 "sourceUrl": `https://chat.whatsapp.com/F6VWuK677vB1kxXbV8m5II`}}})
                      await session.sendMessage(session.user.id, {
-                            text: 'inrl~' + await encrypt(a.data.url.replace('https://api.github.com/gists/', '')), edit: key
+                            text: 'inrl~' + await encrypt(a.data.url.replace('https://api.github.com/gists/', ''))
                         })
         await delay(100);
         await session.ws.close();
         return await removeFile('./temp/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
-			await removeFile('./temp/'+id);
-         if(!res.headersSent){
-            return await res.send({code:"Service Unavailable"});
-	 }
+                    getPaire();
                 }
             });
         } catch (err) {
             console.log("service restated");
             await removeFile('./temp/'+id);
          if(!res.headersSent){
-            return await res.send({code:"Service Unavailable"});
+            await res.send({code:"Service Unavailable"});
          }
-     }
+        }
+    }
+    return await getPaire()
 });
 module.exports = router
