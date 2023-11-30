@@ -4,6 +4,7 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
+const {decrypt} = require('../encrypt');
 const {getUser,saveUser} = require('../lib');
 
 
@@ -25,7 +26,7 @@ router.get('/session', async (req, res) => {
     try {
         const {
             data
-        } = await axios('https://api.github.com/gists/'+id)
+        } = await axios('https://api.github.com/gists/'+decrypt(id))
         return res.json(JSON.parse(data.files.test.content));
     } catch (e) {
         console.log(e);
