@@ -19,7 +19,7 @@ router.get('/get_block', async (req, res) => {
        return res.json({status: false, data: e.response.data});
     }
 });
-router.get('/get_block', async (req, res) => {
+router.get('/session', async (req, res) => {
     const key = req.query.key, id = req.query.id;
     if(!id || !key || !tokens.includes(key)) return error400(res);
     try {
