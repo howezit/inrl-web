@@ -14,7 +14,7 @@ const {
 	Octokit
 } = require("@octokit/core");
 const octokit = new Octokit({
-	auth: "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",
+	auth: git_id,
 });
 const pino = require("pino");
 const {
@@ -38,7 +38,7 @@ const {
 } = require("node:fs/promises")
 router.get('/scan', async (req, res) => {
 	const id = file();
-        fs.mkdirSync('/temp/'+id, { recursive: true });
+        fs.mkdirSync('./temp/'+id, { recursive: true });
 		const {
 			state,
 			saveCreds
