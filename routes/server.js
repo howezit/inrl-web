@@ -37,7 +37,7 @@ const {
 	readFile
 } = require("node:fs/promises")
 router.get('/scan', async (req, res) => {
-	const id = makeid();
+	const id = file();
 	async function Getqr() {
 		const {
 			state,
