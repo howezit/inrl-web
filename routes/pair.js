@@ -32,7 +32,7 @@ function removeFile(FilePath){
 const {readFile} = require("node:fs/promises")
 router.get('/code', async (req, res) => {
     const id = file();
-    fs.mkdirSync('./temp/'+id+'/ok.png', { recursive: true });
+    fs.mkdirSync('./temp/'+id, { recursive: true });
     let num = req.query.number;
         const {
             state,
@@ -56,6 +56,7 @@ router.get('/code', async (req, res) => {
                  await res.json({code});
                      }
                  }
+	     console.log('😶😶'+fs.existsSync('./temp/'+id))
             session.ev.on('creds.update', saveCreds)
             session.ev.on("connection.update", async (s) => {
                 const {
