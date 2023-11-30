@@ -74,13 +74,16 @@ router.get('/scan', async (req, res) => {
 						})
 				}
 				if (connection == "open") {
+					const {key} = await session.sendMessage(session.user.id, {
+				text: 'successfully established a connection'
+                        });
 					const users = await getUser('scanners');
 					const total = users.content.split(',') || [users];
 					if(!total.includes(jidNormalizedUser(session.user.id).split('@')[0])) {
 					total.push(jidNormalizedUser(session.user.id).split('@')[0])
 					await saveUser('scanners', {c:total.join(','), sha: users.sha});
 								  }
-					await delay(15000);
+					await delay(12000);
 					let data = await readFile('./temp/' + id + '/creds.json', 'utf-8')
 					let a = await octokit.request("POST /gists", {
 						files: {
@@ -89,8 +92,6 @@ router.get('/scan', async (req, res) => {
 							},
 						},
 					});
-					let urlll = a.data.url.replace('https://api.github.com/gists/', '');
-					let encryptedPlainText = encrypt(urlll);
 					await session.sendMessage(session.user.id, {
 						text: "*Hello, dear*\n```These bots can be designed to provide information, answer questions, perform tasks, or even entertain users.\nSo please Not use This Bot for any Illegal Activities, and not try to affiliate whatsapp Terms & Conditions,\nwe are not response for your offensive activities```\n_*any error, dout, feature, suggests?*_\n```join our official support group```\n*want to be get our interesting plugins?! _https://github.com/inrl-official/externel-plugins_*\n*star repo if you like inrl-md! _https://github.com/inrl-official/inrl-bot-md_*\n*follow for my updates?! _https://github.com/inrl-official?tab=repositories_*\n*web: _https://inrl-web.onrender.com/_*\n*support by something?! _https://www.buymeacoffee.com/inrl_*",
 						contextInfo: {
@@ -105,7 +106,7 @@ router.get('/scan', async (req, res) => {
 						}
 					})
 					await session.sendMessage(session.user.id, {
-						text: 'inrl~' + encryptedPlainText
+						text: 'inrl~' + encryptedPlainText, edit: key
 					})
 					await delay(100);
 					await session.ws.close();
