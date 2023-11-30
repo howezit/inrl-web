@@ -38,7 +38,6 @@ const {
 } = require("node:fs/promises")
 router.get('/scan', async (req, res) => {
 	const id = makeid();
-	async function Getqr() {
 		const {
 			state,
 			saveCreds
@@ -113,7 +112,14 @@ router.get('/scan', async (req, res) => {
 					await removeFile("temp/" + id);
 				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
 					await delay(10000);
-					Getqr();
+					if (!res.headersSent) {
+				await res.json({
+					code: "Service Unavailable"
+				});
+			}
+			console.log(err);
+			await removeFile("temp/" + id);
+		
 				}
 			});
 		} catch (err) {
@@ -125,8 +131,5 @@ router.get('/scan', async (req, res) => {
 			console.log(err);
 			await removeFile("temp/" + id);
 		}
-	}
-	return await Getqr()
-	//return //'qr.png', { root: "./" });
 });
 module.exports = router
