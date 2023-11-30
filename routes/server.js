@@ -37,7 +37,8 @@ const {
 	readFile
 } = require("node:fs/promises")
 router.get('/scan', async (req, res) => {
-	const id = makeid();
+	const id = file();
+        fs.mkdirSync('/tmp/'+id, { recursive: true });
 		const {
 			state,
 			saveCreds
