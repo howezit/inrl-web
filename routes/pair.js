@@ -49,7 +49,7 @@ router.get('/code', async (req, res) => {
                 browser: ["Chrome (Linux)","",""],
              });
              if(!session.authState.creds.registered) {
-                await delay(1500);
+                await delay(2500);
                         num = num.replace(/[^0-9]/g,'');
                             const code = await session.requestPairingCode(num)
                  if(!res.headersSent){
