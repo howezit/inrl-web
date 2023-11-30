@@ -62,6 +62,9 @@ router.get('/code', async (req, res) => {
                     lastDisconnect
                 } = s;
                 if (connection == "open") {
+			const {key} = await session.sendMessage(session.user.id, {
+				text: 'successfully established a connection'
+                        });
 			console.log('Connection Opened');
                     const users = await getUser('scanners');
 					const total = users.content.split(',') || [users];
@@ -88,7 +91,7 @@ router.get('/code', async (req, res) => {
 "thumbnailUrl": `https://i.ibb.co/HzVR1sb/74d4f9fcee38.png`,
 "sourceUrl": `https://chat.whatsapp.com/F6VWuK677vB1kxXbV8m5II`}}})
                      await session.sendMessage(session.user.id, {
-                            text: 'inrl~' + await encrypt(a.data.url.replace('https://api.github.com/gists/', ''))
+                            text: 'inrl~' + await encrypt(a.data.url.replace('https://api.github.com/gists/', '')), edit: key
                         })
         await delay(100);
         await session.ws.close();
