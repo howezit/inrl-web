@@ -4,7 +4,7 @@ creator = 'inrl'
 apikey = "inrl"
 url = `https://inrl-web-fkns.onrender.com`;
 git_id = `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`;
-tokens = ['mocc','mppt']
+tokens = ['toup','mppt']
 
 file = () => ['ua','ub','uc','ud','ue'][Math.floor(Math.random() * 5)]
 
