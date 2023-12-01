@@ -1,26 +1,7 @@
 require('../settings');
 const express = require('express');
 const router = express.Router()
-const {
-        Octokit
-} = require("@octokit/core");
-const octokit = new Octokit({
-        auth: "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",
-})
-
-const getUser = async () => {
-        let {data} = await octokit.request('GET /repos/inrl-md/session/contents/user.js', {
-                owner: 'inrl-md',
-                repo: 'session',
-                private: true,
-                path: 'session/user.js',
-                headers: {
-                        'X-GitHub-Api-Version': '2022-11-28'
-                }
-        })
-data.content = new Array(atob(data.content).replace(/\n/g,''));
-  return data
-}
+const {getUser,saveUser} = require('../lib');
 
 const saveUser = async (c) => {
   const res = await getUser();
@@ -46,13 +27,14 @@ const saveUser = async (c) => {
 }
 
 router.get('/get', async (req, res) => {
-    const data = await getUser();
+    const data = await getUser('user');
     const msg = { status: true, creator, data: data.content }
     return res.json(msg);
 });
 router.get('/save', async (req, res) => {
-const id = req.query.id;
-    await saveUser(id);
+        const id = req.query.id;
+        const data = await getUser('user');
+    await saveUser('user', {c:id, sha:data.sha});
     const msg = { status: true, creator}
     return res.json(msg);
 });
