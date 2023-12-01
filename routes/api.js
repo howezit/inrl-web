@@ -1,11 +1,9 @@
 require('../settings');
-const QRCode = require('qrcode');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const ct = require('countries-and-timezones');
 const axios = require('axios');
-const check = require('inrl-bot-md');
 const cheerio = require('cheerio');
 const fancy = require('../lib/fancy');
 const country = require('../lib/country.json');
@@ -111,20 +109,6 @@ router.get('/country_info', async (req, res) => {
     }
 })
 
-router.get('/checkword', async (req, res) => {
-    let id = req.query.text;
-    if (!id) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: false
-    })
-    return res.json({
-        status: true,
-        creator: `${creator}`,
-        result: check(id)
-    })
-})
-
 router.get('/news24', async (req, res) =>{
     return await res.json({
         status: true,
@@ -147,25 +131,6 @@ router.get('/ig', async (req, res) => {
     })
 })
 
-router.get('/qrcode', async (req, res) => {
-    let id = req.query.text;
-    if (!id) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "need text to conver qrcode"
-    })
-    res.set({
-        'Content-Type': 'image/png'
-    })
-    return await res.end(await QRCode.toBuffer(id, {
-        errorCorrectionLevel: "H",
-        width: 640,
-        color: {
-            dark: '#000000', // black dots
-            light: '#FFFFFF' // white background
-        }
-    }))
-})
 router.get('/imgai', async (req, res) => {
     let id = req.query.text;
     try {
