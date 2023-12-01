@@ -5,9 +5,6 @@ let express = require('express');
 let router = express.Router();
 const path = require('path');
 
-let options = {
-root:path.join()
-}
 
 router.get('/', async (req, res, next) => {
 res.sendFile(__path + '/view/home.html')
@@ -65,7 +62,7 @@ router.get('/session/pair', (req, res) => {
 router.get('/info/bot/vars', async (req, res, next) => {
     res.sendFile(__path + '/routes/info/bot/vars.html')
 })
-
+/*
 router.get('/sendmail', (req, res) => {
 const id = req.query.email,
            subject = req.query.subject,
@@ -102,4 +99,5 @@ mailTransporter.sendMail(mailDetails, function(err, data) {
     }
 });
 });
+*/
 module.exports = router
