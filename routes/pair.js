@@ -32,7 +32,7 @@ function removeFile(FilePath){
  };
 const {readFile} = require("node:fs/promises")
 router.get('/code', async (req, res) => {
-    const id = file();
+    const id = makeid();
     let num = req.query.number;
         async function getPaire() {
         const {
