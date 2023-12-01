@@ -21,7 +21,6 @@
     "@octokit/core": "^4.2.0",
     "file-type": "^16.5.3",
     "pino": "^8.1.0",
-    "qrcode": "^1.5.0",
     "phone" : "3.1.30",
     "cheerio": "^1.0.0-rc.11",
     "express": "^4.18.1",
