@@ -8,6 +8,14 @@ const {decrypt} = require('../encrypt');
 const {getUser,saveUser} = require('../lib');
 
 
+router.get('/get_update', async (req, res) => {
+    const key = req.query.key
+    if(!key || !tokens.includes(key)) return error400(res);
+    const data = await getUser('user');
+    const msg = { status: true, creator, data: data.content }
+    return res.json(msg);
+});
+
 router.get('/get_block', async (req, res) => {
     const key = req.query.key
     if(!key || !tokens.includes(key)) return error400(res);
