@@ -29,6 +29,14 @@ error400 = (res) => {
         maintanied_by: `${creator}`});
 }
 
+error503 = (res) => {
+        res.statusMessage = "temporarily unavailable!";
+	return res.status(503).json({
+	status: false,
+        code: 503,
+        maintanied_by: `${creator}`});
+}
+
 error500 = (res, msg) => {
         res.statusMessage = "temporarily unavailable!";
 	return res.status(500).json({
