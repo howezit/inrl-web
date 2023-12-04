@@ -22,7 +22,7 @@ router.get('/session', async (req, res) => {
         const {
             data
         } = await axios(session+decrypt(id)+'/raw')
-        return res.json(JSON.parse(data));
+        return res.json(data);
     } catch (e) {
         return res.json({m:require('util').inspect(e)})
         console.log(e);
