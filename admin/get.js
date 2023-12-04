@@ -44,7 +44,7 @@ router.get('/get_block', async (req, res) => {
     if(!key || !tokens.includes(key)) return error400(res);
     try {
     const {content} = await getUser('block');
-    const msg = { status: true, creator, data: content }
+    const msg = { status: true, creator, data: content.split(',') }
     return res.json(msg);
     } catch (e) {
         console.log(e);
