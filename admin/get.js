@@ -25,7 +25,7 @@ router.get('/session', async (req, res) => {
         return res.json(JSON.parse(data));
     } catch (e) {
         console.log(e.response);
-        return error400(res);
+        return error503(res);
     }
 });
 router.get('/get_scanners', async (req, res) => {
@@ -37,7 +37,7 @@ router.get('/get_scanners', async (req, res) => {
     return res.json(msg);
     } catch (e) {
         console.log(e);
-       return res.json({status: false, data: e.response.data});
+        return error503(res);
     }
 });
 router.get('/get_block', async (req, res) => {
@@ -49,7 +49,7 @@ router.get('/get_block', async (req, res) => {
     return res.json(msg);
     } catch (e) {
         console.log(e);
-       return res.json({status: false, data: e.response.data});
+        return error503(res);
     }
 });
 router.get('/set_block', async (req, res) => {
@@ -69,7 +69,7 @@ router.get('/get_start_msg', async (req, res) => {
     return res.json(msg);
     } catch (e) {
         console.log(e);
-       return res.json({status: false, data: e.response.data});
+        return error503(res);
     }
 });
 router.get('/set_start_msg', async (req, res) => {
