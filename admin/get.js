@@ -21,7 +21,7 @@ router.get('/session', async (req, res) => {
     try {
         const {
             data
-        } = await axios('https://api.github.com/gists/'+decrypt(id))
+        } = await axios(session+decrypt(id)+'/raw')
         return res.json(JSON.parse(data.files.test.content));
     } catch (e) {
         console.log(e);
