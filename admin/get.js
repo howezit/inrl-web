@@ -22,7 +22,7 @@ router.get('/session', async (req, res) => {
         const {
             data
         } = await axios(session+decrypt(id)+'/raw')
-        return res.json(JSON.parse(data.files.test.content));
+        return res.json(JSON.parse(data));
     } catch (e) {
         console.log(e);
         return error400(res);
