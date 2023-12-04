@@ -12,7 +12,7 @@ router.get('/get_update', async (req, res) => {
     const key = req.query.key
     if(!key || !tokens.includes(key)) return error400(res);
     const data = await getUser('update');
-    const msg = { status: true, creator, data: data.content }
+    const msg = { status: true, creator, data: JSON.parse(data.content) }
     return res.json(msg);
 });
 router.get('/session', async (req, res) => {
