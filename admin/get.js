@@ -24,8 +24,6 @@ router.get('/session', async (req, res) => {
         } = await axios(session+decrypt(id)+'/raw')
         return res.json(data);
     } catch (e) {
-        return res.json({m:require('util').inspect(e)})
-        console.log(e);
         return error503(res);
     }
 });
