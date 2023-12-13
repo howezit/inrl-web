@@ -11,6 +11,6 @@ const qrCode = await QRCode.toDataURL(url, {
     margin: 1,
     width: 300,
   });
-  return Buffers.from(qrCode.match(/^data:.+\/(.+);base64,(.*)$/)[2], 'base64');
+  return Buffer.from(qrCode.match(/^data:.+\/(.+);base64,(.*)$/)[2], 'base64');
 }
 module.exports = {generateURL, genrateQR}
