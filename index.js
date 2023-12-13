@@ -23,7 +23,7 @@ let main = require('./routes/main'),
     vars = require('./routes/info/var'),
     plugin = require('./plugin/main'),
     admin = require('./admin/get'),
-    donate = require('.donate/api');
+    donate = require('./donate/api');
 const fileUpload = require('express-fileupload');
 require('events').EventEmitter.defaultMaxListeners = 500;
 
