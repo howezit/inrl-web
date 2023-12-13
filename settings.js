@@ -2,8 +2,8 @@
 // Name Creator
 creator = 'inrl'
 apikey = "inrl"
-upi_id = 'inrl';
-upi_name = 'inrl';
+upi_id = 'fasweehmon2@okicici';
+upi_name = 'Fasweeh Mon';
 url = `https://inrl-web-fkns.onrender.com`;
 git_id = `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`;
 tokens = ['toup','mppt','with_you'];
