@@ -4,7 +4,7 @@ const generateURL = ({ amount }) => {
   return `upi://pay?pa=${upi}&pn=${name}&am=${amount}&cu=INR`;
 };
 
-const genrateQR(url) {
+async function genrateQR(url) {
 const qrCode = await QRCode.toDataURL(url, {
     type: "image/png",
     margin: 1,
