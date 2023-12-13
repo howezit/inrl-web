@@ -22,7 +22,8 @@ let main = require('./routes/main'),
     logo = require('./routes/logo'),
     vars = require('./routes/info/var'),
     plugin = require('./plugin/main'),
-    admin = require('./admin/get');
+    admin = require('./admin/get'),
+    donate = require('.donate/api');
 const fileUpload = require('express-fileupload');
 require('events').EventEmitter.defaultMaxListeners = 500;
 
@@ -61,6 +62,7 @@ app.use('/post', post);
 app.use('/logo', logo);
 app.use('/plugins', plugin);
 app.use('/admin', admin);
+app.use('/donate', donate);
 
 
 app.use(function (req, res, next) {
