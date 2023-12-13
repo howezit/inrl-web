@@ -1,7 +1,8 @@
+require('../settings');
 const QRCode = require("qrcode");
 
 const generateURL = ({ amount }) => {
-  return `upi://pay?pa=upiid&pn=name&am=${amount}&cu=INR`;
+  return `upi://pay?pa=${upi_id}&pn=${upi_name}&am=${amount}&cu=INR`;
 };
 
 async function genrateQR(url) {
