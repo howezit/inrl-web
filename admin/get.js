@@ -10,10 +10,10 @@ const {getUser,saveUser} = require('../lib');
 router.get('/ads', async (req, res) => {
     const key = req.query.key, type = req.query.key, phone = req.query.phone, msg = req.query.msg, git = req.query.git;
     if(!type) return error400(res);
-    type = type == 'add' ? 'add' : 'get';
-    if(type == 'get' && (!key || !tokens.includes(key))) return error400(res);
+    const typ = type == 'add' ? 'add' : 'get';
+    if(typ == 'get' && (!key || !tokens.includes(key))) return error400(res);
     let data = await getUser('ads');
-    if(type == 'get') {
+    if(typ == 'get') {
     const msg = { status: true, creator, data: data.content.split(',,').map(a=>JSON.parse(a)) }
     } else {
         if(!phone ||!git ||!msg) return error400(res);
