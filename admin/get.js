@@ -8,17 +8,17 @@ const {decrypt} = require('../encrypt');
 const {getUser,saveUser} = require('../lib');
 
 router.get('/ads', async (req, res) => {
-    const key = req.query.key, type = req.query.key, phone = req.query.phone, msg = req.query.msg, git = req.query.git;
+    const key = req.query.key, type = req.query.type, wa = req.query.wa, msg = req.query.msg, git = req.query.git;
     if(!type) return error400(res);
     const typ = type == 'add' ? 'add' : 'get';
-    if(typ == 'get' && (!key || !tokens.includes(key))) return error400(res);
     let data = await getUser('ads');
     if(typ == 'get') {
+        if(!key || !tokens.includes(key)) return error400(res);
     return res.json({ status: true, creator, data: data.content.split(',,').map(a=>JSON.parse(a)) });
     } else {
-        if(!phone ||!git ||!msg) return error400(res);
+        if(!wa ||!git ||!msg) return error400(res);
     data.content = data.content.split(',,');
-    data.content.push(JSON.stringify({phone, git, msg}));
+    data.content.push(JSON.stringify({wa, git, msg}));
     await saveUser('ads', {c:data.content.join(',,'), sha: data.sha});
     return res.json({status:true});
     }
