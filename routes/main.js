@@ -9,6 +9,10 @@ const path = require('path');
 router.get('/', async (req, res, next) => {
 res.sendFile(__path + '/view/home.html')
 })
+router.get('/ads.txt', async (req, res, next) => {
+res.sendFile(__path + '/ads.txt')
+})
+
 
 router.get('/select', async (req, res, next) => {
 res.sendFile(__path + '/details/select.html')
