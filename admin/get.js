@@ -14,7 +14,7 @@ router.get('/ads', async (req, res) => {
     if(typ == 'get' && (!key || !tokens.includes(key))) return error400(res);
     let data = await getUser('ads');
     if(typ == 'get') {
-    const msg = { status: true, creator, data: data.content.split(',,').map(a=>JSON.parse(a)) }
+    return res.json({ status: true, creator, data: data.content.split(',,').map(a=>JSON.parse(a)) });
     } else {
         if(!phone ||!git ||!msg) return error400(res);
     data.content = data.content.split(',,');
