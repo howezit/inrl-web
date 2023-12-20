@@ -141,7 +141,7 @@ router.get('/fb', async (req, res) => {
             message: "need url to conver ty o ldn"
         })
         return await res.json(
-            status: true,creator,await getFBInfo(id)
+            {status: true,creator,result: await getFBInfo(id)}
         )
     } catch (e) {
         return res.json({
