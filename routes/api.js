@@ -28,7 +28,8 @@ const {
     chatGPT,
     generateV2,
     generate,
-    Insta
+    Insta,
+    getFBInfo
 } = require('../lib');
 
 const {
@@ -130,6 +131,27 @@ router.get('/ig', async (req, res) => {
         result: data
     })
 })
+
+router.get('/fb', async (req, res) => {
+    let id = req.query.url;
+    try {
+        if (!id) return res.json({
+            status: false,
+            creator: `${creator}`,
+            message: "need url to conver ty o ldn"
+        })
+        return await res.json(
+            status: true,creator,await getFBInfo(id)
+        )
+    } catch (e) {
+        return res.json({
+            status: false,
+            creator: `${creator}`,
+            message: "upgrade required"
+        });
+    }
+})
+
 
 router.get('/imgai', async (req, res) => {
     let id = req.query.text;
@@ -513,88 +535,5 @@ router.get('/zone', async (req, res, next) => {
     }
 });
 
-
-router.get('/getmail', async (req, res, next) => {
-    let id = req.query.apikey;
-    if (id != apikey) return await res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "invalid api_key"
-    });
-    try {
-        const {
-            data
-        } = await axios("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1");
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: data
-        });
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "log handler error!"
-        });
-    }
-});
-
-router.get('/getmailinfo', async (req, res, next) => {
-    let id = req.query.apikey,
-        mail = req.query.email;
-    if (id != apikey) return await res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "invalid api_key"
-    });
-    if (!mail) return await res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "give me a mail"
-    });
-    try {
-        const [name, dom] = mail.split('@');
-        const {
-            data
-        } = await axios(`https://www.1secmail.com/api/v1/?action=getMessages&login=${name}&domain=${dom}`);
-        let unique_id = []
-        let response = [];
-        data.map((id) => unique_id.push(id.id));
-        unique_id.map(async (id) => {
-            const {
-                data
-            } = await axios(`https://www.1secmail.com/api/v1/?action=readMessage&login=${name}&domain=${dom}&id=${id}`);
-            let {
-                from,
-                subject,
-                date,
-                body,
-                textBody,
-                htmlBody
-            } = data;
-            return response.push({
-                from,
-                subject,
-                date,
-                body,
-                text: textBody || "null",
-                html: htmlBody
-            });
-        });
-        setTimeout(async () => {
-            return await res.json({
-                status: true,
-                creator: `${creator}`,
-                result: response
-            });
-        }, 500);
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "log handler error!"
-        });
-    }
-});
 
 module.exports = router
