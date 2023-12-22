@@ -4,7 +4,7 @@ upi_id = 'fasweehmon2@okicici';
 upi_name = 'Fasweeh Mon';
 url = `https://inrl-web-fkns.onrender.com`;
 git_id = `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`;
-tokens = ['toup','mppt','with_you'];
+tokens = ['toup','acrc','with_you'];
 session = 'https://gist.github.com/inrl-md/';
 support = 'https://chat.whatsapp.com/Bg5u1BB4NS65bxzic2rs4K';
 
