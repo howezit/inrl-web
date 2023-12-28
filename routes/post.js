@@ -3,8 +3,15 @@ let router = express.Router();
 const fs = require('fs');
 const {ocrSpace} = require('../lib');
 
-router.post('/test', function(req, res) {
-  res.send(require('util').format(req)); //files.file.data the uploaded file object
+router.post('/writer', function(req, res) {
+  const buff = req.files.file.data;
+  const size = req.body.size ? `FONT_SANS_${req.body.size}_BLACK` : null;
+  const text = req.body.text;
+  const x = req.body.x;
+  const y = req.body.y;
+  const color = req.body.color;
+  if(!buff || !size || !text || !x || !y || !color) return 
+  res.send(require('util').format(req)); // the uploaded file object
 });
 
 router.post('/ocr', async (req, res, next) => {
