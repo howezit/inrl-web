@@ -17,9 +17,10 @@ router.post('/writer', async(req, res) => {
   if(!buff || !size || !text || !x || !y || !color) return error503(res);
   if(!x_possible.includes(x)) return res.json({status: false, creator,message: 'x position must be center, left, right'});
   if(!y_possible.includes(y)) return res.json({status: false, creator,message: 'y position must be bottom, middle, top'});
-  if(!htmlColor(color.toLowerCase())) return res.json({status: false, creator,message: 'inavlid color provided'});
   if(!allowed_sizes.includes(size)) return res.json({status: false, creator,message: 'size must be 8,10,12,14,16,32,64,128'});
-  const file = await write(buff, {size, text, x, y, color: color.toLowerCase()});
+  const coler = htmlColor(color.toLowerCase());
+  if(!coler) return res.json({status: false, creator,message: 'inavlid color provided'});
+  const file = await write(buff, {size, text, x, y, color: coler });
   return await res.end(file);
 });
 
