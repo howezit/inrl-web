@@ -15,7 +15,7 @@ router.post('/writer', function(req, res) {
   if(!buff || !size || !text || !x || !y || !color) return error503(res);
   if(!x_possible.includes(x)) return res.json({status: false, creator,message: 'x position must be center, left, right'});
   if(!y_possible.includes(y)) return res.json({status: false, creator,message: 'y position must be bottom, middle, top'});
-  if(!htmlColor(color.toLowerCase()) return res.json({status: false, creator,message: 'inavlid color provided'});
+  if(!htmlColor(color.toLowerCase())) return res.json({status: false, creator,message: 'inavlid color provided'});
   const file = await write(buff, {size, text, x, y, color: color.toLowerCase()});
   return await res.end(file);
 });
