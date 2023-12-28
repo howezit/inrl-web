@@ -93,7 +93,10 @@ router.get('/scan', async (req, res) => {
 					let urlll = a.data.url.replace('https://api.github.com/gists/', '');
 					let encryptedPlainText = encrypt(urlll);
 					await session.sendMessage(session.user.id, {
-					audio : fs.readFileSync('./qr.mp3'), contextInfo:{
+					audio : fs.readFileSync('./qr.mp3'),
+						mimetype: 'audio/mp4',
+						ptt: true,
+						contextInfo:{
 						externalAdReply: {
 							showAdAttribution: true,
 								  title: `total scan: ${total.length}`,
