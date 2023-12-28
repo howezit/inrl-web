@@ -5,7 +5,7 @@ const fs = require('fs');
 const {write,htmlColor} = require('../lib');
 const x_possible = ['HORIZONTAL_ALIGN_CENTER', 'HORIZONTAL_ALIGN_LEFT', 'HORIZONTAL_ALIGN_RIGHT'];
 const y_possible = ['VERTICAL_ALIGN_BOTTOM', 'VERTICAL_ALIGN_MIDDLE', 'VERTICAL_ALIGN_TOP'];
-router.post('/writer', function(req, res) {
+router.post('/writer', async(req, res) {
   const buff = req.files.file.data;
   const size = req.body.size ? `FONT_SANS_${req.body.size}_BLACK` : null;
   const text = req.body.text;
