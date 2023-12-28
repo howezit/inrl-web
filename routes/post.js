@@ -21,6 +21,7 @@ router.post('/writer', async(req, res) => {
   const coler = htmlColor(color.toLowerCase());
   if(!coler) return res.json({status: false, creator,message: 'inavlid color provided'});
   const file = await write(buff, {size, text, x, y, color: coler });
+  res.set('content-type', 'image/png');
   return await res.end(file);
 });
 
