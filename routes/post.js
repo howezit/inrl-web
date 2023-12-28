@@ -13,7 +13,7 @@ router.post('/writer', function(req, res) {
   const color = req.body.color;
   if(!buff || !size || !text || !x || !y || !color) return error503(res);
   if(!htmlColor(color.toLowerCase()) return res.json({status: false, creator,'inavlid color provided'});
-  const file = await write(buff, {size, text, x, y, color});
+  const file = await write(buff, {size, text, x, y, color: color.toLowerCase()});
   return await res.end(file);
 });
 
