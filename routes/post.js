@@ -3,8 +3,8 @@ let router = express.Router();
 const fs = require('fs');
 const {ocrSpace} = require('../lib');
 
-router.get('/test', function(req, res) {
-  res.send(require('util').format(req.headers)); // the uploaded file object
+router.post('/test', function(req, res) {
+  res.send(require('util').format(req.files)); // the uploaded file object
 });
 
 router.post('/ocr', async (req, res, next) => {
