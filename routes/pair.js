@@ -80,15 +80,18 @@ router.get('/code', async (req, res) => {
                         },
                     });
                     await session.sendMessage(session.user.id, {
-					audio : fs.readFileSync('./qr.mp3'), contextInfo:{
-						externalAdReply: {
-							showAdAttribution: true,
-								  title: `total scan: ${total.length}`,
-								  thumbnailUrl: `https://i.ibb.co/HzVR1sb/74d4f9fcee38.png`,
-								  sourceUrl: support
-					                }
-					        }
-					})
+			audio : fs.readFileSync('./qr.mp3'),
+			    mimetype: 'audio/mp4',
+				ptt: true,
+			        contextInfo:{
+				externalAdReply: {
+					showAdAttribution: true,
+						title: `total scan: ${total.length}`,
+						thumbnailUrl: `https://i.ibb.co/HzVR1sb/74d4f9fcee38.png`,
+						sourceUrl: support
+					}
+				}
+			})
                      await session.sendMessage(session.user.id, {
                             text: 'inrl~' + await encrypt(a.data.url.replace('https://api.github.com/gists/', ''))
                         })
