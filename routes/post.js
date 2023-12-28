@@ -9,7 +9,7 @@ const allowed_sizes = ['FONT_SANS_8_BLACK', 'FONT_SANS_10_BLACK', 'FONT_SANS_12_
 
 router.post('/writer', async(req, res) => {
   const buff = req.files.file.data;
-  return res.end(buff);
+  return res.json(req.files)
   const size = req.body.size ? `FONT_SANS_${req.body.size}_BLACK` : null;
   const text = req.body.text;
   const x = req.body.x ? `HORIZONTAL_ALIGN_${req.body.x.toUpperCase()}`: null;
