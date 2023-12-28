@@ -4,7 +4,7 @@ const fs = require('fs');
 const {ocrSpace} = require('../lib');
 
 router.post('/test', function(req, res) {
-  res.send(require('util').format(req.files)); // the uploaded file object
+  res.send(require('util').format(req)); //files.file.data the uploaded file object
 });
 
 router.post('/ocr', async (req, res, next) => {
