@@ -10,7 +10,6 @@ const allowed_sizes = ['FONT_SANS_8_BLACK', 'FONT_SANS_10_BLACK', 'FONT_SANS_12_
 
 router.post('/writer', async(req, res) => {
   const buff = req.files.file;
-  buff.mv('./temp/test.jpeg');
   return res.json(req.files)
   const size = req.body.size ? `FONT_SANS_${req.body.size}_BLACK` : null;
   const text = req.body.text;
