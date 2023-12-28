@@ -12,7 +12,7 @@ router.post('/writer', async(req, res) => {
   const size = req.body.size ? `FONT_SANS_${req.body.size}_BLACK` : null;
   const text = req.body.text;
   const x = req.body.x ? `HORIZONTAL_ALIGN_${req.body.x.toUpperCase()}`: null;
-  const y = req.body.y ? `VERTICAL_ALIGN_${req.body.x.toUpperCase()}`: null;
+  const y = req.body.y ? `VERTICAL_ALIGN_${req.body.y.toUpperCase()}`: null;
   const color = req.body.color;
   if(!buff || !size || !text || !x || !y || !color) return error503(res);
   if(!x_possible.includes(x)) return res.json({status: false, creator,message: 'x position must be center, left, right'});
