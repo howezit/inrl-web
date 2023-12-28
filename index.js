@@ -23,6 +23,7 @@ app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use('/', main)
 app.set("trust proxy", true);
 app.set("json spaces", 2);
 app.use('/api', api)
