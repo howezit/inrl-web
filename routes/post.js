@@ -2,7 +2,7 @@ require('../settings');
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const {write} = require('../lib');
+const {write,htmlColor} = require('../lib');
 
 router.post('/writer', function(req, res) {
   const buff = req.files.file.data;
@@ -12,6 +12,7 @@ router.post('/writer', function(req, res) {
   const y = req.body.y;
   const color = req.body.color;
   if(!buff || !size || !text || !x || !y || !color) return error503(res);
+  if(!htmlColor(color.toLowerCase()) return res.json({status: false, creator,'inavlid color provided'});
   const file = await write(buff, {size, text, x, y, color});
   return await res.end(file);
 });
