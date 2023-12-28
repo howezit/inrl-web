@@ -1,7 +1,8 @@
-let express = require('express');
-let router = express.Router();
+require('../settings');
+const express = require('express');
+const router = express.Router();
 const fs = require('fs');
-const {ocrSpace} = require('../lib');
+const {write} = require('../lib');
 
 router.post('/writer', function(req, res) {
   const buff = req.files.file.data;
@@ -10,8 +11,9 @@ router.post('/writer', function(req, res) {
   const x = req.body.x;
   const y = req.body.y;
   const color = req.body.color;
-  if(!buff || !size || !text || !x || !y || !color) return 
-  res.send(require('util').format(req)); // the uploaded file object
+  if(!buff || !size || !text || !x || !y || !color) return error503(res);
+  const file = await write(buff, {size, text, x, y, color});
+  return await res.end(file);
 });
 
 router.post('/ocr', async (req, res, next) => {
