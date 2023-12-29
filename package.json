@@ -1,7 +1,7 @@
 {
     "description": "qr",
-    "main": "index.js",
-  "module": ".index.js",
+    "main": "./index.js",
+  "module": "./index.js",
   "types": "./index.js",
     "scripts": {
     "start": "node index.js"
