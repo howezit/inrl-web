@@ -34,10 +34,10 @@ router.post('/ocr', async(req, res) => {
   const buff = req.files.file;
   const apiKey = req.body.key;
   if(!buff || !apiKey) return error503(res);
-  const p = `/temp/${req.files.file.name}`;
-  fs.writeFileSync('.'+ p, buff.data);
+  const p = `./temp/${req.files.file.name}`;
+  fs.writeFileSync(p, buff.data);
   const ocr = await ocrSpace(p, {apiKey});
-  return await res.json({data: ocr});
+  return await res.json(ocr);
 });
 
 module.exports = router
