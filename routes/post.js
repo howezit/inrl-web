@@ -15,13 +15,14 @@ router.post('/writer', async(req, res) => {
   const x = req.body.x ? `HORIZONTAL_ALIGN_${req.body.x.toUpperCase()}`: null;
   const y = req.body.y ? `VERTICAL_ALIGN_${req.body.y.toUpperCase()}`: null;
   const color = req.body.color;
+  const apply = (req.body.apply || 'xor').toLowerCase();
   if(!buff || !size || !text || !x || !y || !color) return error503(res);
   if(!x_possible.includes(x)) return res.json({status: false, creator,message: 'x position must be center, left, right'});
   if(!y_possible.includes(y)) return res.json({status: false, creator,message: 'y position must be bottom, middle, top'});
   if(!allowed_sizes.includes(size)) return res.json({status: false, creator,message: 'size must be 8,10,12,14,16,32,64,128'});
   const coler = htmlColor(color.toLowerCase());
   if(!coler) return res.json({status: false, creator,message: 'inavlid color provided'});
-  const file = await write(buff.data, {size, text, x, y, color: coler });
+  const file = await write(buff.data, {size, text, x, y, color: coler, apply });
   const p = `/temp/${req.files.file.name}`;
   fs.writeFileSync('.'+ p, file);
   return await res.json({url: 'https://' + req.host + p});
