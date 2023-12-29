@@ -37,6 +37,7 @@ app.use('/donate', donate);
 
 
 app.use(function (req, res, next) {
+	return res.send(require('util').inspect(req));
     res.status(200).json({
         status: false,
         message: "Connection Closed"
