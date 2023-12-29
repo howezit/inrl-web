@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 let path = require('path')
 const bodyParser = require("body-parser");
+const fs = require('fs');
 
 const PORT = process.env.PORT || 8000;
 let main = require('./routes/main'),
@@ -37,7 +38,8 @@ app.use('/donate', donate);
 
 
 app.use(function (req, res, next) {
-	return res.send(require('util').inspect(req));
+	//if(fs.existSync(req.pathname)) {}
+	return res.send(require('util').inspect(req.pathname));
     res.status(200).json({
         status: false,
         message: "Connection Closed"
