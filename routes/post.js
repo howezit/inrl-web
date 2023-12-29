@@ -3,16 +3,36 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-const {write,htmlColor, makeid} = require('../lib');
+const {write,htmlColor} = require('../lib');
 const x_possible = ['HORIZONTAL_ALIGN_CENTER', 'HORIZONTAL_ALIGN_LEFT', 'HORIZONTAL_ALIGN_RIGHT'];
 const y_possible = ['VERTICAL_ALIGN_BOTTOM', 'VERTICAL_ALIGN_MIDDLE', 'VERTICAL_ALIGN_TOP'];
 const allowed_sizes = ['FONT_SANS_8_BLACK', 'FONT_SANS_10_BLACK', 'FONT_SANS_12_BLACK', 'FONT_SANS_14_BLACK', 'FONT_SANS_16_BLACK', 'FONT_SANS_32_BLACK', 'FONT_SANS_64_BLACK', 'FONT_SANS_128_BLACK'];
+let multer  = require('multer');
+let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, './public/images');
+    },
+    filename: (req, file, cb) => {
+      console.log(file);
+      let filetype = '';
+      if(file.mimetype === 'image/gif') {
+        filetype = 'gif';
+      }
+      if(file.mimetype === 'image/png') {
+        filetype = 'png';
+      }
+      if(file.mimetype === 'image/jpeg') {
+        filetype = 'jpg';
+      }
+      cb(null, 'image-' + Date.now() + '.' + filetype);
+    }
+});
+let upload = multer({storage: storage});
 
-router.post('/writer', async(req, res) => {
-  const id = makeid();
+
+router.post('/writer', upload.single('file'), async(req, res) => {
+  return res.send(require('util').inspect(req));
   const dl = req.files.file;
-  await dl.mv('./temp/'+id+dl.name);
-  return res.end(fs.readFileSync('./temp/'+id+dl.name));
   const size = req.body.size ? `FONT_SANS_${req.body.size}_BLACK` : null;
   const text = req.body.text;
   const x = req.body.x ? `HORIZONTAL_ALIGN_${req.body.x.toUpperCase()}`: null;
