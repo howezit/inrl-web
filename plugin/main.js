@@ -5,9 +5,8 @@ const path = require('path');
 const fs = require('fs');
 const htmlfile = require('./make');
 const axios = require('axios');
-const {getUser,saveUser} = require('../lib');
+const {getUser,saveUser,makeid} = require('../lib');
 const {Octokit} = require("@octokit/core");
-const {makeid} = require('../encrypt');
 
 
 router.get('/get', async (req, res) => {
