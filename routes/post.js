@@ -36,14 +36,13 @@ router.post('/writer', upload.single('file'), async(req, res) => {
   const x = req.body.x ? `HORIZONTAL_ALIGN_${req.body.x.toUpperCase()}`: null;
   const y = req.body.y ? `VERTICAL_ALIGN_${req.body.y.toUpperCase()}`: null;
   const color = req.body.color;
-  return res.send(require('util').inspect(req));
   if(!buff || !size || !text || !x || !y || !color) return error503(res);
   if(!x_possible.includes(x)) return res.json({status: false, creator,message: 'x position must be center, left, right'});
   if(!y_possible.includes(y)) return res.json({status: false, creator,message: 'y position must be bottom, middle, top'});
   if(!allowed_sizes.includes(size)) return res.json({status: false, creator,message: 'size must be 8,10,12,14,16,32,64,128'});
   const coler = htmlColor(color.toLowerCase());
   if(!coler) return res.json({status: false, creator,message: 'inavlid color provided'});
-  const file = await write(fs.readFileSync('./temp/test.jpeg'), {size, text, x, y, color: coler });
+  const file = await write(fs.readFileSync(req.file.path), {size, text, x, y, color: coler });
   res.set('content-type', 'image/jpeg');
   return await res.send(file);
 });
