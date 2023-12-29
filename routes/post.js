@@ -10,7 +10,7 @@ const allowed_sizes = ['FONT_SANS_8_BLACK', 'FONT_SANS_10_BLACK', 'FONT_SANS_12_
 let multer  = require('multer');
 let storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, './public/images');
+      cb(null, './temp');
     },
     filename: (req, file, cb) => {
       console.log(file);
@@ -31,13 +31,12 @@ let upload = multer({storage: storage});
 
 
 router.post('/writer', upload.single('file'), async(req, res) => {
-  return res.send(require('util').inspect(req));
-  const dl = req.files.file;
   const size = req.body.size ? `FONT_SANS_${req.body.size}_BLACK` : null;
   const text = req.body.text;
   const x = req.body.x ? `HORIZONTAL_ALIGN_${req.body.x.toUpperCase()}`: null;
   const y = req.body.y ? `VERTICAL_ALIGN_${req.body.y.toUpperCase()}`: null;
   const color = req.body.color;
+  return res.send(require('util').inspect(req));
   if(!buff || !size || !text || !x || !y || !color) return error503(res);
   if(!x_possible.includes(x)) return res.json({status: false, creator,message: 'x position must be center, left, right'});
   if(!y_possible.includes(y)) return res.json({status: false, creator,message: 'y position must be bottom, middle, top'});
