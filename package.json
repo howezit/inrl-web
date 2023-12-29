@@ -11,7 +11,7 @@
   "dependencies": {
     "qr-with-logo":"1.0.5",
     "@whiskeysockets/baileys": "^6.5.0",
-    "multer": "^1.4.1",
+    "express-fileupload": "^1.4.0",
     "moment-timezone": "^0.5.34",
     "countries-and-timezones": "^3.5.1",
     "awesome-phonenumber": "^2.64.0",
