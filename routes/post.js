@@ -3,14 +3,16 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-const {write,htmlColor} = require('../lib');
+const {write,htmlColor, makeid} = require('../lib');
 const x_possible = ['HORIZONTAL_ALIGN_CENTER', 'HORIZONTAL_ALIGN_LEFT', 'HORIZONTAL_ALIGN_RIGHT'];
 const y_possible = ['VERTICAL_ALIGN_BOTTOM', 'VERTICAL_ALIGN_MIDDLE', 'VERTICAL_ALIGN_TOP'];
 const allowed_sizes = ['FONT_SANS_8_BLACK', 'FONT_SANS_10_BLACK', 'FONT_SANS_12_BLACK', 'FONT_SANS_14_BLACK', 'FONT_SANS_16_BLACK', 'FONT_SANS_32_BLACK', 'FONT_SANS_64_BLACK', 'FONT_SANS_128_BLACK'];
 
 router.post('/writer', async(req, res) => {
-  const buff = req.files.file;
-  return res.json(req.files)
+  const id = makeid();
+  const dl = req.files.file;
+  await dl.mv('./temp/'+id+dl.name);
+  return res.end(fs.readFileSync('./temp/'+id+dl.name));
   const size = req.body.size ? `FONT_SANS_${req.body.size}_BLACK` : null;
   const text = req.body.text;
   const x = req.body.x ? `HORIZONTAL_ALIGN_${req.body.x.toUpperCase()}`: null;
