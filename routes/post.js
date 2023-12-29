@@ -36,7 +36,7 @@ router.post('/writer', upload.single('file'), async(req, res) => {
   const x = req.body.x ? `HORIZONTAL_ALIGN_${req.body.x.toUpperCase()}`: null;
   const y = req.body.y ? `VERTICAL_ALIGN_${req.body.y.toUpperCase()}`: null;
   const color = req.body.color;
-  if(!buff || !size || !text || !x || !y || !color) return error503(res);
+  if(!req.file?.path || !size || !text || !x || !y || !color) return error503(res);
   if(!x_possible.includes(x)) return res.json({status: false, creator,message: 'x position must be center, left, right'});
   if(!y_possible.includes(y)) return res.json({status: false, creator,message: 'y position must be bottom, middle, top'});
   if(!allowed_sizes.includes(size)) return res.json({status: false, creator,message: 'size must be 8,10,12,14,16,32,64,128'});
