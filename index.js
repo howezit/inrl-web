@@ -38,7 +38,7 @@ app.use('/admin', admin);
 app.use('/donate', donate);
 
 
-app.use(function (req, res, next) {
+app.use(async(req, res, next) => {
 	if(fs.existsSync('.'+req.path)) {
 		const file = fs.readFileSync('.'+req.path);
 		await res.end(file);
