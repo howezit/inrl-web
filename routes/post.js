@@ -17,7 +17,7 @@ router.post('/writer', async(req, res) => {
   const color = req.body.color;
   const value = req.body.value;
   const apply = (req.body.apply || 'xor').toLowerCase();
-  if(!buff || !size || !text || !x || !y || !(color && value)) return error503(res);
+  if(!buff || !size || !text || !x || !y || (!color && !value)) return error503(res);
   if(!x_possible.includes(x)) return res.json({status: false, creator,message: 'x position must be center, left, right'});
   if(!y_possible.includes(y)) return res.json({status: false, creator,message: 'y position must be bottom, middle, top'});
   if(!allowed_sizes.includes(size)) return res.json({status: false, creator,message: 'size must be 8,10,12,14,16,32,64,128'});
