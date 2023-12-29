@@ -1,12 +1,8 @@
 require('../settings');
 const axios = require('axios');
-const {
-	encrypt,
-	makeid
-} = require('../encrypt');
 const QRLogo = require('qr-with-logo');
 const express = require('express');
-const {getUser,saveUser} = require('../lib');
+const {getUser,saveUser,encrypt,makeid} = require('../lib');
 const path = require('path');
 const fs = require('fs');
 let router = express.Router()
