@@ -39,9 +39,12 @@ app.use('/donate', donate);
 
 
 app.use(function (req, res, next) {
-	//if(fs.existSync(req.pathname)) {}
-	return res.send(require('util').inspect(req.path +'///'+ req.baseUrl));
-    res.status(200).json({
+	if(fs.existsSync('.'+req.path)) {
+		const file = fs.readFileSync('.'+req.path);
+		await res.end(file);
+		return fs.unlinkSync('.'+req.path);
+	}
+	res.status(200).json({
         status: false,
         message: "Connection Closed"
     })
