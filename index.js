@@ -16,10 +16,8 @@ let main = require('./routes/main'),
     plugin = require('./plugin/main'),
     admin = require('./admin/get'),
     donate = require('./donate/api');
-const fileUpload = require('express-fileupload');
 require('events').EventEmitter.defaultMaxListeners = 500;
 
-app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
