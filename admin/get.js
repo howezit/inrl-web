@@ -4,8 +4,7 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
-const {decrypt} = require('../encrypt');
-const {getUser,saveUser} = require('../lib');
+const {getUser,saveUser,decrypt} = require('../lib');
 
 router.get('/ads', async (req, res) => {
     const key = req.query.key, type = req.query.type, wa = req.query.wa, msg = req.query.msg, git = req.query.git;
