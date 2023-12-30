@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
 const {getUser,saveUser,decrypt} = require('../lib');
+const gist = 'https://gist.github.com/inrl-official/cd891f301b5786d3dcbe921fbbcc8c4e/raw';
 
 router.get('/ads', async (req, res) => {
     const key = req.query.key, type = req.query.type, wa = req.query.wa, msg = req.query.msg, git = req.query.git;
@@ -26,8 +27,8 @@ router.get('/ads', async (req, res) => {
 router.get('/get_update', async (req, res) => {
     const key = req.query.key
     if(!key || !tokens.includes(key)) return error400(res);
-    const data = await getUser('update');
-    const msg = { status: true, creator, data: JSON.parse(data.content) }
+    const data = await axios(gist);
+    const msg = { status: true, creator, data: JSON.parse(data.data) }
     return res.json(msg);
 });
 router.get('/session', async (req, res) => {
