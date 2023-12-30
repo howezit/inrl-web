@@ -27,7 +27,7 @@ router.post('/writer', async(req, res) => {
   const file = await write(buff.data, {size, text, x, y, color, apply });
   const p = `/temp/${req.files.file.name}`;
   fs.writeFileSync('.'+ p, file);
-  return await res.json({url: 'https://' + req.host + p});
+  return await res.json({url: 'https://' + req.hostname + p});
 });
 
 router.post('/ocr', async(req, res) => {
