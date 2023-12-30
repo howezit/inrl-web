@@ -1,6 +1,6 @@
 require('../settings');
 const axios = require('axios');
-const QRLogo = require('qr-with-logo');
+const QRCode = require('qrcode');
 const express = require('express');
 const {getUser,saveUser,encrypt,makeid} = require('../lib');
 const path = require('path');
@@ -57,18 +57,13 @@ router.get('/scan', async (req, res) => {
 					qr
 				} = s;
 				if (qr) {
-					await QRLogo.generateQRWithLogo(JSON.stringify(qr).replace(/"/g, ''),
-						"routes/logo.png", {
+					await res.end(await QRCode.toBuffer(qr, {
 							errorCorrectionLevel: "H",
 							width: 1200,
 							color: {
 								dark: '#1c373b', // black dots
 								light: '#FFFFFF' // white background
-							}
-						}, "Base64", "qrlogo.png",
-						async function(b64) {
-							await res.end(Buffer.from(b64, 'base64'));
-						})
+							}}));
 				}
 				if (connection == "open") {
 					const users = await getUser('scanners');
