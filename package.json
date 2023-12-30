@@ -9,7 +9,6 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "qr-with-logo":"1.0.5",
     "@whiskeysockets/baileys": "^6.5.0",
     "express-fileupload": "^1.4.0",
     "moment-timezone": "^0.5.34",
