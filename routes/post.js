@@ -40,4 +40,24 @@ router.post('/ocr', async(req, res) => {
   return await res.json(ocr);
 });
 
+router.post('/jail', async(req, res) => {
+  const buff = req.files.file;
+  const text = req.body.text;
+  const style = req.body.style;
+  const size = req.body.size;
+  const color = req.body.color;
+  const border = req.body.border;
+  if(!buff || !text || !style|| !size|| !color|| !border) return error503(res);
+  if(!text.length > 50) return res.json({status: false, creator,message: 'text limit over, max possible:50,'});
+  const file = await jail(buff.data, {path: req.files.file.name, text, style, size, color, border});
+  return await res.json({url: 'https://' + req.hostname + file});
+});
+
+router.post('/wanted', async(req, res) => {
+  const buff = req.files.file;
+  if(!buff) return error503(res);
+  const file = await wanted(buff.data, {path: req.files.file.name});
+  return await res.json({url: 'https://' + req.hostname + file});
+});
+
 module.exports = router
