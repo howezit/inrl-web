@@ -4,6 +4,5 @@ WORKDIR /root/inrl/
 COPY package*.json ./
 RUN npm install
 RUN apt -y update && apt -y upgrade imagemagick python graphicsmagick sudo npm yarn curl && sudo apt install -y nodejs && sudo apt install fontconfig
-&&  
 COPY . .
 CMD ["node", "index.js"]
