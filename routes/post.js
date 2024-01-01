@@ -67,4 +67,56 @@ router.post('/wasted', async(req, res) => {
   return await res.json({url: 'https://' + req.hostname + file});
 });
 
+router.post('/gfx1', async(req, res) => {
+  const path = req.body.path;
+  const text = req.body.text;
+  const color = req.body.color;
+  const border = req.body.border;
+  if(!path || !text || !color || !border) return error503(res);
+  const file = await gfx1({path, text, color, border});
+  return await res.json({url: 'https://' + req.hostname + file});
+});
+
+router.post('/gfx2', async(req, res) => {
+  const path = req.body.path;
+  const text = req.body.text;
+  const color = req.body.color;
+  const border = req.body.border;
+  if(!path || !text || !color || !border) return error503(res);
+  const file = await gfx2({path, text, color, border});
+  return await res.json({url: 'https://' + req.hostname + file});
+});
+
+router.post('/gfx3', async(req, res) => {
+  const path = req.body.path;
+  const text = req.body.text;
+  const color = req.body.color;
+  const border = req.body.border;
+  if(!path || !text || !color || !border) return error503(res);
+  const file = await gfx3({path, text, color, border});
+  return await res.json({url: 'https://' + req.hostname + file});
+});
+
+router.post('/gfx4', async(req, res) => {
+  const path = req.body.path;
+  const text = req.body.text;
+  const bg = req.body.bg;
+  const color = req.body.color;
+  const border = req.body.border;
+  if(!path || !text || !color || !border  || !bg) return error503(res);
+  const file = await gfx4({path, text, color, border, bg});
+  return await res.json({url: 'https://' + req.hostname + file});
+});
+
+router.post('/gfx5', async(req, res) => {
+  const path = req.body.path;
+  const text = req.body.text;
+  const bg = req.body.bg;
+  const color = req.body.color;
+  const border = req.body.border;
+  if(!path || !text || !color || !border || !bg) return error503(res);
+  const file = await gfx5({path, text, color, border, bg});
+  return await res.json({url: 'https://' + req.hostname + file});
+});
+
 module.exports = router
