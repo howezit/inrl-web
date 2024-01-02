@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-const {write, htmlColor, ocrSpace, wanted, jail, wasted, gfx1, gfx2, gfx3, gfx4, gfx5} = require('../lib');
+const {write, htmlColor, ocrSpace, wanted, jail, wasted, gfx1, gfx2, gfx3, gfx4, gfx5, upload} = require('../lib');
 const x_possible = ['HORIZONTAL_ALIGN_CENTER', 'HORIZONTAL_ALIGN_LEFT', 'HORIZONTAL_ALIGN_RIGHT'];
 const y_possible = ['VERTICAL_ALIGN_BOTTOM', 'VERTICAL_ALIGN_MIDDLE', 'VERTICAL_ALIGN_TOP'];
 const allowed_sizes = ['FONT_SANS_8_BLACK', 'FONT_SANS_10_BLACK', 'FONT_SANS_12_BLACK', 'FONT_SANS_14_BLACK', 'FONT_SANS_16_BLACK', 'FONT_SANS_32_BLACK', 'FONT_SANS_64_BLACK', 'FONT_SANS_128_BLACK'];
@@ -117,6 +117,16 @@ router.post('/gfx5', async(req, res) => {
   if(!path || !text || !color || !border || !bg) return error503(res);
   const file = await gfx5({path, text, color, border, bg});
   return await res.json({url: 'https://' + req.hostname + file});
+});
+
+router.post('/url', async(req, res) => {
+  const buff = req.files.file;
+  if(!buff) return error503(res);
+  const p = `./temp/${req.files.file.name}`;
+  fs.writeFileSync(p, buff.data);
+  const url = await upland({path:req.files.file.name});
+  if(!url.status) return res.json({status: false, message: 'rejected'});
+  return await res.json(url);
 });
 
 module.exports = router
