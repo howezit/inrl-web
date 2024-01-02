@@ -29,7 +29,8 @@ const {
     generateV2,
     generate,
     Insta,
-    getFBInfo
+    getFBInfo,
+    googleIt
 } = require('../lib');
 
 const {
@@ -126,6 +127,20 @@ router.get('/ig', async (req, res) => {
         message: 'give me a name!'
     })
     const data = await igstalk(id);
+    return res.json({
+        creator: `${creator}`,
+        result: data
+    })
+})
+
+router.get('/gs', async (req, res) => {
+    let id = req.query.text;
+    if (!id) return res.json({
+        status: false,
+        creator: `${creator}`,
+        message: 'give me a text to search'
+    })
+    const data = await googleIt(id);
     return res.json({
         creator: `${creator}`,
         result: data
