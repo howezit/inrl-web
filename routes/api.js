@@ -30,7 +30,9 @@ const {
     generate,
     Insta,
     getFBInfo,
-    googleIt
+    googleIt,
+    attp,
+    ttp
 } = require('../lib');
 
 const {
@@ -131,6 +133,28 @@ router.get('/ig', async (req, res) => {
         creator: `${creator}`,
         result: data
     })
+})
+
+router.get('/attp', async (req, res) => {
+    let id = req.query.text;
+    if (!id) return res.json({
+        status: false,
+        creator: `${creator}`,
+        message: 'give me a text!'
+    })
+    const data = await attp(id);
+    return res.end(data);
+})
+
+router.get('/ttp', async (req, res) => {
+    let id = req.query.text;
+    if (!id) return res.json({
+        status: false,
+        creator: `${creator}`,
+        message: 'give me a text!'
+    })
+    const data = await ttp(id);
+    return res.end(data);
 })
 
 router.get('/gs', async (req, res) => {
