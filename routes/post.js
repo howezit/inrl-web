@@ -124,7 +124,7 @@ router.post('/url', async(req, res) => {
   if(!buff) return error503(res);
   const p = `./temp/${req.files.file.name}`;
   fs.writeFileSync(p, buff.data);
-  const url = await upload({path:req.files.file.name});
+  const url = await upload({path: '/temp/' + req.files.file.name});
   if(!url.status) return res.json({status: false, message: url.error});
   return await res.json(url);
 });
