@@ -16,6 +16,7 @@ imgur = '3ca8036b07e0f25';
 
 //message.events({});//
 start = ''
+block = ['918113921898','917034892686'];
 update = {
     key:"poll",
     message:{
