@@ -1,7 +1,5 @@
 require('../settings');
-const {
-textpro
-} = require('mumaker');
+const { textpro } = require('../lib');
 const express = require('express');
 const router = express.Router();
 
