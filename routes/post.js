@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-const {write, htmlColor, ocrSpace, wanted, jail, wasted, gfx1, gfx2, gfx3, gfx4, gfx5, upload, gfx6, gfx7, gfx8} = require('../lib');
+const {write, htmlColor, ocrSpace, wanted, jail, wasted, upload} = require('../lib');
 const x_possible = ['HORIZONTAL_ALIGN_CENTER', 'HORIZONTAL_ALIGN_LEFT', 'HORIZONTAL_ALIGN_RIGHT'];
 const y_possible = ['VERTICAL_ALIGN_BOTTOM', 'VERTICAL_ALIGN_MIDDLE', 'VERTICAL_ALIGN_TOP'];
 const allowed_sizes = ['FONT_SANS_8_BLACK', 'FONT_SANS_10_BLACK', 'FONT_SANS_12_BLACK', 'FONT_SANS_14_BLACK', 'FONT_SANS_16_BLACK', 'FONT_SANS_32_BLACK', 'FONT_SANS_64_BLACK', 'FONT_SANS_128_BLACK'];
@@ -67,58 +67,6 @@ router.post('/wasted', async(req, res) => {
   return await res.json({url: 'https://' + req.hostname + file});
 });
 
-router.post('/gfx1', async(req, res) => {
-  const path = req.body.path;
-  const text = req.body.text;
-  const color = req.body.color;
-  const border = req.body.border;
-  if(!path || !text || !color || !border) return error503(res);
-  const file = await gfx1({path, text, color, border});
-  return await res.json({url: 'https://' + req.hostname + file});
-});
-
-router.post('/gfx2', async(req, res) => {
-  const path = req.body.path;
-  const text = req.body.text;
-  const color = req.body.color;
-  const border = req.body.border;
-  if(!path || !text || !color || !border) return error503(res);
-  const file = await gfx2({path, text, color, border});
-  return await res.json({url: 'https://' + req.hostname + file});
-});
-
-router.post('/gfx3', async(req, res) => {
-  const path = req.body.path;
-  const text = req.body.text;
-  const color = req.body.color;
-  const border = req.body.border;
-  if(!path || !text || !color || !border) return error503(res);
-  const file = await gfx3({path, text, color, border});
-  return await res.json({url: 'https://' + req.hostname + file});
-});
-
-router.post('/gfx4', async(req, res) => {
-  const path = req.body.path;
-  const text = req.body.text;
-  const bg = req.body.bg;
-  const color = req.body.color;
-  const border = req.body.border;
-  if(!path || !text || !color || !border  || !bg) return error503(res);
-  const file = await gfx4({path, text, color, border, bg});
-  return await res.json({url: 'https://' + req.hostname + file});
-});
-
-router.post('/gfx5', async(req, res) => {
-  const path = req.body.path;
-  const text = req.body.text;
-  const bg = req.body.bg;
-  const color = req.body.color;
-  const border = req.body.border;
-  if(!path || !text || !color || !border || !bg) return error503(res);
-  const file = await gfx5({path, text, color, border, bg});
-  return await res.json({url: 'https://' + req.hostname + file});
-});
-
 router.post('/url', async(req, res) => {
   const buff = req.files.file;
   if(!buff) return error503(res);
@@ -128,41 +76,5 @@ router.post('/url', async(req, res) => {
   if(!url.status) return res.json({status: false, message: 'rejected' });
   return await res.json(url);
 });
-
-router.post('/gfx6', async(req, res) => {
-  const path = req.body.path;
-  const text = req.body.text;
-  const style = req.body.style;
-  const color = req.body.color;
-  const border = req.body.border;
-  if(!path || !text || !color || !border || !style) return error503(res);
-  const file = await gfx6({path, text, color, border, style});
-  return await res.json({url: 'https://' + req.hostname + file});
-});
-
-router.post('/gfx7', async(req, res) => {
-  const path = req.body.path;
-  const text = req.body.text;
-  const style = req.body.style;
-  const color = req.body.color;
-  const border = req.body.border;
-  const text2 = req.body.text2;
-  if(!path || !text || !color || !border || !style) return error503(res);
-  const file = await gfx7({path, text, color, border, style, text2});
-  return await res.json({url: 'https://' + req.hostname + file});
-});
-
-router.post('/gfx8', async(req, res) => {
-  const path = req.body.path;
-  const text = req.body.text;
-  const style = req.body.style;
-  const color = req.body.color;
-  const border = req.body.border;
-  const text2 = req.body.text2;
-  if(!path || !text || !color || !border || !style) return error503(res);
-  const file = await gfx8({path, text, color, border, style, text2});
-  return await res.json({url: 'https://' + req.hostname + file});
-});
-
 
 module.exports = router
