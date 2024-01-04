@@ -12,6 +12,7 @@ let main = require('./routes/main'),
     code = require('./routes/pair'),
     info = require('./routes/info/info'),
     post = require('./routes/post'),
+    textpro = require('./routes/textpro'),
     logo = require('./routes/logo'),
     vars = require('./routes/info/var'),
     plugin = require('./plugin/main'),
@@ -27,11 +28,12 @@ app.use('/', main)
 app.set("trust proxy", true);
 app.set("json spaces", 2);
 app.use('/api', api)
+app.use('/api/post', post);
+app.use('/api/textpro', textpro);
 app.use('/info/bot/var', vars)
 app.use('/server', server);
 app.use('/pair', code);
 app.use('/info', info)
-app.use('/post', post);
 app.use('/logo', logo);
 app.use('/plugins', plugin);
 app.use('/admin', admin);
