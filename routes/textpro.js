@@ -22,7 +22,7 @@ router.get('/dragon', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 
@@ -42,7 +42,7 @@ router.get('/pornhub', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 
@@ -62,7 +62,7 @@ router.get('/blood', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 
@@ -82,7 +82,7 @@ router.get('/1917', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/marvel', async (req, res) => {
@@ -101,7 +101,7 @@ router.get('/marvel', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/spooky', async (req, res) => {
@@ -120,7 +120,7 @@ router.get('/spooky', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/toxic', async (req, res) => {
@@ -139,7 +139,7 @@ router.get('/toxic', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/avengers', async (req, res) => {
@@ -158,7 +158,7 @@ router.get('/avengers', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/gameover', async (req, res) => {
@@ -177,7 +177,7 @@ router.get('/gameover', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/window', async (req, res) => {
@@ -196,7 +196,7 @@ router.get('/window', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/summer', async (req, res) => {
@@ -215,7 +215,7 @@ router.get('/summer', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/forework', async (req, res) => {
@@ -234,7 +234,7 @@ router.get('/forework', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/sliced', async (req, res) => {
@@ -253,7 +253,7 @@ router.get('/sliced', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/naruto', async (req, res) => {
@@ -272,7 +272,7 @@ router.get('/naruto', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/3dbox', async (req, res) => {
@@ -291,7 +291,7 @@ router.get('/3dbox', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/batman', async (req, res) => {
@@ -310,7 +310,7 @@ router.get('/batman', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/dropwater', async (req, res) => {
@@ -329,7 +329,7 @@ router.get('/dropwater', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/sand', async (req, res) => {
@@ -348,7 +348,7 @@ router.get('/sand', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/palm', async (req, res) => {
@@ -367,7 +367,7 @@ router.get('/palm', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/lava', async (req, res) => {
@@ -386,7 +386,7 @@ router.get('/lava', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/pottery', async (req, res) => {
@@ -405,7 +405,7 @@ router.get('/pottery', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/wall', async (req, res) => {
@@ -424,7 +424,7 @@ router.get('/wall', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/slime', async (req, res) => {
@@ -443,7 +443,7 @@ router.get('/slime', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/skeleton', async (req, res) => {
@@ -462,7 +462,7 @@ router.get('/skeleton', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/business', async (req, res) => {
@@ -481,7 +481,7 @@ router.get('/business', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/star', async (req, res) => {
@@ -500,7 +500,7 @@ router.get('/star', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/typography', async (req, res) => {
@@ -519,7 +519,7 @@ router.get('/typography', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/natural', async (req, res) => {
@@ -538,7 +538,7 @@ router.get('/natural', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/birthday', async (req, res) => {
@@ -557,7 +557,7 @@ router.get('/birthday', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/road', async (req, res) => {
@@ -576,7 +576,7 @@ router.get('/road', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/pokemon', async (req, res) => {
@@ -595,7 +595,7 @@ router.get('/pokemon', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/magma', async (req, res) => {
@@ -614,7 +614,7 @@ router.get('/magma', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/carbon', async (req, res) => {
@@ -633,7 +633,7 @@ router.get('/carbon', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/giraffe', async (req, res) => {
@@ -652,7 +652,7 @@ router.get('/giraffe', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/metallic', async (req, res) => {
@@ -671,7 +671,7 @@ router.get('/metallic', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/eroded', async (req, res) => {
@@ -690,7 +690,7 @@ router.get('/eroded', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/gold', async (req, res) => {
@@ -709,7 +709,7 @@ router.get('/gold', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/deep', async (req, res) => {
@@ -728,7 +728,7 @@ router.get('/deep', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/scary', async (req, res) => {
@@ -747,7 +747,7 @@ router.get('/scary', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/ancient', async (req, res) => {
@@ -766,7 +766,7 @@ router.get('/ancient', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/captain', async (req, res) => {
@@ -785,7 +785,7 @@ router.get('/captain', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 router.get('/whitegold', async (req, res) => {
@@ -804,7 +804,7 @@ router.get('/whitegold', async (req, res) => {
 			result: result.image
 		});
 	} catch {
-		return error500(res)
+		return error200(res)
 	}
 })
 
