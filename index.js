@@ -22,6 +22,7 @@ const main = require('./routes/main'),
 	tokens = require('./routes/tokens'),
 	tools = require('./routes/tools'),
 	maker = require('./routes/maker'),
+	stalk = require('./routes/stalk'),
 	vars = require('./routes/info/var'),
 	plugin = require('./plugin/main'),
 	admin = require('./admin/get'),
@@ -45,6 +46,7 @@ async function start() {
 	app.use('/api/gfx', gfx);
 	app.use('/api/tools', tools);
 	app.use('/api/maker', maker);
+	app.use('/api/stalk', stalk);
 	app.use('/api/tokens', tokens);
 	app.use('/info/bot/var', vars)
 	app.use('/server', server);
