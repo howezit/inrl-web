@@ -2,13 +2,13 @@ require('../settings');
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const PDFDocument = require('pdfkit');
 const {
 	ocrSpace,
 	gpt6,
 	addLimit,
 	Fancy,
-	Fancylist
+	Fancylist,
+	pdf
 } = require('../lib');
 const keys = inrlkeys.map(a => a.k)
 const QRCode = require('qrcode');
@@ -120,16 +120,18 @@ router.post('/ocr', async (req, res) => {
 });
 router.post('/pdf', async (req, res) => {
 	try {
-		const buff = req.files.file;
+		const buff = req.files.files;
 		const apikey = req.body.apikey;
+		const text = req.body.text;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
 		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
-		if (!buff) return errorMsg(res, 'missing appended file');
-		return res.json(require('util').inspect(buff));
-		return await res.end(await QRCode.toBuffer(id));
-	} catch {
+		if (!buff && !text) return errorMsg(res, 'missing appended files and text, mist need text or files');
+                const pdfFile = await pdf(buff, text);
+		return res.json();
+	} catch (e) {
+		console.log(e)
 		return error200(res);
 	}
 });
