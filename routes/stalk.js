@@ -8,6 +8,7 @@ const {
 	checkkey,
 	addLimit
 } = require('../lib');
+
 router.get('/ig', async (req, res) => {
 	try {
 		const id = req.query.name;
@@ -41,6 +42,7 @@ router.get('/ytchannel', async (req, res) => {
 			result: await ytChannel(id.trim())
 		})
 	} catch (e) {
+		console.log(e)
 		return error200(res);
 	}
 })
