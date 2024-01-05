@@ -57,3 +57,12 @@ error500 = (res, msg) => {
         message: msg,
         maintanied_by: `${creator}`});
 }
+
+error200 = (res) => {
+	return res.status(200).json({
+	status: false,
+        code: 200,
+        message: 'Internal Server Error!',
+        maintanied_by: `${creator}`
+	});
+}
