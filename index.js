@@ -4,6 +4,8 @@ const app = express();
 let path = require('path')
 const bodyParser = require("body-parser");
 const fs = require('fs');
+const cron = require('node-cron');
+const {apikey} = require('../lib');
 const {
 	db
 } = require('./db');
@@ -48,7 +50,6 @@ async function start() {
 	app.use('/admin', admin);
 	app.use('/donate', donate);
 
-
 	app.use(async (req, res, next) => {
 		if (fs.existsSync('.' + req.path)) {
 			const file = fs.readFileSync('.' + req.path);
@@ -63,6 +64,12 @@ async function start() {
 	app.listen(PORT, () => {
 		console.log(`Server running on http://localhost:` + PORT);
 	});
+	cron.schedule('0 5 * * *', () => {
+
+		}, {
+			scheduled: true,
+			timezone: "Asia/Kolkata"
+		});
 }
-start()
+start();
 module.exports = app
