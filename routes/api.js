@@ -5,10 +5,7 @@ const fs = require('fs');
 const ct = require('countries-and-timezones');
 const axios = require('axios');
 const cheerio = require('cheerio');
-const fancy = require('../lib/fancy');
-const country = require('../lib/country.json');
 const {
-    igstalk,
     gpt6,
     reddit,
     search,
@@ -22,12 +19,7 @@ const {
     BufferToFile,
     gpt5,
     lyrics,
-    ChatCompletion,
-    createT3nsorResponse,
     ocrSpace,
-    chatGPT,
-    generateV2,
-    generate,
     Insta,
     getFBInfo,
     googleIt,
@@ -39,38 +31,7 @@ const {
     phone
 } = require('phone');
 let router = express.Router()
-const getBuffer = async (url, options) => {
-    try {
-        options ? options : {}
-        const res = await axios({
-            method: "get",
-            url,
-            headers: {
-                'DNT': 1,
-                'Upgrade-Insecure-Request': 1
-            },
-            ...options,
-            responseType: 'arraybuffer'
-        })
-        return res.data
-    } catch (err) {
-        return err
-    }
-}
 
-router.get('/ig', async (req, res) => {
-    let id = req.query.name;
-    if (!id) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: 'give me a name!'
-    })
-    const data = await igstalk(id);
-    return res.json({
-        creator: `${creator}`,
-        result: data
-    })
-})
 
 router.get('/attp', async (req, res) => {
     let id = req.query.text;
