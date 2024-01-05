@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-const {write, htmlColor, ocrSpace, wanted, jail, wasted, upload} = require('../lib');
+const {write, htmlColor, wanted, jail, wasted, upload} = require('../lib');
 const x_possible = ['HORIZONTAL_ALIGN_CENTER', 'HORIZONTAL_ALIGN_LEFT', 'HORIZONTAL_ALIGN_RIGHT'];
 const y_possible = ['VERTICAL_ALIGN_BOTTOM', 'VERTICAL_ALIGN_MIDDLE', 'VERTICAL_ALIGN_TOP'];
 const allowed_sizes = ['FONT_SANS_8_BLACK', 'FONT_SANS_10_BLACK', 'FONT_SANS_12_BLACK', 'FONT_SANS_14_BLACK', 'FONT_SANS_16_BLACK', 'FONT_SANS_32_BLACK', 'FONT_SANS_64_BLACK', 'FONT_SANS_128_BLACK'];
@@ -28,16 +28,6 @@ router.post('/writer', async(req, res) => {
   const p = `/temp/${req.files.file.name}`;
   fs.writeFileSync('.'+ p, file);
   return await res.json({url: 'https://' + req.hostname + p});
-});
-
-router.post('/ocr', async(req, res) => {
-  const buff = req.files.file;
-  const apiKey = req.body.key;
-  if(!buff || !apiKey) return error503(res);
-  const p = `./temp/${req.files.file.name}`;
-  fs.writeFileSync(p, buff.data);
-  const ocr = await ocrSpace(p, {apiKey});
-  return await res.json(ocr);
 });
 
 router.post('/jail', async(req, res) => {
