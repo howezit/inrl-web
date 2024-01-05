@@ -66,3 +66,10 @@ error200 = (res,msg) => {
         maintanied_by: `${creator}`
 	});
 }
+errorMsg = (res, msg) => {
+	return res.status(200).json({
+	status: false,
+        message: msg,
+	creator
+	});
+}
