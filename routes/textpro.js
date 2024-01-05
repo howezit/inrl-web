@@ -3,7 +3,7 @@ const {
 	textpro
 } = require('../lib');
 const express = require('express');
-const router = express.router();
+const router = express.Router();
 
 
 router.get('/dragon', async (req, res) => {
