@@ -10,7 +10,9 @@ const {
 	gfx5,
 	gfx6,
 	gfx7,
-	gfx8
+	gfx8,
+	addLimit,
+	checkkey
 } = require('../lib');
 
 
