@@ -7,11 +7,41 @@ const {
 	ocrSpace,
 	gpt6,
 	addLimit,
+	Fancy,
+	Fancylist,
 	checkkey
 } = require('../lib');
 const keys = inrlkeys.map(a => a.k)
 const QRCode = require('qrcode');
 
+router.get('/fancy', async (req, res, next) => {
+	try {
+		const id = req.query.text;
+		const key = req.query.key;
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+		await addLimit(apikey);
+		if (!id) return errorMsg(res, 'missing parameter text');
+		if (!key) return errorMsg(res, 'missing parameter key, key upto 40|key=list');
+		if (key == 'list') {
+			return res.json({
+				status: true,
+				creator: `${creator}`,
+				result: Fancylist(id)
+			});
+		}
+		if (key > 40) return errorMsg(res, 'key must be less then 40 and greater then 0');
+		return await res.json({
+			status: true,
+			creator: `${creator}`,
+			result: Fancy(parseInt(key), id)
+		});
+	} catch (e) {
+		return error200(res);
+	}
+});
 router.get('/chatgpt', async (req, res) => {
 	try {
 		const id = req.query.text;
