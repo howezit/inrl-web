@@ -137,10 +137,9 @@ router.get('/zone', async (req, res, next) => {
 		return await res.json({
 			status: true,
 			creator: `${creator}`,
-			result: ct.getCountry(id).timezones[0].toString()
+			result: ct.getCountry(id.toUpperCase().trim()).timezones
 		});
 	} catch (e) {
-		console.log(e);
 		return error200(res);
 	}
 });
