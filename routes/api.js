@@ -2,7 +2,6 @@ require('../settings');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const ct = require('countries-and-timezones');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const {
@@ -26,10 +25,6 @@ const {
     attp,
     ttp
 } = require('../lib');
-
-const {
-    phone
-} = require('phone');
 let router = express.Router()
 
 
