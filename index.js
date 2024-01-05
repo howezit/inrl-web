@@ -23,6 +23,8 @@ const main = require('./routes/main'),
 	tools = require('./routes/tools'),
 	maker = require('./routes/maker'),
 	stalk = require('./routes/stalk'),
+	anime = require('./routes/anime'),
+	nsfw = require('./routes/nsfw'),
 	info = require('./routes/info'),
 	vars = require('./routes/info/var'),
 	plugin = require('./plugin/main'),
@@ -48,6 +50,8 @@ async function start() {
 	app.use('/api/tools', tools);
 	app.use('/api/maker', maker);
 	app.use('/api/stalk', stalk);
+        app.use('/api/anime', anime);
+	app.use('/api/nsfw', nsfw);
         app.use('/api/info', info);
 	app.use('/api/tokens', tokens);
 	app.use('/info/bot/var', vars)
