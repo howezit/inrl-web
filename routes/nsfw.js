@@ -33,6 +33,7 @@ const {
 	checkkey,
 	addLimit
 } = require('../lib');
+const keys = inrlkeys.map(a => a.k);
 
 router.get('/ahegao', async (req, res, next) => {
 	try {
@@ -47,7 +48,6 @@ router.get('/ahegao', async (req, res, next) => {
 			result: ahegao()
 		})
 	} catch (e) {
-		console.log(e)
 		return error200(res);
 	}
 })
