@@ -30,7 +30,7 @@ router.get('/check', async (req, res) => {
         creator: `${creator}`,
         message: 'no key found'
     })
-    if(!checkkey(id)) return res.json({
+    if(!await checkkey(id)) return res.json({
         status: false,
         creator: `${creator}`,
         message: 'not registered!'
