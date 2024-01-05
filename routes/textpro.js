@@ -1,14 +1,21 @@
 require('../settings');
 const {
-	textpro
+	textpro,
+	addLimit,
+    checkkey
 } = require('../lib');
 const express = require('express');
 const router = express.Router();
-
+const keys = inrlkeys.map(a=>a.k);
 
 router.get('/dragon', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -28,7 +35,12 @@ router.get('/dragon', async (req, res) => {
 
 router.get('/pornhub', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -48,7 +60,12 @@ router.get('/pornhub', async (req, res) => {
 
 router.get('/blood', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -68,7 +85,12 @@ router.get('/blood', async (req, res) => {
 
 router.get('/1917', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -87,7 +109,12 @@ router.get('/1917', async (req, res) => {
 })
 router.get('/marvel', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -106,7 +133,12 @@ router.get('/marvel', async (req, res) => {
 })
 router.get('/spooky', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -125,7 +157,12 @@ router.get('/spooky', async (req, res) => {
 })
 router.get('/toxic', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -144,7 +181,12 @@ router.get('/toxic', async (req, res) => {
 })
 router.get('/avengers', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -163,7 +205,12 @@ router.get('/avengers', async (req, res) => {
 })
 router.get('/gameover', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -182,7 +229,12 @@ router.get('/gameover', async (req, res) => {
 })
 router.get('/window', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -201,7 +253,12 @@ router.get('/window', async (req, res) => {
 })
 router.get('/summer', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -220,7 +277,12 @@ router.get('/summer', async (req, res) => {
 })
 router.get('/forework', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -239,7 +301,12 @@ router.get('/forework', async (req, res) => {
 })
 router.get('/sliced', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -258,7 +325,12 @@ router.get('/sliced', async (req, res) => {
 })
 router.get('/naruto', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -277,7 +349,12 @@ router.get('/naruto', async (req, res) => {
 })
 router.get('/3dbox', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -296,7 +373,12 @@ router.get('/3dbox', async (req, res) => {
 })
 router.get('/batman', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -315,7 +397,12 @@ router.get('/batman', async (req, res) => {
 })
 router.get('/dropwater', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -334,7 +421,12 @@ router.get('/dropwater', async (req, res) => {
 })
 router.get('/sand', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -353,7 +445,12 @@ router.get('/sand', async (req, res) => {
 })
 router.get('/palm', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -372,7 +469,12 @@ router.get('/palm', async (req, res) => {
 })
 router.get('/lava', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -391,7 +493,12 @@ router.get('/lava', async (req, res) => {
 })
 router.get('/pottery', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -410,7 +517,12 @@ router.get('/pottery', async (req, res) => {
 })
 router.get('/wall', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -429,7 +541,12 @@ router.get('/wall', async (req, res) => {
 })
 router.get('/slime', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -448,7 +565,12 @@ router.get('/slime', async (req, res) => {
 })
 router.get('/skeleton', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -467,7 +589,12 @@ router.get('/skeleton', async (req, res) => {
 })
 router.get('/business', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -486,7 +613,12 @@ router.get('/business', async (req, res) => {
 })
 router.get('/star', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -505,7 +637,12 @@ router.get('/star', async (req, res) => {
 })
 router.get('/typography', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -524,7 +661,12 @@ router.get('/typography', async (req, res) => {
 })
 router.get('/natural', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -543,7 +685,12 @@ router.get('/natural', async (req, res) => {
 })
 router.get('/birthday', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -562,7 +709,12 @@ router.get('/birthday', async (req, res) => {
 })
 router.get('/road', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -581,7 +733,12 @@ router.get('/road', async (req, res) => {
 })
 router.get('/pokemon', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -600,7 +757,12 @@ router.get('/pokemon', async (req, res) => {
 })
 router.get('/magma', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -619,7 +781,12 @@ router.get('/magma', async (req, res) => {
 })
 router.get('/carbon', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -638,7 +805,12 @@ router.get('/carbon', async (req, res) => {
 })
 router.get('/giraffe', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -657,7 +829,12 @@ router.get('/giraffe', async (req, res) => {
 })
 router.get('/metallic', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -676,7 +853,12 @@ router.get('/metallic', async (req, res) => {
 })
 router.get('/eroded', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -695,7 +877,12 @@ router.get('/eroded', async (req, res) => {
 })
 router.get('/gold', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -714,7 +901,12 @@ router.get('/gold', async (req, res) => {
 })
 router.get('/deep', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -733,7 +925,12 @@ router.get('/deep', async (req, res) => {
 })
 router.get('/scary', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -752,7 +949,12 @@ router.get('/scary', async (req, res) => {
 })
 router.get('/ancient', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -771,7 +973,12 @@ router.get('/ancient', async (req, res) => {
 })
 router.get('/captain', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
@@ -790,7 +997,12 @@ router.get('/captain', async (req, res) => {
 })
 router.get('/whitegold', async (req, res) => {
 	try {
-		let id = req.query.text;
+		const id = req.query.text;
+const apikey = req.query.apikey;
+if(!apikey) return errorMsg(res,'no apikey provided');
+if(!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+if(!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+await addLimit(apikey);
 		if (!id) return res.json({
 			status: false,
 			creator: `${creator}`,
