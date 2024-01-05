@@ -4,6 +4,7 @@ const app = express();
 let path = require('path')
 const bodyParser = require("body-parser");
 const fs = require('fs');
+const {db} = require('./db');
 
 const PORT = process.env.PORT || 8000;
 const main = require('./routes/main'),
@@ -21,6 +22,8 @@ const main = require('./routes/main'),
     donate = require('./donate/api');
 require('events').EventEmitter.defaultMaxListeners = 500;
 const fileUpload = require('express-fileupload');
+async function start() {
+await db.sync();
 app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -54,17 +57,8 @@ app.use(async(req, res, next) => {
     })
 })
 app.listen(PORT, () => {
-    console.log(`
-	██████╗ ███████╗███████╗████████╗ █████╗ ██████╗ ██╗
-	██╔══██╗██╔════╝██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██║
-	██████╔╝█████╗  ███████╗   ██║   ███████║██████╔╝██║
-	██╔══██╗██╔══╝  ╚════██║   ██║   ██╔══██║██╔═══╝ ██║
-	██║  ██║███████╗███████║   ██║   ██║  ██║██║     ██║
-	╚═╝  ╚═╝╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝
-			                              made by inrl
-								 
- Server running on http://localhost:` + PORT)
-console.log(`Hello ${creator}`)
-})
-
+    console.log(`Server running on http://localhost:` + PORT);
+});
+}
+start()
 module.exports = app
