@@ -1,5 +1,5 @@
 require('../settings');
-const {apikey,addLimit,checkkey,getLimit} = require('../lib');
+const {checkkey,getLimit} = require('../lib');
 const express = require('express');
 const router = express.Router();
 
