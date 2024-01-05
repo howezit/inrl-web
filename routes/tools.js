@@ -120,7 +120,7 @@ router.post('/ocr', async (req, res) => {
 });
 router.post('/pdf', async (req, res) => {
 	try {
-		const buff = req.files.files;
+		const buff = req.files;
 		const apikey = req.body.apikey;
 		const text = req.body.text;
 		const path = req.body.path;
@@ -129,10 +129,9 @@ router.post('/pdf', async (req, res) => {
 		const limits = await addLimit(apikey);
 		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		if (!buff && !text || !path) return errorMsg(res, 'missing appended files and text, must need text or files, defin a path:"hy.pdf"');
-                const pdfFile = await pdf(buff, {text, path});
+                const pdfFile = await pdf(buff.files, {text, path});
 		return res.json({status: true, creator, url: 'https://' + req.hostname + pdfFile});
 	} catch (e) {
-		console.log(e)
 		return error200(res);
 	}
 });
