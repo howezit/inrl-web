@@ -16,6 +16,7 @@
     "canvas": "^2.11.0",
     "express-fileupload": "^1.4.0",
     "moment-timezone": "^0.5.34",
+    "pdfkit": "^0.13.0",
     "countries-and-timezones": "^3.5.1",
     "gifencoder":"^2.0.1",
     "awesome-phonenumber": "^2.64.0",
