@@ -132,6 +132,7 @@ router.post('/pdf', async (req, res) => {
                 const pdfFile = await pdf(buff.files, {text, path});
 		return res.json({status: true, creator, url: 'https://' + req.hostname + pdfFile});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
