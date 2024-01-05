@@ -57,69 +57,6 @@ const getBuffer = async (url, options) => {
         return err
     }
 }
-//insta
-router.get('/country_info', async (req, res) => {
-    let id = req.query.code;
-    try {
-        if (!id) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "give me a country code"
-        })
-        let d = {}
-        for (let key in country) {
-            if (key = id.toUpperCase()) {
-                d.id = country[key].id;
-                d.name = country[key].name;
-                d.language = country[key].language;
-                d.capital = country[key].capital;
-                d.currency = country[key].currency;
-                d.famous_us = country[key].famous_us;
-                d.constitutional_form = country[key].constitutional_form;
-                d.language_codes = country[key].language_codes;
-                d.neighbors = country[key].neighbors;
-                d.image = country[key].image;
-                d.flag = country[key].flag;
-                d.phoneCode = country[key].phoneCode;
-                d.times = [];
-                d.date = new Date().toLocaleDateString("EN", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                });
-                country[key].timezones.map(zone => {
-                    d.times.push({
-                        time: new Date().toLocaleString("LK", {
-                            timeZone: zone
-                        }).split(" ")[1],
-                        zone: zone
-                    });
-                });
-                break;
-            }
-        }
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: d
-        });
-    } catch (e) {
-        return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: e
-        });
-    }
-})
-
-router.get('/news24', async (req, res) =>{
-    return await res.json({
-        status: true,
-        creator: `${creator}`,
-        result: await news24()
-    })
-})
 
 router.get('/ig', async (req, res) => {
     let id = req.query.name;
@@ -211,36 +148,6 @@ router.get('/imgai', async (req, res) => {
         });
     }
 })
-router.get('/chatgpt', async (req, res) => {
-    let id = req.query.text;
-    try {
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need text to get ai result"
-        });
-        //const response = await createT3nsorResponse(id);
-        //const res_msg = response.json().choices[0].text;
-        //const res_msg = await gpt5(id);
-        let res_msg = await gpt6(id);
-        res_msg = res_msg.reply;
-        //const res_msg = await ChatCompletion.create(id);
-        //const res_msg = await chatGPT(id);
-        //let res_msg = await generateV2(id,'gpt-3.5-turbo');res_msg = res_msg.data;
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: res_msg
-        });
-    } catch (e) {
-        console.log(e);
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "request filed with status code 404 'Too many request'"
-        })
-    }
-});
 
 router.get('/insta', async (req, res, next) => {
     let id = req.query.url;
@@ -413,42 +320,6 @@ router.get('/lyrics', async (req, res, next) => {
         });
     }
 });
-router.get('/fancy', async (req, res, next) => {
-    let text = req.query.text,
-        key = req.query.key;
-    if (!text) return await res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "need text and key to getfancy result ex:- '/fancy?text=hi&key10' "
-    });
-    if (!key) {
-        let ress = fancy.list(text, fancy);
-        return res.json({
-            status: false,
-            creator: `${creator}`,
-            result: ress
-        });
-    }
-    try {
-        if (key > 33) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "key must been below 33"
-        });
-        let result = fancy.apply(fancy[`${key}` - 1], text)
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: result
-        });
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need undefined erro found"
-        });
-    }
-});
 router.get('/xvideos/search', async (req, res, next) => {
     let text = req.query.text;
     if (!text) return res.json({
@@ -501,34 +372,7 @@ router.get('/gis', async (req, res, next) => {
         });
     }
 })
-router.get('/ocr', async (req, res, next) => {
-    try {
-        let id = req.query.url;
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "give me a url"
-        });
-        const ress = await ocrSpace(id);
-        const a = JSON.parse(JSON.stringify(ress))
-        if (!a.ParsedResults[0].ParsedText) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "request Failed with StatusCode 403!"
-        });
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: a.ParsedResults[0].ParsedText
-        });
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "request Failed with StatusCode 401!"
-        });
-    }
-});
+
 router.get('/phone', async (req, res, next) => {
     let id = req.query.number;
     if (!id) return await res.json({
