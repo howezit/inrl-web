@@ -17,11 +17,10 @@ router.get('/ig', async (req, res) => {
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
 		await addLimit(apikey);
 		if (!id) return errorMsg(res, 'missing parameter name');
-		const data = await igstalk(id);
 		return res.json({
-			status: true
+			status: true,
 			creator: `${creator}`,
-			result: data
+			result: await igstalk(id)
 		});
 	} catch (e) {
 		return error200(res);
@@ -36,11 +35,10 @@ router.get('/ytchannel', async (req, res) => {
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
 		await addLimit(apikey);
 		if (!id) return errorMsg(res, 'missing parameter name');
-		const data = await igstalk(id);
-
 		return res.json({
+			status: true,
 			creator: `${creator}`,
-			result: await ytChannel(id.trim());
+			result: await ytChannel(id.trim())
 		})
 	} catch (e) {
 		return error200(res);
@@ -58,7 +56,7 @@ router.get('/github', async (req, res, next) => {
 		res.json({
 			status: true,
 			creator: `${creator}`,
-			result: await gitUser(id.trim());
+			result: await gitUser(id.trim())
 		})
 	} catch (e) {
 		return error200(res);
