@@ -7,7 +7,6 @@ const {
 	neko,
 	shota,
 	wifu,
-	checkkey,
 	addLimit
 } = require('../lib');
 const keys = inrlkeys.map(a => a.k);
@@ -17,8 +16,9 @@ router.get('/husbu', async (req, res, next) => {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
+		const limits = await addLimit(apikey);
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		res.json({
 			status: true,
 			creator,
@@ -33,8 +33,8 @@ router.get('/loli', async (req, res, next) => {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
+		const limits = await addLimit(apikey);
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		res.json({
 			status: true,
 			creator,
@@ -49,8 +49,8 @@ router.get('/neko', async (req, res, next) => {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
+		const limits = await addLimit(apikey);
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		res.json({
 			status: true,
 			creator,
@@ -65,8 +65,8 @@ router.get('/shota', async (req, res, next) => {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
+		const limits = await addLimit(apikey);
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		res.json({
 			status: true,
 			creator,
@@ -81,8 +81,8 @@ router.get('/wifu', async (req, res, next) => {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
+		const limits = await addLimit(apikey);
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		res.json({
 			status: true,
 			creator,
