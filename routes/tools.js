@@ -123,13 +123,14 @@ router.post('/pdf', async (req, res) => {
 		const buff = req.files.files;
 		const apikey = req.body.apikey;
 		const text = req.body.text;
+		const path = req.body.path;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
 		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
-		if (!buff && !text) return errorMsg(res, 'missing appended files and text, mist need text or files');
-                const pdfFile = await pdf(buff, text);
-		return res.json();
+		if (!(buff && text) || !path) return errorMsg(res, 'missing appended files and text, mist need text or files');
+                const pdfFile = await pdf(buff, {text, path});
+		return res.json({status: true, creator, url: 'https://' + req.hostname + pdfFile});
 	} catch (e) {
 		console.log(e)
 		return error200(res);
