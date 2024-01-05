@@ -19,10 +19,16 @@ router.get('/age', async (req, res, next) => {
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
 		await addLimit(apikey);
 		if (!id) return errorMsg(res, 'missing parameter dob, dob=dd/mm/yy');
+		let [a, b, c] = id.split(/[/-]/);
+		if (!c) return errorMsg(res, 'invalid format, example: dd/mm/yyyy');
+		if (a.length < 2) a = '0' + a;
+		if (b.length < 2) b = '0' + b;
+		if (c.length != 4) return errorMsg(res, 'invalid format, example: dd/mm/yyyy');
+		const date = `${c}-${b}-${a}`;
 		return await res.json({
 			status: true,
 			creator: `${creator}`,
-			result: birthDetails(id)
+			result: birthDetails(date)
 		});
 	} catch (e) {
 		return error200(res);
