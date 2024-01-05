@@ -5,7 +5,6 @@ const {
 	igstalk,
 	ytChannel,
 	gitUser,
-	checkkey,
 	addLimit
 } = require('../lib');
 const keys = inrlkeys.map(a=>a.k);
@@ -17,8 +16,8 @@ router.get('/ig', async (req, res) => {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
+		const limits = await addLimit(apikey);
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		if (!id) return errorMsg(res, 'missing parameter name');
 		return res.json({
 			status: true,
@@ -35,8 +34,8 @@ router.get('/ytchannel', async (req, res) => {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
+		const limits = await addLimit(apikey);
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		if (!id) return errorMsg(res, 'missing parameter name');
 		return res.json({
 			status: true,
@@ -53,8 +52,8 @@ router.get('/github', async (req, res, next) => {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
+		const limits = await addLimit(apikey);
+		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		if (!id) return errorMsg(res, 'missing parameter user');
 		res.json({
 			status: true,
