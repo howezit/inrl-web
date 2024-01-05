@@ -18,7 +18,7 @@ const {
 
 router.post('/gfx1', async (req, res) => {
 	try {
-		const apikey = req.query.apikey;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
@@ -44,7 +44,7 @@ router.post('/gfx1', async (req, res) => {
 
 router.post('/gfx2', async (req, res) => {
 	try {
-		const apikey = req.query.apikey;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
@@ -70,7 +70,7 @@ router.post('/gfx2', async (req, res) => {
 
 router.post('/gfx3', async (req, res) => {
 	try {
-		const apikey = req.query.apikey;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
@@ -96,7 +96,7 @@ router.post('/gfx3', async (req, res) => {
 
 router.post('/gfx4', async (req, res) => {
 	try {
-		const apikey = req.query.apikey;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
@@ -124,7 +124,7 @@ router.post('/gfx4', async (req, res) => {
 
 router.post('/gfx5', async (req, res) => {
 	try {
-		const apikey = req.query.apikey;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
@@ -152,7 +152,7 @@ router.post('/gfx5', async (req, res) => {
 
 router.post('/gfx6', async (req, res) => {
 	try {
-		const apikey = req.query.apikey;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
@@ -180,7 +180,7 @@ router.post('/gfx6', async (req, res) => {
 
 router.post('/gfx7', async (req, res) => {
 	try {
-		const apikey = req.query.apikey;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
@@ -210,7 +210,7 @@ router.post('/gfx7', async (req, res) => {
 
 router.post('/gfx8', async (req, res) => {
 	try {
-		const apikey = req.query.apikey;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
