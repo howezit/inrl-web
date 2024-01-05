@@ -9,6 +9,7 @@ const {
 	checkkey
 } = require('../lib');
 const keys = inrlkeys.map(a => a.k)
+const QRCode = require('qrcode');
 
 router.get('/chatgpt', async (req, res) => {
 	try {
@@ -61,12 +62,7 @@ router.get('/qrcode', async (req, res) => {
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
 		await addLimit(apikey);
 		if (!id) return errorMsg(res, 'missing parameter text');
-		res.set({
-			'Content-Type': 'image/png'
-		})
-		return await res.end(await QRCode.toBuffer(id, {
-			width: 640,
-		}))
+		return await res.end(await QRCode.toBuffer(id));
 	} catch {
 		return error200(res);
 	}
