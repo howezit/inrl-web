@@ -1,3 +1,6 @@
+require('../settings');
+const express = require('express');
+const router = express.Router();
 const {
 	husbu,
 	loli,
@@ -7,6 +10,7 @@ const {
 	checkkey,
 	addLimit
 } = require('../lib');
+
 router.get('/husbu', async (req, res, next) => {
 	try {
 		const apikey = req.query.apikey;
