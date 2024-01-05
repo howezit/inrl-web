@@ -14,6 +14,29 @@ const {
 const keys = inrlkeys.map(a => a.k)
 const QRCode = require('qrcode');
 
+router.post('/url', async (req, res) => {
+	try {
+		const apikey = req.body.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+		await addLimit(apikey);
+		const buff = req.files.file;
+		if (!buff) return error503(res);
+		const p = `./temp/${req.files.file.name}`;
+		fs.writeFileSync(p, buff.data);
+		const url = await upload({
+			path: '/temp/' + req.files.file.name
+		});
+		if (!url.status) return res.json({
+			status: false,
+			message: 'rejected'
+		});
+		return await res.json(url);
+	} catch (e) {
+		return error200(res);
+	}
+});
 router.get('/fancy', async (req, res, next) => {
 	try {
 		const id = req.query.text;
