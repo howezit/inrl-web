@@ -37,7 +37,7 @@ router.get('/check', async (req, res) => {
     })
     return res.json({
         status: true,
-        creator: `${creator}`
+        creator: `${creator}`,
         message: 'active'
     });
 })
