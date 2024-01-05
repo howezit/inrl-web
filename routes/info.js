@@ -127,7 +127,7 @@ router.get('/phone', async (req, res, next) => {
 });
 router.get('/zone', async (req, res, next) => {
 	try {
-		const id = req.query.text;
+		const id = req.query.code;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
