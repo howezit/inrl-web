@@ -14,29 +14,7 @@ const {
 const keys = inrlkeys.map(a => a.k)
 const QRCode = require('qrcode');
 
-router.post('/url', async (req, res) => {
-	try {
-		const apikey = req.body.apikey;
-		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
-		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
-		await addLimit(apikey);
-		const buff = req.files.file;
-		if (!buff) return error503(res);
-		const p = `./temp/${req.files.file.name}`;
-		fs.writeFileSync(p, buff.data);
-		const url = await upload({
-			path: '/temp/' + req.files.file.name
-		});
-		if (!url.status) return res.json({
-			status: false,
-			message: 'rejected'
-		});
-		return await res.json(url);
-	} catch (e) {
-		return error200(res);
-	}
-});
+
 router.get('/fancy', async (req, res, next) => {
 	try {
 		const id = req.query.text;
@@ -86,6 +64,41 @@ router.get('/chatgpt', async (req, res) => {
 	}
 });
 
+router.get('/qrcode', async (req, res) => {
+	try {
+		const id = req.query.text;
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+		await addLimit(apikey);
+		if (!id) return errorMsg(res, 'missing parameter text');
+		return await res.end(await QRCode.toBuffer(id));
+	} catch {
+		return error200(res);
+	}
+})
+
+router.post('/url', async (req, res) => {
+	try {
+		const apikey = req.body.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
+		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
+		await addLimit(apikey);
+		const buff = req.files.file;
+		if (!buff) return error503(res);
+		const p = `./temp/${req.files.file.name}`;
+		fs.writeFileSync(p, buff.data);
+		const url = await upload({
+			path: '/temp/' + req.files.file.name
+		});
+		if (!url.status) return errorMsg(res, 'rejected');
+		return await res.json(url);
+	} catch (e) {
+		return error200(res);
+	}
+});
 router.post('/ocr', async (req, res) => {
 	try {
 		const buff = req.files.file;
@@ -106,19 +119,20 @@ router.post('/ocr', async (req, res) => {
 		return error200(res);
 	}
 });
-
-router.get('/qrcode', async (req, res) => {
+router.post('/pdf', async (req, res) => {
 	try {
-		const id = req.query.text;
-		const apikey = req.query.apikey;
+		const buff = req.files.file;
+		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
 		await addLimit(apikey);
-		if (!id) return errorMsg(res, 'missing parameter text');
+		if (!buff) return errorMsg(res, 'missing appended file');
+		return res.json(require('util').inspect(buff));
 		return await res.end(await QRCode.toBuffer(id));
 	} catch {
 		return error200(res);
 	}
-})
+});
+
 module.exports = router
