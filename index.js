@@ -20,6 +20,7 @@ const main = require('./routes/main'),
 	textpro = require('./routes/textpro'),
 	gfx = require('./routes/gfx'),
 	tokens = require('./routes/tokens'),
+	tools = require('./routes/tools'),
 	maker = require('./routes/maker'),
 	vars = require('./routes/info/var'),
 	plugin = require('./plugin/main'),
@@ -42,6 +43,7 @@ async function start() {
 	app.use('/api/post', post);
 	app.use('/api/textpro', textpro);
 	app.use('/api/gfx', gfx);
+	app.use('/api/tools', tools);
 	app.use('/api/maker', maker);
 	app.use('/api/tokens', tokens);
 	app.use('/info/bot/var', vars)
