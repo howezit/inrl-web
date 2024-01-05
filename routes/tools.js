@@ -2,6 +2,7 @@ require('../settings');
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const PDFDocument = require('pdfkit');
 const {
 	ocrSpace,
 	gpt6,
