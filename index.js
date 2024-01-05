@@ -15,7 +15,7 @@ const main = require('./routes/main'),
 	api = require('./routes/api'),
 	server = require('./routes/server'),
 	code = require('./routes/pair'),
-	info = require('./routes/info/info'),
+	botinfo = require('./routes/info/info'),
 	post = require('./routes/post'),
 	textpro = require('./routes/textpro'),
 	gfx = require('./routes/gfx'),
@@ -23,6 +23,7 @@ const main = require('./routes/main'),
 	tools = require('./routes/tools'),
 	maker = require('./routes/maker'),
 	stalk = require('./routes/stalk'),
+	info = require('./routes/info'),
 	vars = require('./routes/info/var'),
 	plugin = require('./plugin/main'),
 	admin = require('./admin/get'),
@@ -47,11 +48,12 @@ async function start() {
 	app.use('/api/tools', tools);
 	app.use('/api/maker', maker);
 	app.use('/api/stalk', stalk);
+        app.use('/api/info', info);
 	app.use('/api/tokens', tokens);
 	app.use('/info/bot/var', vars)
 	app.use('/server', server);
 	app.use('/pair', code);
-	app.use('/info', info)
+	app.use('/info', botinfo)
 	app.use('/plugins', plugin);
 	app.use('/admin', admin);
 	app.use('/donate', donate);
