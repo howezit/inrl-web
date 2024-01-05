@@ -10,6 +10,7 @@ const {
 	checkkey,
 	addLimit
 } = require('../lib');
+const keys = inrlkeys.map(a => a.k);
 
 router.get('/husbu', async (req, res, next) => {
 	try {
