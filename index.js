@@ -67,7 +67,10 @@ async function start() {
 		console.log(`Server running on http://localhost:` + PORT);
 	});
 	cron.schedule('0 5 * * *', () => {
-		const all = apikeys.findAll({});
+		const all = apikeys.findAll();
+		for(const i of all) {
+			i.destroy();
+		}
 		}, {
 			scheduled: true,
 			timezone: "Asia/Kolkata"
