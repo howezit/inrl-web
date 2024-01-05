@@ -10,7 +10,7 @@ router.get('/limit', async (req, res) => {
         creator: `${creator}`,
         message: 'no key found'
     })
-    if(!checkkey(key)) return res.json({
+    if(!checkkey(id)) return res.json({
         status: false,
         creator: `${creator}`,
         message: 'not registered!'
@@ -30,7 +30,7 @@ router.get('/check', async (req, res) => {
         creator: `${creator}`,
         message: 'no key found'
     })
-    if(!checkkey(key)) return res.json({
+    if(!checkkey(id)) return res.json({
         status: false,
         creator: `${creator}`,
         message: 'not registered!'
