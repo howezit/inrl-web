@@ -56,15 +56,4 @@ router.post('/wasted', async(req, res) => {
   const file = await wasted(buff.data, {path: req.files.file.name});
   return await res.json({url: 'https://' + req.hostname + file});
 });
-
-router.post('/url', async(req, res) => {
-  const buff = req.files.file;
-  if(!buff) return error503(res);
-  const p = `./temp/${req.files.file.name}`;
-  fs.writeFileSync(p, buff.data);
-  const url = await upload({path: '/temp/' + req.files.file.name});
-  if(!url.status) return res.json({status: false, message: 'rejected' });
-  return await res.json(url);
-});
-
 module.exports = router
