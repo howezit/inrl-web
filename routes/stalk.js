@@ -6,7 +6,7 @@ const {
 	ytChannel,
 	gitUser,
 	checkkey,
-	getLimit
+	addLimit
 } = require('../lib');
 router.get('/ig', async (req, res) => {
 	try {
