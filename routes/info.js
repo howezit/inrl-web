@@ -134,13 +134,13 @@ router.get('/zone', async (req, res, next) => {
 		if (!await checkkey(apikey)) return errorMsg(res, 'apikey limit over');
 		await addLimit(apikey);
 		if (!id) return errorMsg(res, 'missing parameter code');
-		const country = ct.getCountry(id);
 		return await res.json({
 			status: true,
 			creator: `${creator}`,
-			result: country.timezones[0].toString()
+			result: ct.getCountry(id).timezones[0].toString()
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
