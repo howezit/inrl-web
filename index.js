@@ -19,6 +19,7 @@ const main = require('./routes/main'),
 	post = require('./routes/post'),
 	textpro = require('./routes/textpro'),
 	gfx = require('./routes/gfx'),
+	tokens = require('./routes/tokens'),
 	maker = require('./routes/maker'),
 	vars = require('./routes/info/var'),
 	plugin = require('./plugin/main'),
@@ -42,6 +43,7 @@ async function start() {
 	app.use('/api/textpro', textpro);
 	app.use('/api/gfx', gfx);
 	app.use('/api/maker', maker);
+	app.use('/api/tokens', tokens);
 	app.use('/info/bot/var', vars)
 	app.use('/server', server);
 	app.use('/pair', code);
@@ -65,7 +67,7 @@ async function start() {
 		console.log(`Server running on http://localhost:` + PORT);
 	});
 	cron.schedule('0 5 * * *', () => {
-
+		const all = apikeys.findAll({});
 		}, {
 			scheduled: true,
 			timezone: "Asia/Kolkata"
