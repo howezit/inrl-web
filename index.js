@@ -6,14 +6,15 @@ const bodyParser = require("body-parser");
 const fs = require('fs');
 
 const PORT = process.env.PORT || 8000;
-let main = require('./routes/main'),
+const main = require('./routes/main'),
     api = require('./routes/api'),
     server = require('./routes/server'),
     code = require('./routes/pair'),
     info = require('./routes/info/info'),
     post = require('./routes/post'),
     textpro = require('./routes/textpro'),
-    logo = require('./routes/logo'),
+    gfx = require('./routes/gfx'),
+    maker = require('./routes/maker'),
     vars = require('./routes/info/var'),
     plugin = require('./plugin/main'),
     admin = require('./admin/get'),
@@ -30,11 +31,12 @@ app.set("json spaces", 2);
 app.use('/api', api)
 app.use('/api/post', post);
 app.use('/api/textpro', textpro);
+app.use('/api/gfx', gfx);
+app.use('/api/maker', maker);
 app.use('/info/bot/var', vars)
 app.use('/server', server);
 app.use('/pair', code);
 app.use('/info', info)
-app.use('/logo', logo);
 app.use('/plugins', plugin);
 app.use('/admin', admin);
 app.use('/donate', donate);
