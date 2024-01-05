@@ -12,7 +12,7 @@ support = 'https://chat.whatsapp.com/K61qQwFg00L2xOlqZqzoNn';
 //_______________________ ┏  Apikey  ┓ _______________________\\
 imgbb = "76a050f031972d9f27e329d767dd988f" || "deb80cd12ababea1c9b9a8ad6ce3fab2";
 imgur = '3ca8036b07e0f25';
-inrlkeys = ['free100_inrl'];
+inrlkeys = [{k: 'free100_inrl',l: 100}];
 
 //message.events({});//
 start = ''
