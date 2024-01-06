@@ -8,7 +8,7 @@ const {
     gpt6,
     reddit,
     download,
-    xvideosDown,,
+    xvideosDown,
     ai_image,
     Insta,
     getFBInfo,
