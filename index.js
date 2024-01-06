@@ -9,7 +9,10 @@ const {apikey} = require('./lib');
 const {
 	db
 } = require('./db');
-
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 const PORT = process.env.PORT || 8000;
 const main = require('./routes/main'),
 	api = require('./routes/api'),
@@ -69,6 +72,12 @@ async function start() {
 	})
 	app.listen(PORT, () => {
 		console.log(`Server running on http://localhost:` + PORT);
+	});
+	io.on('connection', (socket) => {
+		console.log('a user connected');
+	});
+	server.listen(3000, () => {
+		console.log('listening on *:3000');
 	});
 	cron.schedule('0 5 * * *', () => {
 		const all = apikeys.findAll();
