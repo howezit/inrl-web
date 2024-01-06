@@ -47,6 +47,7 @@ async function start() {
 	app.use('/api/nsfw', require('./routes/nsfw'));
         app.use('/api/info', require('./routes/info'));
 	app.use('/api/tokens', require('./routes/tokens'));
+	app.use('/api/download', require('./routes/download'));
 	app.use('/info/bot/var', vars)
 	app.use('/server', server);
 	app.use('/pair', code);
