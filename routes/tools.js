@@ -8,7 +8,8 @@ const {
 	addLimit,
 	Fancy,
 	Fancylist,
-	pdf
+	pdf,
+	upload
 } = require('../lib');
 const keys = inrlkeys.map(a => a.k)
 const QRCode = require('qrcode');
