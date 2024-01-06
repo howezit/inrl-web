@@ -89,7 +89,7 @@ router.get('/gs', async (req, res) => {
 		return error200(res)
 	}
 })
-router.get('/xvideo/search', async (req, res, next) => {
+router.get('/xvideo', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -107,7 +107,7 @@ router.get('/xvideo/search', async (req, res, next) => {
 		return error200(res)
 	}
 });
-router.get('/apk/search', async (req, res, next) => {
+router.get('/apk', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
