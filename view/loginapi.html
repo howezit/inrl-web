@@ -209,7 +209,7 @@
           then.value = 'Sign Up';
           return confirm.value = "";
         } else {
-          socket.emit('otp', value);
+          socket.emit('otp', {id: number.value,otp: confirm.value});
           socket.on('valid', (msg) => {
             if (!msg) {
               confirm.placeholder = 'inavlid otp as you entered'
