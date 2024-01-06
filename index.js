@@ -17,10 +17,7 @@ const main = require('./routes/main'),
 	code = require('./routes/pair'),
 	botinfo = require('./routes/info/info'),
 	post = require('./routes/post'),
-	textpro = require('./routes/textpro'),
-	gfx = require('./routes/gfx'),
 	tokens = require('./routes/tokens'),
-	tools = require('./routes/tools'),
 	maker = require('./routes/maker'),
 	stalk = require('./routes/stalk'),
 	anime = require('./routes/anime'),
@@ -45,9 +42,10 @@ async function start() {
 	app.set("json spaces", 2);
 	app.use('/api', api)
 	app.use('/api/post', post);
-	app.use('/api/textpro', textpro);
-	app.use('/api/gfx', gfx);
-	app.use('/api/tools', tools);
+	app.use('/api/textpro', require('./routes/textpro'));
+	app.use('/api/photooxy', require('./routes/photooxy'));
+	app.use('/api/gfx', require('./routes/gfx'));
+	app.use('/api/tools', require('./routes/tools'));
 	app.use('/api/maker', maker);
 	app.use('/api/stalk', stalk);
         app.use('/api/anime', anime);
