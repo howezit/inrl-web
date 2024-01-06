@@ -66,14 +66,13 @@ async function start() {
 		console.log(`Server running on http://localhost:` + PORT);
 	});
 	io.on('connection', (socket) => {
-		console.log('a user connected');
-	});
-	io.on('id', (id) => {
-		console.log(id);
-	});
-        io.on('otp', async({id, otp}) => {
-		console.log(id, otp);
-		io.emit('valid', false);
+		socket.on('id', (id) => {
+			console.log(id);
+		});
+		socket.on('otp', async({id, otp}) => {
+			console.log(id, otp);
+			io.emit('valid', false);
+		});
 	});
 	server.listen(3000, () => {
 		console.log(`listening on :3000`);
