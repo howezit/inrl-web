@@ -5,7 +5,7 @@ let path = require('path')
 const bodyParser = require("body-parser");
 const fs = require('fs');
 const cron = require('node-cron');
-const {apikey,getkeys,addkey,removeKey,toPremiumKey} = require('./lib');
+const {apikey,getkeys,addkey,removeKey,toPremiumKey,setOtp,checkOtp} = require('./lib');
 const {
 	db
 } = require('./db');
