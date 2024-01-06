@@ -1,4 +1,5 @@
 require('../settings');
+__path = process.cwd()
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -13,6 +14,9 @@ const {
 } = require('../lib');
 let router = express.Router()
 
+router.get('/sign', async (req, res, next) => {
+res.sendFile(__path + '/view/loginapi.html')
+})
 router.get('/imgai', async (req, res) => {
     let id = req.query.text;
     try {
