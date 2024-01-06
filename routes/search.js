@@ -8,7 +8,7 @@ const {
 	xvideosSearch,
 	lyrics,
 	reddit,
-        ytvideo,
+        ytsearch,
 	search,
 	googleIt
 } = require('../lib');
@@ -26,7 +26,7 @@ router.get('/yt', async (req, res) => {
 		return res.json({
 			status: true,
 			creator: `${creator}`,
-			result: await ytvideo(id.trim())
+			result: await ytsearch(id.trim())
 		})
 	} catch (e) {
 		console.log(e);
