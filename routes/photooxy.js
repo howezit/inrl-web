@@ -8,7 +8,7 @@ const {
 } = require('../lib');
 const keys = inrlkeys.map(a => a.k)
 
-router.get('/photooxy/flaming', async (req, res, next) => {
+router.get('/flaming', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -30,7 +30,7 @@ router.get('/photooxy/flaming', async (req, res, next) => {
 })
 
 
-router.get('/photooxy/shadow-sky', async (req, res, next) => {
+router.get('/shadow-sky', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -52,7 +52,7 @@ router.get('/photooxy/shadow-sky', async (req, res, next) => {
 })
 
 
-router.get('/photooxy/metallic', async (req, res, next) => {
+router.get('/metallic', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -74,7 +74,7 @@ router.get('/photooxy/metallic', async (req, res, next) => {
 })
 
 
-router.get('/photooxy/naruto', async (req, res, next) => {
+router.get('/naruto', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -96,7 +96,7 @@ router.get('/photooxy/naruto', async (req, res, next) => {
 })
 
 
-router.get('/photooxy/pubg', async (req, res, next) => {
+router.get('/pubg', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -117,7 +117,7 @@ router.get('/photooxy/pubg', async (req, res, next) => {
 	}
 })
 
-router.get('/photooxy/under-grass', async (req, res, next) => {
+router.get('/under-grass', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -138,7 +138,7 @@ router.get('/photooxy/under-grass', async (req, res, next) => {
 	}
 })
 
-router.get('/photooxy/harry-potter', async (req, res, next) => {
+router.get('/harry-potter', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -159,7 +159,7 @@ router.get('/photooxy/harry-potter', async (req, res, next) => {
 	}
 })
 
-router.get('/photooxy/flower-typography', async (req, res, next) => {
+router.get('/flower-typography', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -180,7 +180,7 @@ router.get('/photooxy/flower-typography', async (req, res, next) => {
 	}
 })
 
-router.get('/photooxy/picture-of-love', async (req, res, next) => {
+router.get('/picture-of-love', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -201,7 +201,7 @@ router.get('/photooxy/picture-of-love', async (req, res, next) => {
 	}
 })
 
-router.get('/photooxy/coffee-cup', async (req, res, next) => {
+router.get('/coffee-cup', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -222,7 +222,7 @@ router.get('/photooxy/coffee-cup', async (req, res, next) => {
 	}
 })
 
-router.get('/photooxy/butterfly', async (req, res, next) => {
+router.get('/butterfly', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -243,7 +243,7 @@ router.get('/photooxy/butterfly', async (req, res, next) => {
 	}
 })
 
-router.get('/photooxy/night-sky', async (req, res, next) => {
+router.get('/night-sky', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -265,7 +265,7 @@ router.get('/photooxy/night-sky', async (req, res, next) => {
 })
 
 
-router.get('/photooxy/carved-wood', async (req, res, next) => {
+router.get('/carved-wood', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -287,7 +287,7 @@ router.get('/photooxy/carved-wood', async (req, res, next) => {
 })
 
 
-router.get('/photooxy/illuminated-metallic', async (req, res, next) => {
+router.get('/illuminated-metallic', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -308,7 +308,7 @@ router.get('/photooxy/illuminated-metallic', async (req, res, next) => {
 	}
 })
 
-router.get('/photooxy/sweet-candy', async (req, res, next) => {
+router.get('/sweet-candy', async (req, res, next) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
