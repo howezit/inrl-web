@@ -62,10 +62,6 @@ async function start() {
 			await res.end(file);
 			return fs.unlinkSync('.' + req.path);
 		}
-		res.status(200).json({
-			status: false,
-			message: "Connection Closed"
-		})
 	})
 	app.listen(PORT, () => {
 		console.log(`Server running on http://localhost:` + PORT);
