@@ -13,28 +13,6 @@ const {
 } = require('../lib');
 let router = express.Router()
 
-
-router.get('/fb', async (req, res) => {
-    let id = req.query.url;
-    try {
-        if (!id) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need url to conver ty o ldn"
-        })
-        return await res.json(
-            {status: true,creator,result: await getFBInfo(id)}
-        )
-    } catch (e) {
-        return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "upgrade required"
-        });
-    }
-})
-
-
 router.get('/imgai', async (req, res) => {
     let id = req.query.text;
     try {
@@ -54,30 +32,6 @@ router.get('/imgai', async (req, res) => {
         });
     }
 })
-
-router.get('/insta', async (req, res, next) => {
-    let id = req.query.url;
-    try {
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need url to get instagaram result"
-        });
-        let a = await Insta(id)
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: a
-        });
-    } catch (e) {
-        console.log(e);
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need undefined erro found"
-        });
-    }
-});
 
 router.get('/ssweb', async (req, res, next) => {
     let id = req.query.url;
@@ -132,48 +86,6 @@ router.get('/ssweb', async (req, res, next) => {
         });
     }
 });
-
-
-
-router.get('/apk/download', async (req, res, next) => {
-    try {
-        let id = req.query.query;
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need query"
-        });
-        let ress = await download(id);
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: ress
-        });
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need undefined erro found"
-        });
-    }
-});
-
-
-router.get('/xvideos/download', async (req, res, next) => {
-    let text = req.query.url;
-    if (!text) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "need url"
-    });
-    let rslt = await xvideosDown(text);
-    res.json({
-        status: true,
-        creator: `${creator}`,
-        result: rslt
-    });
-});
-
 
 router.get('/phone', async (req, res, next) => {
     let id = req.query.number;
