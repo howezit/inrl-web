@@ -119,6 +119,7 @@ router.post('/ocr', async (req, res) => {
 		});
 		return await res.json(ocr);
 	} catch {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -136,6 +137,7 @@ router.post('/pdf', async (req, res) => {
                 const pdfFile = await pdf(buff?.files, {text, path});
 		return res.json({status: true, creator, url: 'https://' + req.hostname + pdfFile});
 	} catch {
+		console.log(e);
 		return error200(res);
 	}
 });
