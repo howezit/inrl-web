@@ -5,41 +5,13 @@ const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const {
-    gpt6,
-    reddit,
     download,
     xvideosDown,
     ai_image,
     Insta,
     getFBInfo,
-    attp,
-    ttp
 } = require('../lib');
 let router = express.Router()
-
-
-router.get('/attp', async (req, res) => {
-    let id = req.query.text;
-    if (!id) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: 'give me a text!'
-    })
-    const data = await attp(id);
-    return res.end(data);
-})
-
-router.get('/ttp', async (req, res) => {
-    let id = req.query.text;
-    if (!id) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: 'give me a text!'
-    })
-    const data = await ttp(id);
-    return res.end(data);
-})
-
 
 
 router.get('/fb', async (req, res) => {
