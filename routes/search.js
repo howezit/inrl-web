@@ -16,14 +16,14 @@ const keys = inrlkeys.map(a => a.k)
 router.get('/gis', async (req, res, next) => {
 	try {
 		const id = req.query.text;
-		const key = req.query.count;
+		const count = req.query.count;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, 'apikey limit over');
 		if (!id) return errorMsg(res, 'missing parameter text');
-		if (!id) return errorMsg(res, 'missing parameter count');
+		if (!count) return errorMsg(res, 'missing parameter count');
 		res.json({
 			status: true,
 			creator: `${creator}`,
