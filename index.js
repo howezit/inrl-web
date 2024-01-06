@@ -15,9 +15,6 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const PORT = process.env.PORT || 8000;
 const main = require('./routes/main'),
-	api = require('./routes/api'),
-	server = require('./routes/server'),
-	code = require('./routes/pair'),
 	botinfo = require('./routes/info/info'),
 	post = require('./routes/post'),
 	vars = require('./routes/info/var'),
@@ -37,7 +34,7 @@ async function start() {
 	app.use('/', main)
 	app.set("trust proxy", true);
 	app.set("json spaces", 2);
-	app.use('/api', api)
+	app.use('/api', require('./routes/api'))
 	app.use('/api/post', post);
 	app.use('/api/textpro', require('./routes/textpro'));
 	app.use('/api/photooxy', require('./routes/photooxy'));
@@ -52,8 +49,8 @@ async function start() {
 	app.use('/api/tokens', require('./routes/tokens'));
 	app.use('/api/download', require('./routes/download'));
 	app.use('/info/bot/var', vars)
-	app.use('/server', server);
-	app.use('/pair', code);
+	app.use('/server', require('./routes/server'));
+	app.use('/pair', require('./routes/pair'));
 	app.use('/info', botinfo)
 	app.use('/plugins', plugin);
 	app.use('/admin', admin);
