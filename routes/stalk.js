@@ -25,6 +25,7 @@ router.get('/ig', async (req, res) => {
 			result: await igstalk(id)
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 })
@@ -43,6 +44,7 @@ router.get('/ytchannel', async (req, res) => {
 			result: await ytChannel(id.trim())
 		})
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 })
@@ -61,6 +63,7 @@ router.get('/github', async (req, res, next) => {
 			result: await gitUser(id.trim())
 		})
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 })
