@@ -39,6 +39,7 @@ router.get('/fancy', async (req, res, next) => {
 			result: Fancy(parseInt(key), id)
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -59,6 +60,7 @@ router.get('/chatgpt', async (req, res) => {
 			result: res_msg
 		});
 	} catch {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -74,6 +76,7 @@ router.get('/qrcode', async (req, res) => {
 		if (!id) return errorMsg(res, 'missing parameter text');
 		return await res.end(await QRCode.toBuffer(id));
 	} catch {
+		console.log(e);
 		return error200(res);
 	}
 })
@@ -95,6 +98,7 @@ router.post('/url', async (req, res) => {
 		if (!url.status) return errorMsg(res, 'rejected');
 		return await res.json(url);
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
