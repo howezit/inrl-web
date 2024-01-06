@@ -7,21 +7,11 @@ const cheerio = require('cheerio');
 const {
     gpt6,
     reddit,
-    search,
     download,
-    xvideosSearch,
-    xvideosDown,
-    ytv,
-    news24,
+    xvideosDown,,
     ai_image,
-    gis,
-    BufferToFile,
-    gpt5,
-    lyrics,
-    ocrSpace,
     Insta,
     getFBInfo,
-    googleIt,
     attp,
     ttp
 } = require('../lib');
@@ -50,19 +40,7 @@ router.get('/ttp', async (req, res) => {
     return res.end(data);
 })
 
-router.get('/gs', async (req, res) => {
-    let id = req.query.text;
-    if (!id) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: 'give me a text to search'
-    })
-    const data = await googleIt(id);
-    return res.json({
-        creator: `${creator}`,
-        result: data
-    })
-})
+
 
 router.get('/fb', async (req, res) => {
     let id = req.query.url;
@@ -183,50 +161,8 @@ router.get('/ssweb', async (req, res, next) => {
     }
 });
 
-router.get('/apk/search', async (req, res, next) => {
-    try {
-        let id = req.query.query;
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need query"
-        });
-        let ress = await search(id);
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: ress
-        });
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need undefined erro found"
-        });
-    }
-});
-router.get('/reddit', async (req, res, next) => {
-    try {
-        let id = req.query.query;
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need query"
-        });
-        let ress = await reddit(id);
-        return await res.json({
-            status: true,
-            creator: `${creator}`,
-            result: ress
-        });
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need undefined erro found"
-        });
-    }
-});
+
+
 router.get('/apk/download', async (req, res, next) => {
     try {
         let id = req.query.query;
@@ -249,47 +185,7 @@ router.get('/apk/download', async (req, res, next) => {
         });
     }
 });
-router.get('/lyrics', async (req, res, next) => {
-    try {
-        let id = req.query.text;
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "give me a song name"
-        });
-        const ress = await lyrics(id);
-        if (!ress) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "request Failed with StatusCode 403!"
-        });
-        res.json({
-            status: true,
-            creator: `${creator}`,
-            result: ress
-        });
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "request Failed with StatusCode 403!"
-        });
-    }
-});
-router.get('/xvideos/search', async (req, res, next) => {
-    let text = req.query.text;
-    if (!text) return res.json({
-        status: false,
-        creator: `${creator}`,
-        message: "need text to search"
-    });
-    let rslt = await xvideosSearch(text);
-    res.json({
-        status: true,
-        creator: `${creator}`,
-        result: rslt
-    });
-});
+
 
 router.get('/xvideos/download', async (req, res, next) => {
     let text = req.query.url;
@@ -305,29 +201,7 @@ router.get('/xvideos/download', async (req, res, next) => {
         result: rslt
     });
 });
-router.get('/gis', async (req, res, next) => {
-    let text = req.query.text,
-        key = req.query.count || "1";
-    try {
-        if (!text) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need text, ex:- '/gis?text=hi&count=2' "
-        });
-        let ress = await gis(text, key);
-        res.json({
-            status: true,
-            creator: `${creator}`,
-            result: ress
-        });
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need undefined erro found"
-        });
-    }
-})
+
 
 router.get('/phone', async (req, res, next) => {
     let id = req.query.number;
