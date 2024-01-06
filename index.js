@@ -17,12 +17,6 @@ const main = require('./routes/main'),
 	code = require('./routes/pair'),
 	botinfo = require('./routes/info/info'),
 	post = require('./routes/post'),
-	tokens = require('./routes/tokens'),
-	maker = require('./routes/maker'),
-	stalk = require('./routes/stalk'),
-	anime = require('./routes/anime'),
-	nsfw = require('./routes/nsfw'),
-	info = require('./routes/info'),
 	vars = require('./routes/info/var'),
 	plugin = require('./plugin/main'),
 	admin = require('./admin/get'),
@@ -46,12 +40,13 @@ async function start() {
 	app.use('/api/photooxy', require('./routes/photooxy'));
 	app.use('/api/gfx', require('./routes/gfx'));
 	app.use('/api/tools', require('./routes/tools'));
-	app.use('/api/maker', maker);
-	app.use('/api/stalk', stalk);
-        app.use('/api/anime', anime);
-	app.use('/api/nsfw', nsfw);
-        app.use('/api/info', info);
-	app.use('/api/tokens', tokens);
+	app.use('/api/search', require('./routes/search'));
+	app.use('/api/maker', require('./routes/maker'));
+	app.use('/api/stalk', require('./routes/stalk'));
+        app.use('/api/anime', require('./routes/anime'));
+	app.use('/api/nsfw', require('./routes/nsfw'));
+        app.use('/api/info', require('./routes/info'));
+	app.use('/api/tokens', require('./routes/tokens'));
 	app.use('/info/bot/var', vars)
 	app.use('/server', server);
 	app.use('/pair', code);
