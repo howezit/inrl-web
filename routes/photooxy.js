@@ -110,7 +110,7 @@ router.get('/pubg', async (req, res, next) => {
 		return res.json({
 			status: true,
 			creator,
-			result: result
+			result: result.image
 		});
 	} catch {
 		return error200(res)
