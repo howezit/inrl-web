@@ -191,7 +191,7 @@
       const element = document.querySelector("#after");
       const then = document.querySelector("#sub");
       otp.addEventListener("click", async(e)=> {
-        if (!number.value.endsWith('@gmail.com') && !number.value.replace(/[^0-9]/g, '').length < 10) return;
+        if (!number.value.endsWith('@gmail.com') && number.value.replace(/[^0-9]/g, '').length < 10) return;
         e.preventDefault();
         socket.emit('send_otp', number.value);
         socket.on('otp_send', function() {
@@ -218,7 +218,7 @@
               then.value = 'Sign Up';
               return confirm.value = "";
             }
-            window.location.href = `/api/dashboard`;
+            window.location.href = `/api/dashboard?id=${msg}`;
           });
         }
       });
