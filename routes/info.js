@@ -18,9 +18,8 @@ router.get('/age', async (req, res, next) => {
 		const id = req.query.dob;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter dob, dob=dd/mm/yy');
 		let [a, b, c] = id.split(/[/-]/);
 		if (!c) return errorMsg(res, 'invalid format, example: dd/mm/yyyy');
@@ -42,9 +41,8 @@ router.get('/country', async (req, res) => {
 		const id = req.query.code;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter code');
 		let d = {}
 		for (let key in country) {
@@ -93,9 +91,8 @@ router.get('/news24', async (req, res) => {
 	try {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		return await res.json({
 			status: true,
 			creator: `${creator}`,
@@ -110,9 +107,8 @@ router.get('/phone', async (req, res, next) => {
 		const id = req.query.number;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter number');
 		const perfix = phone("+" + id);
 		return await res.json({
@@ -129,9 +125,8 @@ router.get('/zone', async (req, res, next) => {
 		const id = req.query.code;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter code');
 		return await res.json({
 			status: true,
