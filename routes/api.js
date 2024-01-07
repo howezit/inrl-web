@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const router = express.Router()
 
 router.get('/signup', async (req, res, next) => {
 	res.sendFile(__path + '/view/loginapi.html')
