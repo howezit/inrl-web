@@ -12,16 +12,15 @@ const {
 	search,
 	googleIt
 } = require('../lib');
-const keys = inrlkeys.map(a => a.k)
+
 
 router.get('/yt', async (req, res) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter text');
 		return res.json({
 			status: true,
@@ -39,9 +38,8 @@ router.get('/gis', async (req, res, next) => {
 		const count = req.query.count;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter text');
 		if (!count) return errorMsg(res, 'missing parameter count');
 		res.json({
@@ -60,9 +58,8 @@ router.get('/lyrics', async (req, res, next) => {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter text');
 		res.json({
 			status: true,
@@ -80,9 +77,8 @@ router.get('/reddit', async (req, res, next) => {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter text');
 		return await res.json({
 			status: true,
@@ -100,9 +96,8 @@ router.get('/gs', async (req, res) => {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter text');
 		return res.json({
 			creator: `${creator}`,
@@ -118,9 +113,8 @@ router.get('/xvideo', async (req, res, next) => {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter text');
 		res.json({
 			status: true,
@@ -137,9 +131,8 @@ router.get('/apk', async (req, res, next) => {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter text');
 		return await res.json({
 			status: true,
