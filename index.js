@@ -62,9 +62,6 @@ async function start() {
 			return fs.unlinkSync('.' + req.path);
 		}
 	})
-	app.listen(PORT, () => {
-		console.log(`Server running on http://localhost:` + PORT);
-	});
 	io.on('connection', (socket) => {
 		socket.on('id', (id) => {
 			console.log(id);
