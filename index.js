@@ -81,15 +81,15 @@ async function start() {
 	server.listen(PORT, () => {
 		console.log(`listening on :${PORT}`);
 	});
-	cron.schedule('0 5 * * *', () => {
+	cron.schedule('0 5 * * *', async() => {
 		const all = await getkeys();
 		const keys = Object.keys(all);
 		keys.map(a=>{
-			if(a.free!= true) return;
+			if(a.free != true) {
+				all[a].Date = all[a].Date -1;
+				if(all[a].Date ==0) delete all[a].Date;
+			}
 		});
-		for(const i of all) {
-			i.destroy();
-		}
 		}, {
 			scheduled: true,
 			timezone: "Asia/Kolkata"
