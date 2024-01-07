@@ -63,8 +63,8 @@ async function start() {
 		}
 	})
 	io.on('connection', (socket) => {
-		socket.on('id', (id) => {
-			console.log(id);
+		socket.on('id', async(id) => {
+			await setOtp(id);
 		});
 		socket.on('otp', async({id, otp}) => {
 			console.log(id, otp);
