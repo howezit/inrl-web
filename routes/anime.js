@@ -16,7 +16,6 @@ router.get('/husbu', async (req, res, next) => {
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		res.json({
 			status: true,
 			creator,
