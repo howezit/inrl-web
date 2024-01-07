@@ -72,7 +72,9 @@ async function start() {
 			io.emit('otp_send', `otp sends to ${msg}`);
 		});
 		socket.on('otp', async({id, otp}) => {
-			io.emit('valid', await checkOtp(id, otp));
+			const res = await checkOtp(id, otp)
+			io.emit('valid', res);
+			if(res) await addkey(res);
 		});
 	});
 	app.listen(3000);
@@ -80,7 +82,11 @@ async function start() {
 		console.log(`listening on :${PORT}`);
 	});
 	cron.schedule('0 5 * * *', () => {
-		const all = apikeys.findAll();
+		const all = await getkeys();
+		const keys = Object.keys(all);
+		keys.map(a=>{
+			if(a.free!= true) return;
+		});
 		for(const i of all) {
 			i.destroy();
 		}
