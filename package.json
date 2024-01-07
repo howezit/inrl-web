@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "socket.io": "4.7.3",
+    "nodemailer": "^6.8.0",
     "@whiskeysockets/baileys": "^6.5.0",
     "qrcode": "^1.5.3",
     "youtubei.js": "^6.3.0",
