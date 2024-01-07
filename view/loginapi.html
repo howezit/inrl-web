@@ -191,7 +191,7 @@
       const element = document.querySelector("#after");
       const then = document.querySelector("#sub");
       otp.addEventListener("click", async(e)=> {
-        if (!number.value.endsWith('.com') && !number.value.replace(/[^0-9]/g, '')) return;
+        if (!number.value.endsWith('@gamil.com') && !number.value.replace(/[^0-9]/g, '').length < 10) return;
         e.preventDefault();
         socket.emit('send_otp', number.value);
         socket.on('otp_send', function() {
