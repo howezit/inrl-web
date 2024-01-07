@@ -3,93 +3,56 @@ __path = process.cwd()
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+let localStrategy = require('passport-local').Strategy;
+const passport = require('passport');
+
 const axios = require('axios');
 const cheerio = require('cheerio');
 const {
-    download,
-    xvideosDown,
-    ai_image,
-    Insta,
-    getFBInfo,
+    saveLogin
 } = require('../lib');
 let router = express.Router()
 
 router.get('/sign', async (req, res, next) => {
 res.sendFile(__path + '/view/loginapi.html')
 })
-router.get('/imgai', async (req, res) => {
-    let id = req.query.text;
-    try {
-        if (!id) return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need text to conver qrcode"
-        })
-        return await res.end(
-            await ai_image(id)
-        )
-    } catch (e) {
-        return res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "upgrade required"
-        });
-    }
+
+passport.use(new localStrategy({
+	usernameField: 'key'
+}, async (key, password, done) => {
+	const exist = await getLogin(key);
+	if (!exist) return done(null, false);
+	return done(null, exist);
+}));
+
+passport.serializeUser(function(user, done) {
+	done(null, user.id);
+});
+
+passport.deserializeUser(async(id, done) => {
+	user.findById(id, function(err, user) {
+		done(err, user);
+	});
+});
+
+router.get('/events', async (req, res, next) => {
+	const trylogin = req.query.id;
+	const trysaved = req.query.key;
+	if (trylogin) {
+		await saveLogin(key);
+		res.redirect('/api/events?key=events');
+	} else if (trysaved) {
+		req.body.key = trysaved;
+		passport.authenticate('local', {
+			failureRedirect: '/login',
+			successRedirect: '/docs',
+			failureFlash: true,
+		})(req, res, next);
+	} else {
+		res.redirect('/api/dashboard');
+	}
 })
 
-router.get('/ssweb', async (req, res, next) => {
-    let id = req.query.url;
-    try {
-        if (!id) return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need to get buffer  of the web"
-        });
-        const base = 'https://www.screenshotmachine.com'
-        const param = {
-            url: id,
-            device: 'desktop',
-            cacheLimit: 0
-        }
-        axios({
-            url: base + '/capture.php',
-            method: 'POST',
-            data: new URLSearchParams(Object.entries(param)),
-            headers: {
-                'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            }
-        }).then(async (data) => {
-            const cookies = data.headers['set-cookie']
-            if (data.data.status == 'success') {
-                axios.get(base + '/' + data.data.link, {
-                    headers: {
-                        'cookie': cookies.join('')
-                    },
-                    responseType: 'arraybuffer'
-                }).then(async ({
-                    data
-                }) => {
-                    res.set({
-                        'Content-Type': 'image/png'
-                    })
-                    return await res.send(data)
-                })
-            } else {
-                return await res.json({
-                    status: false,
-                    creator: `${creator}`,
-                    message: "need undefined erro found"
-                });
-            }
-        })
-    } catch (e) {
-        return await res.json({
-            status: false,
-            creator: `${creator}`,
-            message: "need undefined erro found"
-        });
-    }
-});
 
 router.get('/phone', async (req, res, next) => {
     let id = req.query.number;
