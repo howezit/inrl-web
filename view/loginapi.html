@@ -201,7 +201,7 @@
         then.type = "submit"
         then.value = "sign in"
         })
-      });
+      },{once : true});
       then.addEventListener("click", function(e) {
         e.preventDefault();
         then.value = 'please Wait...';
