@@ -77,6 +77,10 @@ async function start() {
 			await res.end(file);
 			return fs.unlinkSync('.' + req.path);
 		}
+		res.status(200).json({
+			status: false,
+			message: "Connection Closed"
+		})
 	})
 	io.on('connection', (socket) => {
 		socket.on('send_otp', async(msg) => {
