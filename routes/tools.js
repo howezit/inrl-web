@@ -11,7 +11,6 @@ const {
 	pdf,
 	upload
 } = require('../lib');
-const keys = inrlkeys.map(a => a.k)
 const QRCode = require('qrcode');
 
 
@@ -21,9 +20,8 @@ router.get('/fancy', async (req, res, next) => {
 		const key = req.query.key;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message); 
 		if (!id) return errorMsg(res, 'missing parameter text');
 		if (!key) return errorMsg(res, 'missing parameter key, key upto 40|key=list');
 		if (key == 'list') {
@@ -49,9 +47,8 @@ router.get('/chatgpt', async (req, res) => {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message); 
 		if (!id) return errorMsg(res, 'missing parameter text');
 		let res_msg = await gpt6(id);
 		res_msg = res_msg.reply;
@@ -71,9 +68,8 @@ router.get('/qrcode', async (req, res) => {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message); 
 		if (!id) return errorMsg(res, 'missing parameter text');
 		return await res.end(await QRCode.toBuffer(id));
 	} catch (e) {
@@ -86,9 +82,8 @@ router.post('/url', async (req, res) => {
 	try {
 		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message); 
 		const buff = req.files.file;
 		if (!buff) return error503(res);
 		const p = `./temp/${req.files.file.name}`;
@@ -109,9 +104,8 @@ router.post('/ocr', async (req, res) => {
 		const apiKey = req.body.key;
 		const apikey = req.body.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message); 
 		if (!buff || !apiKey) return error503(res);
 		const p = `./temp/${req.files.file.name}`;
 		fs.writeFileSync(p, buff.data);
@@ -131,9 +125,8 @@ router.post('/pdf', async (req, res) => {
 		const text = req.body.text;
 		const path = req.body.path;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message); 
 		if (!buff && !text || !path) return errorMsg(res, 'missing appended files and text, must need text or files, defin a path:"hy.pdf"');
                 const pdfFile = await pdf(buff?.files, {text, path});
 		return res.json({status: true, creator, url: 'https://' + req.hostname + pdfFile});
