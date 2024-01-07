@@ -14,6 +14,9 @@ const {
 	saveLogin
 } = require('../lib');
 let router = express.Router()
+router.get('/csrf', async (req, res, next) => {
+	return res.send(req.csrfToken());
+})
 
 router.get('/sign', async (req, res, next) => {
 	res.sendFile(__path + '/view/loginapi.html')
