@@ -192,7 +192,7 @@
       const then = document.querySelector("#sub");
       otp.addEventListener("click", async(e)=> {
         e.preventDefault();
-        if (!number.value.endsWith('@gmail.com') && number.value.replace(/[^0-9]/g, '').length < 10) window.location.href = `/api/dashboard`;
+        if (!number.value.endsWith('@gmail.com') && number.value.replace(/[^0-9]/g, '').length < 10) return window.location.href = `/api/dashboard`;
         socket.emit('send_otp', number.value);
         socket.on('otp_send', function() {
         element.classList.replace("after_click", "txt_field")
