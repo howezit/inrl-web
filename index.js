@@ -68,7 +68,7 @@ async function start() {
 		});
 		socket.on('otp', async({id, otp}) => {
 			console.log(id, otp);
-			io.emit('valid', false);
+			io.emit('valid', true);
 		});
 	});
 	app.listen(3000);
