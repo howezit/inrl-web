@@ -5,6 +5,8 @@ let path = require('path')
 const bodyParser = require("body-parser");
 const fs = require('fs');
 const cron = require('node-cron');
+const passport = require("passport");
+const csrf = require("csurf");
 const {apikey,getkeys,addkey,removeKey,toPremiumKey,setOtp,checkOtp} = require('./lib');
 const {
 	db
@@ -29,6 +31,9 @@ async function start() {
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
+	app.use(passport.session());
+	app.use(csrf());
+	app.use(passport.initialize());
 	app.use(express.static("public"));
 	app.use('/', main)
 	app.set("trust proxy", true);
