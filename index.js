@@ -64,7 +64,6 @@ async function start() {
 	})
 	io.on('connection', (socket) => {
 		socket.on('send_otp', async(msg) => {
-                        console.log(msg);
 			await setOtp(msg);
 			io.emit('otp_send', `otp sends to ${msg}`);
 		});
