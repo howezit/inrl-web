@@ -9,15 +9,13 @@ const {
 	wifu,
 	addLimit
 } = require('../lib');
-const keys = inrlkeys.map(a => a.k);
 
 router.get('/husbu', async (req, res, next) => {
 	try {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
 		res.json({
 			status: true,
@@ -32,9 +30,8 @@ router.get('/loli', async (req, res, next) => {
 	try {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		res.json({
 			status: true,
 			creator,
@@ -48,9 +45,8 @@ router.get('/neko', async (req, res, next) => {
 	try {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		res.json({
 			status: true,
 			creator,
@@ -64,9 +60,8 @@ router.get('/shota', async (req, res, next) => {
 	try {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		res.json({
 			status: true,
 			creator,
@@ -80,9 +75,8 @@ router.get('/wifu', async (req, res, next) => {
 	try {
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if(!limits.status) return errorMsg(res, 'apikey limit over'); 
+		if (!limits.status) return errorMsg(res, limits.message);
 		res.json({
 			status: true,
 			creator,
