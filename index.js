@@ -88,7 +88,7 @@ async function start() {
 			all[a].limit =0;
 			if(a.free != true) {
 				all[a].Date = all[a].Date -1;
-				if(all[a].Date ==0) delete all[a].Date;
+				if(all[a].Date ==0) delete all[a];
 			}
 		});
 		}, {
