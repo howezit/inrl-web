@@ -190,6 +190,10 @@
       const otp = document.getElementById("send_otp");
       const element = document.querySelector("#after");
       const then = document.querySelector("#sub");
+      let csrf;
+      socket.on('csef', function(token) {
+        csrf = token;
+      });
       otp.addEventListener("click", async(e)=> {
         if (!number.value.endsWith('@gmail.com') && !number.value.replace(/[^0-9]/g, '').length < 10) return;
         e.preventDefault();
@@ -218,7 +222,7 @@
               then.value = 'Sign Up';
               return confirm.value = "";
             }
-            window.location.href = `/api/events?id=${msg}`;
+            window.location.href = `/api/events?id=${msg}&token=${csrf}`;
           });
         }
       });
