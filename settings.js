@@ -7,7 +7,7 @@ git_id = `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`;
 tokens = ['toup','acrc','with_you'];
 session = 'https://gist.github.com/inrl-md/';
 support = 'https://chat.whatsapp.com/K61qQwFg00L2xOlqZqzoNn';
-
+email_pass = 'fpel bioh wwtc hkce';
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
 imgbb = "76a050f031972d9f27e329d767dd988f" || "deb80cd12ababea1c9b9a8ad6ce3fab2";
