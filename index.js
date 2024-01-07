@@ -5,7 +5,7 @@ let path = require('path')
 const bodyParser = require("body-parser");
 const fs = require('fs');
 const cron = require('node-cron');
-const {apikey,getkeys,addkey,removeKey,toPremiumKey,setOtp,checkOtp} = require('./lib');
+const {apikey,updateFully,getkeys,addkey,removeKey,toPremiumKey,setOtp,checkOtp} = require('./lib');
 const {
 	db
 } = require('./db');
@@ -74,7 +74,12 @@ async function start() {
 		socket.on('otp', async({id, otp}) => {
 			const res = await checkOtp(id, otp)
 			io.emit('valid', res);
-			if(res) await addkey(res);
+			if(res) await addkey(res, {
+				free: true,
+				user: id,
+				limit: 20,
+				Date: 31
+			});
 		});
 	});
 	app.listen(3000);
@@ -90,6 +95,7 @@ async function start() {
 				all[a].Date = all[a].Date -1;
 				if(all[a].Date ==0) delete all[a];
 			}
+			return await updateFully(all);
 		});
 		}, {
 			scheduled: true,
