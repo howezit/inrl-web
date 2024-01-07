@@ -71,6 +71,7 @@ async function start() {
 			io.emit('valid', false);
 		});
 	});
+	app.listen(3000);
 	server.listen(PORT, () => {
 		console.log(`listening on :${PORT}`);
 	});
