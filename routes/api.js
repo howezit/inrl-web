@@ -3,6 +3,7 @@ __path = process.cwd()
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const {io} = require('../index');
 let localStrategy = require('passport-local').Strategy;
 const passport = require('passport');
 
@@ -15,7 +16,8 @@ const {
 let router = express.Router()
 
 router.get('/sign', async (req, res, next) => {
-res.sendFile(__path + '/view/loginapi.html')
+	res.sendFile(__path + '/view/loginapi.html')
+	io.emit('csrf', req.csrfToken());
 })
 
 passport.use(new localStrategy({
