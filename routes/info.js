@@ -11,7 +11,6 @@ const ct = require('countries-and-timezones');
 const {
     phone
 } = require('phone');
-const keys = inrlkeys.map(a => a.k);
 
 router.get('/age', async (req, res, next) => {
 	try {
