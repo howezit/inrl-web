@@ -7,6 +7,7 @@ const fs = require('fs');
 const cron = require('node-cron');
 const expressSession = require("express-session");
 const MemoryStore = require("memorystore")(expressSession);
+const flash = require('connect-flash');
 const passport = require("passport");
 const csrf = require("csurf");
 const {apikey,getkeys,addkey,removeKey,toPremiumKey,setOtp,checkOtp} = require('./lib');
@@ -29,6 +30,7 @@ const fileUpload = require('express-fileupload');
 async function start() {
 	await db.sync();
 	app.use(fileUpload());
+	app.use(flash())
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({
 		extended: true
