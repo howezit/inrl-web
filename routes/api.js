@@ -40,7 +40,7 @@ router.get('/events', async (req, res, next) => {
 	const trylogin = req.query.id;
 	const trysaved = req.query.key;
 	if (trylogin) {
-		await saveLogin(key);
+		await saveLogin(trylogin);
 		res.redirect('/api/events?key=events');
 	} else if (trysaved) {
 		req.body.key = trysaved;
