@@ -5,11 +5,6 @@ let path = require('path')
 const bodyParser = require("body-parser");
 const fs = require('fs');
 const cron = require('node-cron');
-const expressSession = require("express-session");
-const MemoryStore = require("memorystore")(expressSession);
-const flash = require('connect-flash');
-const passport = require("passport");
-const csrf = require("csurf");
 const {apikey,getkeys,addkey,removeKey,toPremiumKey,setOtp,checkOtp} = require('./lib');
 const {
 	db
@@ -30,23 +25,10 @@ const fileUpload = require('express-fileupload');
 async function start() {
 	await db.sync();
 	app.use(fileUpload());
-	app.use(flash())
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
-        app.use(
-		expressSession({
-			secret: "random",
-			resave: true,
-			saveUninitialized: true,
-			maxAge: 24 * 60 * 60 * 1000,
-			store: new MemoryStore(),
-		})
-	);
-	app.use(passport.session());
-	app.use(csrf());
-	app.use(passport.initialize());
 	app.use(express.static("public"));
 	app.use('/', main)
 	app.set("trust proxy", true);
