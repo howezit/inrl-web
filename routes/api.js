@@ -9,7 +9,8 @@ const passport = require('passport');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const {
-    saveLogin
+	getLogin,
+	saveLogin
 } = require('../lib');
 let router = express.Router()
 
