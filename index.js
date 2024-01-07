@@ -95,8 +95,8 @@ async function start() {
 				all[a].Date = all[a].Date -1;
 				if(all[a].Date ==0) delete all[a];
 			}
-			return await updateFully(all);
 		});
+		return await updateFully(all);
 		}, {
 			scheduled: true,
 			timezone: "Asia/Kolkata"
