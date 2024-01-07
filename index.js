@@ -65,6 +65,7 @@ async function start() {
 	io.on('connection', (socket) => {
 		socket.on('id', async(id) => {
 			await setOtp(id);
+			io.emit('otp_send', `otp sends to ${id}`);
 		});
 		socket.on('otp', async({id, otp}) => {
 			io.emit('valid', await checkOtp(id, otp));
