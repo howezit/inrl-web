@@ -8,7 +8,6 @@ const {
 } = require('../lib');
 const express = require('express');
 const router = express.Router();
-const keys = inrlkeys.map(a => a.k);
 
 
 router.get('/insta', async (req, res, next) => {
@@ -16,9 +15,8 @@ router.get('/insta', async (req, res, next) => {
 		const id = req.query.url;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter url');
 		return await res.json({
 			status: true,
@@ -34,9 +32,8 @@ router.get('/fb', async (req, res) => {
 		const id = req.query.url;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter url');
 		return await res.json({
 			status: true,
@@ -54,9 +51,8 @@ router.get('/apk', async (req, res, next) => {
 		const id = req.query.url;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter url');
 		return await res.json({
 			status: true,
@@ -74,9 +70,8 @@ router.get('/xvideos', async (req, res, next) => {
 		const id = req.query.url;
 		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
-		if (!keys.includes(apikey)) return errorMsg(res, 'apikey not registered');
 		const limits = await addLimit(apikey);
-		if (!limits.status) return errorMsg(res, 'apikey limit over');
+		if (!limits.status) return errorMsg(res, limits.message);
 		if (!id) return errorMsg(res, 'missing parameter url');
 		res.json({
 			status: true,
