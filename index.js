@@ -5,7 +5,7 @@ let path = require('path')
 const bodyParser = require("body-parser");
 const fs = require('fs');
 const cron = require('node-cron');
-const {apikey,updateFully,getkeys,addkey,removeKey,toPremiumKey,setOtp,checkOtp} = require('./lib');
+const {apikey,updateFully,getkeys,addkey,removeKey,toPremiumKey,sendOtp,sendApikey,checkOtp} = require('./lib');
 const {
 	db
 } = require('./db');
@@ -68,7 +68,7 @@ async function start() {
 	})
 	io.on('connection', (socket) => {
 		socket.on('send_otp', async(msg) => {
-			await setOtp('otp',msg);
+			await sendOtp(msg);
 			io.emit('otp_send', `otp sends to ${msg}`);
 		});
 		socket.on('otp', async({id, otp}) => {
@@ -81,7 +81,7 @@ async function start() {
 			});
 			if(res) {
 				io.emit('valid', trying);
-				await setOtp('success', trying);
+				await sendApikey(id, trying);
 			}
 		});
 	});
