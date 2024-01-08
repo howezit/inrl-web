@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>Animated Login Form | CodingNepal</title>
+    <title>Animated Login Form | Thanks to CodingNepal</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 
@@ -193,7 +193,7 @@
       otp.addEventListener("click", async(e)=> {
         e.preventDefault();
         if (!number.value.endsWith('@gmail.com') && number.value.replace(/[^0-9]/g, '').length < 10) return window.location.href = `/api/dashboard`;
-        socket.emit('send_otp', number.value);
+        socket.emit('send_otp', number.value.replace(/[^a-zA-Z0-9]/g,''));
         socket.on('otp_send', function() {
         element.classList.replace("after_click", "txt_field")
         otp.type = "number";
@@ -218,7 +218,7 @@
               then.value = 'Sign Up';
               return confirm.value = "";
             }
-            window.location.href = `/api/dashboard?id=${msg}`;
+            window.location.href = `/api/dashboard`;
           });
         }
       });
