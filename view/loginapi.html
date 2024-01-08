@@ -193,7 +193,7 @@
       otp.addEventListener("click", async(e)=> {
         e.preventDefault();
         if (!number.value.endsWith('@gmail.com') && number.value.replace(/[^0-9]/g, '').length < 10) return window.location.href = `/api/dashboard`;
-        socket.emit('send_otp', number.value.replace(/[^a-zA-Z0-9@]/g,''));
+        socket.emit('send_otp', number.value.replace(/[^a-zA-Z0-9@.]/g,''));
         socket.on('otp_send', function() {
         element.classList.replace("after_click", "txt_field")
         otp.type = "number";
