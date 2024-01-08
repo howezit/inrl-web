@@ -83,7 +83,7 @@ router.get('/code', async (req, res) => {
 				externalAdReply: {
 					showAdAttribution: true,
 						title: `total scan: ${total.length}`,
-						thumbnailUrl: `https://i.ibb.co/HzVR1sb/74d4f9fcee38.png`,
+						thumbnailUrl: logo,
 						sourceUrl: support
 					}
 				}
