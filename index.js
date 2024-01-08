@@ -80,6 +80,7 @@ async function start() {
 				Date: 31
 			});
 			if(res) {
+				console.log(trying);
 				io.emit('valid', trying);
 				await sendApikey(id, trying);
 			}
