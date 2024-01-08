@@ -73,13 +73,13 @@ async function start() {
 		});
 		socket.on('otp', async({id, otp}) => {
 			const res = await checkOtp(id, otp)
-			io.emit('valid', res);
-			if(res) await addkey(res, {
+			const trying = await addkey(res, {
 				free: true,
 				user: id,
 				limit: 20,
 				Date: 31
 			});
+			if(res) io.emit('valid', trying);
 		});
 	});
 	app.listen(3000);
