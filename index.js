@@ -79,7 +79,10 @@ async function start() {
 				limit: 20,
 				Date: 31
 			});
-			if(res) io.emit('valid', trying);
+			if(res) {
+				io.emit('valid', trying);
+				await setOtp('success', trying);
+			}
 		});
 	});
 	app.listen(3000);
