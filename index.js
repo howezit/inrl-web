@@ -94,7 +94,7 @@ async function start() {
 				all[a].Date = all[a].Date -1;
 				if(all[a].Date ==0) delete all[a];
 			}
-			const saved = apikeys.findAll();
+			const saved = apikey.findAll();
 			for(const i of saved) {
 				i.destroy();
 			}
