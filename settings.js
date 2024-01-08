@@ -12,7 +12,6 @@ email_pass = 'fpel bioh wwtc hkce';
 //_______________________ ┏  Apikey  ┓ _______________________\\
 imgbb = "76a050f031972d9f27e329d767dd988f" || "deb80cd12ababea1c9b9a8ad6ce3fab2";
 imgur = '3ca8036b07e0f25';
-inrlkeys = [{k: 'free50_inrl',l: 50}];
 apikeys = '736ed5bc07e5731de9e1f95770e675b6';
 
 //message.events({});//
