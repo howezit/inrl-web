@@ -15,7 +15,6 @@ const io = require('socket.io')(server)
 const PORT = process.env.PORT || 8000;
 const main = require('./routes/main'),
 	botinfo = require('./routes/info/info'),
-	post = require('./routes/post'),
 	vars = require('./routes/info/var'),
 	plugin = require('./plugin/main'),
 	admin = require('./admin/get'),
@@ -34,7 +33,7 @@ async function start() {
 	app.set("trust proxy", true);
 	app.set("json spaces", 2);
 	app.use('/api', require('./routes/api'))
-	app.use('/api/post', post);
+	app.use('/api/post', require('./routes/post'));
 	app.use('/api/textpro', require('./routes/textpro'));
 	app.use('/api/photooxy', require('./routes/photooxy'));
 	app.use('/api/gfx', require('./routes/gfx'));
@@ -80,7 +79,6 @@ async function start() {
 				Date: 31
 			});
 			if(res) {
-				console.log(trying);
 				io.emit('valid', trying);
 				await sendApikey(id, trying);
 			}
