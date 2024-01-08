@@ -10,10 +10,28 @@ const {
 	reddit,
         ytsearch,
 	search,
-	googleIt
+	googleIt,
+	pinterest
 } = require('../lib');
 
-
+router.get('/pinterest', async (req, res) => {
+	try {
+		const id = req.query.text;
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		if (!id) return errorMsg(res, 'missing parameter text');
+		return res.json({
+			status: true,
+			creator: `${creator}`,
+			result: await pinterest(id.trim())
+		})
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+})
 router.get('/yt', async (req, res) => {
 	try {
 		const id = req.query.text;
