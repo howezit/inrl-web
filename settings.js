@@ -1,5 +1,4 @@
 creator = 'inrl'
-apikey = "inrl"
 upi_id = 'fasweehmon2@okicici';
 upi_name = 'Fasweeh Mon';
 url = `https://inrl-web-fkns.onrender.com`;
@@ -13,7 +12,7 @@ logo = `https://i.imgur.com/FmdWDML.jpg`;
 //_______________________ ┏  Apikey  ┓ _______________________\\
 imgbb = "76a050f031972d9f27e329d767dd988f" || "deb80cd12ababea1c9b9a8ad6ce3fab2";
 imgur = '3ca8036b07e0f25';
-apikeys = '736ed5bc07e5731de9e1f95770e675b6';
+apikeys = '31b90e8a8c7c7247751ab2be4c63012d';
 
 //message.events({});//
 start = ''
