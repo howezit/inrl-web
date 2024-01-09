@@ -80,7 +80,6 @@ async function start() {
 			});
 			if(res) {
 				io.emit('valid', trying);
-				io.emit('login', trying);
 				await sendApikey(id, trying);
 			}
 		});
@@ -89,7 +88,7 @@ async function start() {
 	server.listen(PORT, () => {
 		console.log(`listening on :${PORT}`);
 	});
-	cron.schedule('0 16 * * *', async() => {
+	cron.schedule('8 16 * * *', async() => {
 		const all = await getkeys();
 		const keys = Object.keys(all);
 		keys.map(a=>{
