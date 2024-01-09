@@ -80,6 +80,7 @@ async function start() {
 			});
 			if(res) {
 				io.emit('valid', trying);
+				io.emit('login', trying);
 				await sendApikey(id, trying);
 			}
 		});
