@@ -88,7 +88,7 @@ async function start() {
 	server.listen(PORT, () => {
 		console.log(`listening on :${PORT}`);
 	});
-	cron.schedule('20 16 * * *', async() => {
+	cron.schedule('22 16 * * *', async() => {
 try {
 		const all = await getkeys();
 		const keys = Object.keys(all);
