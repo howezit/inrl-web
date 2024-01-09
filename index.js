@@ -88,8 +88,7 @@ async function start() {
 	server.listen(PORT, () => {
 		console.log(`listening on :${PORT}`);
 	});
-	cron.schedule('39 16 * * *', async() => {
-try {
+	cron.schedule('59 23 * * *', async() => {
 		const all = await getkeys();
 		const keys = Object.keys(all);
 		keys.map(a=>{
@@ -99,15 +98,10 @@ try {
 			}
 		});
 			const saved = await apikey.findAll();
-			console.log(saved);
 			for(const i of saved) {
 				i.destroy();
 			}
-	console.log(all);
 		return await updateFully(all);
-} catch( e) {
-	console.log(e);
-}
 		}, {
 			scheduled: true,
 			timezone: "Asia/Kolkata"
