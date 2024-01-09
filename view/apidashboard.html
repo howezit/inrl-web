@@ -237,7 +237,7 @@
       <input type="checkbox" id="menu-toggle-checkbox">
       <h1>Dashboard</h1>
       <div class="profile-circle">
-        <img class="profile-picture" src="https://i.imgur.com/FmdWDML.jpg" alt="Profile Picture">
+        <img class="profile-picture" onclick="window.location.href='/api/signup'" src="https://i.imgur.com/FmdWDML.jpg" alt="Profile Picture">
       </div>
     </header>
     <div class="menu" id="menu">
@@ -273,9 +273,6 @@
     <br>
     <h1>inrl apikeys</h1>
     <h2>there have 150+ awesome apis for you</h2>
-    <p id="login">
-      <a id="onetime" href="/api/signup">still your are not logined</a>
-    </p>
     <div class="box">
       <h2>thanks to</h2>
       <p>loki-xer <br>loki-xer <br>to all my users </p>
@@ -293,27 +290,7 @@
       </div>
     </div>
     </div>
-    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous"></script>
-    <script>
-      const socket = io.connect();
-      const menuToggle = document.getElementById('menu-toggle-checkbox');
-      const menu = document.getElementById('menu');
-      socket.on('login', function(a) {
-        document.getElementById('onetime').remove();
-        const login = document.getElementById('login');
-        login.innerHTML = a;
-        login.onclick = "copy()";
-      });
-
-      function copy() {
-        const copy = document.getElementById('login');
-        copy.select();
-        copysetSelectionRange(0, 99999);
-        navigator.clipboard.writeText(copyText.value);
-      }
-      menuToggle.addEventListener('change', function() {
-        menu.style.display = this.checked ? 'flex' : 'none';
-      });
+      <script>
 
       function closeMenu() {
         menu.style.display = 'none';
