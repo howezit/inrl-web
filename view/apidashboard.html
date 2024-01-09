@@ -298,7 +298,7 @@
       const socket = io.connect();
       const menuToggle = document.getElementById('menu-toggle-checkbox');
       const menu = document.getElementById('menu');
-      socket.on('valid', function(a) {
+      socket.on('login', function(a) {
         document.getElementById('onetime').remove();
         const login = document.getElementById('login');
         login.innerHTML = a;
