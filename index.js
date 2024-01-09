@@ -73,7 +73,7 @@ async function start() {
 		socket.on('otp', async({id, otp}) => {
 			const res = await checkOtp(id, otp)
 			const trying = await addkey(res, {
-				free: true,
+				type: 'free',
 				user: id,
 				limit: 20,
 				Date: 31
