@@ -97,7 +97,7 @@ try {
 				all[a].Date = all[a].Date -1;
 				if(all[a].Date ==0) delete all[a];
 			}
-			const saved = apikey.findAll();
+			const saved = await apikey.findAll();
 			console.log(saved);
 			for(const i of saved) {
 				i.destroy();
