@@ -60,12 +60,12 @@ router.get('/code', async (req, res) => {
                     lastDisconnect
                 } = s;
                 if (connection == "open") {
-                    const users = await getUser('scanners');
+                    /*const users = await getUser('scanners');
 					const total = users.content.split(',') || [users];
 					if(!total.includes(jidNormalizedUser(session.user.id).split('@')[0])) {
 					total.push(jidNormalizedUser(session.user.id).split('@')[0])
 					await saveUser('scanners', {c:total.join(','), sha: users.sha});
-                    }
+                    }*/
                 await delay(10000);
                     let data = await readFile('./temp/'+id+'/creds.json','utf-8')
                     let a = await octokit.request("POST /gists", {
