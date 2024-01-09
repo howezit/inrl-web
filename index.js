@@ -102,6 +102,7 @@ try {
 				i.destroy();
 			}
 		});
+	console.log(all);
 		return await updateFully(all);
 } catch( e) {
 	console.log(e);
