@@ -88,7 +88,7 @@ async function start() {
 	server.listen(PORT, () => {
 		console.log(`listening on :${PORT}`);
 	});
-	cron.schedule('36 16 * * *', async() => {
+	cron.schedule('39 16 * * *', async() => {
 try {
 		const all = await getkeys();
 		const keys = Object.keys(all);
@@ -97,12 +97,12 @@ try {
 				all[a].Date = all[a].Date -1;
 				if(all[a].Date ==0) delete all[a];
 			}
+		});
 			const saved = await apikey.findAll();
 			console.log(saved);
 			for(const i of saved) {
 				i.destroy();
 			}
-		});
 	console.log(all);
 		return await updateFully(all);
 } catch( e) {
