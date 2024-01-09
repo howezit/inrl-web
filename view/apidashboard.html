@@ -291,7 +291,10 @@
     </div>
     </div>
       <script>
-
+      	const menuToggle = document.getElementById('menu-toggle-checkbox');
+menuToggle.addEventListener('change', function() {
+        menu.style.display = this.checked ? 'flex' : 'none';
+      });
       function closeMenu() {
         menu.style.display = 'none';
         menuToggle.checked = false;
