@@ -10,7 +10,9 @@ const router = express.Router()
 router.get('/signup', async (req, res, next) => {
 	res.sendFile(__path + '/view/loginapi.html')
 })
-
+router.get('/dashboard', async (req, res, next) => {
+res.sendFile(__path + '/view/apidashboard.html')
+})
 router.get('/phone', async (req, res, next) => {
     let id = req.query.number;
     if (!id) return await res.json({
