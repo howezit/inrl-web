@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Include CSS file -->
+    <style>
+      body {
+        margin-top: 70px;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        background-color: #22272e;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        z-index: 1000;
+        /* Ensure it stays above other elements */
+      }
+
+      .menu-toggle {
+        cursor: pointer;
+        color: white;
+        font-size: 18px;
+        margin-left: 10px;
+      }
+
+      #menu-toggle-checkbox {
+        display: none;
+      }
+
+      #menu-toggle-label:before {
+        content: '\2630';
+      }
+
+      #menu-toggle-checkbox:checked+#menu-toggle-label:before {
+        content: '\2715';
+      }
+
+      .profile-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 10px;
+      }
+
+      .profile-picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h1 {
+        margin: 0;
+        text-align: center;
+        flex: 1;
+        /* Take the remaining space */
+      }
+
+      #login {
+        margin: 0;
+        text-align: center;
+        flex: 1;
+        /* Take the remaining space */
+      }
+
+      h2 {
+        margin: 0;
+        text-align: center;
+        flex: 1;
+        /* Take the remaining space */
+      }
+
+      p {
+        color: #f1f1f1;
+      }
+
+      .menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 60vw;
+        /* 50% of the viewport width */
+        height: 100vh;
+        /* 100% of the viewport height */
+        background-color: #333;
+        color: white;
+        flex-direction: column;
+        align-items: left;
+        z-index: 1;
+        overflow: auto;
+        /* Add this line to enable scrolling */
+      }
+
+      .menu a {
+        padding: 10px;
+        text-decoration: none;
+        color: white;
+      }
+
+      .menu a:nth-child(2) {
+        border-bottom: 2px solid white;
+        /* Increase the thickness of the line if needed */
+      }
+
+      .menu a:hover,
+      .menu a:active,
+      .menu a:focus {
+        background-color: red;
+        color: white;
+        /* You can adjust the text color if needed */
+      }
+
+      .close-button {
+        cursor: pointer;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #555;
+        color: white;
+        border: none;
+        outline: none;
+      }
+
+      section {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      aside {
+        width: 200px;
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        color: #ffffff;
+        margin-top: 0;
+      }
+
+      h3 {
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        flex: 1;
+        padding: 20px;
+      }
+
+      .grid-item {
+        background-color: #f1f1f1;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .grid-item p {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .box {
+        width: 300px;
+        padding: 10px;
+        background-color: #333f4c;
+        border: 1px solid #CCCCCC;
+        margin: 0 auto;
+        margin-top: 30px;
+        border-radius: 15px;
+      }
+
+      .contact-button {
+        display: inherit;
+        flex-direction: column;
+        text-decoration: none !important;
+        color: white;
+        /* Optional: Ensure the color is inherited from the parent */
+      }
+
+      .contact-button:hover {
+        text-decoration: none !important;
+        color: aliceblue !important;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .menu-toggle {
+          margin-right: 10px;
+        }
+
+        header {
+          flex-direction: row;
+          align-items: center;
+          padding: 5px;
+        }
+
+        .profile-circle {
+          margin: 10px 0;
+          margin-right: 10px;
+        }
+
+        @media only screen and (min-width: 601px) {
+
+          /* Adjust the width for larger screens */
+          .box {
+            width: 500px;
+            /* or any value you prefer */
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <label for="menu-toggle-checkbox" class="menu-toggle" id="menu-toggle-label"></label>
+      <input type="checkbox" id="menu-toggle-checkbox">
+      <h1>Dashboard</h1>
+      <div class="profile-circle">
+        <img class="profile-picture" src="https://i.imgur.com/FmdWDML.jpg" alt="Profile Picture">
+      </div>
+    </header>
+    <div class="menu" id="menu">
+      <a href="/api/dashboard">
+        <i class="fas fa-tachometer-alt"></i> Dashboard </a>
+      <a href="/api/pricing">
+        <i class="fas fa-dollar-sign"></i> Pricing </a>
+      <a href="/api/anime">
+        <i class="far fa-moon"></i> anime </a>
+      <a href="/api/downloader">
+        <i class="fas fa-camera"></i> downloader </a>
+      <a href="/api/gfx">
+        <i class="fas fa-images"></i> gfx </a>
+      <a href="/api/info">
+        <i class="fas fa-smile"></i> information's </a>
+      <a href="api/maker">
+        <i class="fas fa-random"></i> maker </a>
+      <a href="/api/nsfw">
+        <i class="fas fa-smile"></i> nsfw </a>
+      <a href="api/photooxy">
+        <i class="fas fa-random"></i> photooxy </a>
+      <a href="/api/post">
+        <i class="fas fa-smile"></i> post </a>
+      <a href="api/search">
+        <i class="fas fa-random"></i> search </a>
+      <a href="/api/stalk">
+        <i class="fas fa-smile"></i> stalk </a>
+      <a href="api/textpro">
+        <i class="fas fa-random"></i> textpro </a>
+      <a href="api/tools">
+        <i class="fas fa-random"></i> tools </a>
+    </div>
+    <br>
+    <h1>inrl apikeys</h1>
+    <h2>there have 150+ awesome apis for you</h2>
+    <p id="login">
+      <a id="onetime" href="/api/signup">still your are not logined</a>
+    </p>
+    <div class="box">
+      <h2>thanks to</h2>
+      <p>loki-xer <br>loki-xer <br>to all my users </p>
+    </div>
+    <div class="box">
+      <h2>Contact Me</h2>
+      <p>Interested in buying Premium Plan or VIP Plan? Found bugs? Requests features? You can contact me via below</p>
+      <div class="contact-buttons">
+        <a href="https://wa.me/+447438517627?text=I+need+more+request,+can+you+provide+your+pricing?" class="contact-button" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i> WhatsApp </a>
+        <a href="https://www.instagram.com/mhd_fasweeh/" class="contact-button" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i> Instagram </a>
+        <a href="https://gihub.com/inrl-official" class="contact-button" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i> github </a>
+      </div>
+    </div>
+    </div>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous"></script>
+    <script>
+      const socket = io.connect();
+      const menuToggle = document.getElementById('menu-toggle-checkbox');
+      const menu = document.getElementById('menu');
+      socket.on('valid', function(a) {
+        document.getElementById('onetime').remove();
+        const login = document.getElementById('login');
+        login.innerHTML = a;
+        login.onclick = "copy()";
+      });
+
+      function copy() {
+        const copy = document.getElementById('login');
+        copy.select();
+        copysetSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+      }
+      menuToggle.addEventListener('change', function() {
+        menu.style.display = this.checked ? 'flex' : 'none';
+      });
+
+      function closeMenu() {
+        menu.style.display = 'none';
+        menuToggle.checked = false;
+      }
+      window.addEventListener('click', function(event) {
+        if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+          closeMenu();
+        }
+      });
+    </script>
+  </body>
+</html>
