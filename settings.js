@@ -18,7 +18,7 @@ apikeys = '31b90e8a8c7c7247751ab2be4c63012d';
 start = ''
 block = ['918113921898','917034892686'];
 update = {
-    key:"poll",
+    key:"inrn",
     message:{
         text: "*to see inrl. bot with gfx plugins, join this group and and support😵‍💫*",
         contextInfo: {
