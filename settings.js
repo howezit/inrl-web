@@ -20,11 +20,11 @@ block = ['918113921898','917034892686'];
 update = {
     key:"poll",
     message:{
-        text: "*follow me on github*",
+        text: "*to see inrl. bot with gfx plugins, join this group and and support😵‍💫*",
         contextInfo: {
 		externalAdReply:{
-			sourceUrl: "https://github.com/inrl-official?tab=repositories",
-			title:"suggests!"
+			sourceUrl: "https://chat.whatsapp.com/F9A1pP3Iot08iGKkSGhL3w",
+			title:"commitments💯!"
 		}
 	}
     }
