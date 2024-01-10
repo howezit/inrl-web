@@ -23,7 +23,8 @@ router.get('/insta', async (req, res, next) => {
 			creator: `${creator}`,
 			result: await Insta(id)
 		});
-	} catch {
+	} catch (e) {
+		console.log(e);
 		return error200(res)
 	}
 });
