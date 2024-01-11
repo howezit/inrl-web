@@ -155,7 +155,8 @@ router.post('/pdf', async (req, res) => {
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message); 
-		if (!buff && !text || !path) return errorMsg(res, 'missing appended files and text, must need text or files, defin a path:"hy.pdf"');
+		if (!buff && !text) return errorMsg(res, 'missing appended files and text, must need text or files, defin a path:"hy.pdf"');
+		if (!path) return errorMsg(res, 'missing appended files and text, must need text or files, defin a path:"hy.pdf"');
                 const pdfFile = await pdf(buff?.files, {text, path});
 		return res.json({status: true, creator, url: 'https://' + req.hostname + pdfFile});
 	} catch (e) {
