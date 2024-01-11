@@ -42,6 +42,34 @@ router.get('/fancy', async (req, res, next) => {
 		return error200(res);
 	}
 });
+router.post('/fancy', async (req, res, next) => {
+	try {
+		const id = req.body.text;
+		const key = req.body.key;
+		const apikey = req.body.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message); 
+		if (!id) return errorMsg(res, 'missing parameter text');
+		if (!key) return errorMsg(res, 'missing parameter key, key upto 40|key=list');
+		if (key == 'list') {
+			return res.json({
+				status: true,
+				creator: `${creator}`,
+				result: Fancylist(id)
+			});
+		}
+		if (key > 40) return errorMsg(res, 'key must be less then 40 and greater then 0');
+		return await res.json({
+			status: true,
+			creator: `${creator}`,
+			result: Fancy(parseInt(key), id)
+		});
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
 router.get('/chatgpt', async (req, res) => {
 	try {
 		const id = req.query.text;
