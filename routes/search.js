@@ -103,7 +103,7 @@ router.get('/reddit', async (req, res, next) => {
 			creator: `${creator}`,
 			result: await reddit(id)
 		});
-	} catch {
+	} catch (e) {
 		console.log(e);
 		return error200(res)
 	}
