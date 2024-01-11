@@ -4,7 +4,8 @@ const {
 	getFBInfo,
 	download,
 	xvideosDown,
-	addLimit
+	addLimit,
+	PinDL
 } = require('../lib');
 const express = require('express');
 const router = express.Router();
@@ -22,6 +23,24 @@ router.get('/insta', async (req, res, next) => {
 			status: true,
 			creator: `${creator}`,
 			result: await Insta(id)
+		});
+	} catch (e) {
+		console.log(e);
+		return error200(res)
+	}
+});
+router.get('/pinterest', async (req, res, next) => {
+	try {
+		const id = req.query.url;
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		if (!id) return errorMsg(res, 'missing parameter url');
+		return await res.json({
+			status: true,
+			creator: `${creator}`,
+			result: await PinDL(id)
 		});
 	} catch (e) {
 		console.log(e);
