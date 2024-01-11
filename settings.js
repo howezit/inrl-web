@@ -20,10 +20,10 @@ block = ['918113921898','917034892686'];
 update = {
     key:"inrn",
     message:{
-        text: "*to see inrl. bot with gfx plugins, join this group and and support😵‍💫*",
+        text: "*thanks to all💯😵‍💫*",
         contextInfo: {
 		externalAdReply:{
-			sourceUrl: "https://chat.whatsapp.com/F9A1pP3Iot08iGKkSGhL3w",
+			sourceUrl: "thanks",
 			title:"commitments💯!"
 		}
 	}
