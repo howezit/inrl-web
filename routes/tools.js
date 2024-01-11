@@ -91,7 +91,7 @@ router.post('/url', async (req, res) => {
 		const url = await upload({
 			path: '/temp/' + req.files.file.name
 		});
-		if (!url.status) return errorMsg(res, 'rejected');
+		if (!url.status) return errorMsg(res, url.e);
 		return await res.json(url);
 	} catch (e) {
 		console.log(e);
