@@ -92,7 +92,7 @@ async function start() {
 		const all = await getkeys();
 		const keys = Object.keys(all);
 		keys.map(a=>{
-			if(a.type != 'free') {
+			if(all[a].type != 'free') {
 				all[a].Date = all[a].Date -1;
 				if(all[a].Date ==0) delete all[a];
 			}
