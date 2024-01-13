@@ -63,7 +63,7 @@ router.get('/gis', async (req, res, next) => {
 		res.json({
 			status: true,
 			creator: `${creator}`,
-			result: await gis(text, key)
+			result: await gis(id, count)
 		});
 	} catch (e) {
 		console.log(e);
