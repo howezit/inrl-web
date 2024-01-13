@@ -65,7 +65,7 @@ router.get('/gis', async (req, res, next) => {
 			creator: `${creator}`,
 			result: await gis(text, key)
 		});
-	} catch {
+	} catch (e) {
 		console.log(e);
 		return error200(res)
 	}
@@ -84,7 +84,7 @@ router.get('/lyrics', async (req, res, next) => {
 			creator: `${creator}`,
 			result: await lyrics(id)
 		});
-	} catch {
+	} catch (e) {
 		console.log(e);
 		return error200(res)
 	}
@@ -121,7 +121,7 @@ router.get('/gs', async (req, res) => {
 			creator: `${creator}`,
 			result: await googleIt(id)
 		})
-	} catch {
+	} catch (e) {
 		console.log(e);
 		return error200(res)
 	}
@@ -139,7 +139,7 @@ router.get('/xvideo', async (req, res, next) => {
 			creator: `${creator}`,
 			result: await xvideosSearch(text)
 		});
-	} catch {
+	} catch (e) {
 		console.log(e);
 		return error200(res)
 	}
@@ -157,7 +157,7 @@ router.get('/apk', async (req, res, next) => {
 			creator: `${creator}`,
 			result: await search(id)
 		});
-	} catch {
+	} catch (e) {
 		console.log(e);
 		return error200(res)
 	}
