@@ -16,6 +16,7 @@
     "youtubei.js": "^6.3.0",
     "jsdom": "^23.2.0",
     "node-cron":"3.0.3",
+    "pg":"^8.4.0",
     "snapsave-downloader-itj": "^1.0.1",
     "google-it": "^1.6.2",
     "imgbb-uploader": "^1.4.0",
