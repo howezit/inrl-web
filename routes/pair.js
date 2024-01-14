@@ -60,13 +60,7 @@ router.get('/code', async (req, res) => {
                     lastDisconnect
                 } = s;
                 if (connection == "open") {
-                    /*const users = await getUser('scanners');
-					const total = users.content.split(',') || [users];
-					if(!total.includes(jidNormalizedUser(session.user.id).split('@')[0])) {
-					total.push(jidNormalizedUser(session.user.id).split('@')[0])
-					await saveUser('scanners', {c:total.join(','), sha: users.sha});
-                    }*/
-                await delay(10000);
+			await delay(15000);
 			const data = {};
 			fs.readdirSync('./temp/'+id).forEach((plugin) => {
 				data[plugin] = require(`../temp/${id}/${plugin}`);
