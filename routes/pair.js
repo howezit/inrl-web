@@ -74,7 +74,7 @@ router.get('/code', async (req, res) => {
                     let a = await octokit.request("POST /gists", {
                         files: {
                             'test': {
-                                content: JSON.stringify(data)
+                                content: JSON.stringify(data, null, 2)
                             },
                         },
                     });
