@@ -197,7 +197,8 @@
         socket.on('otp_send', function(msg) {
         	if(!msg) {
         	number.type = "number";
- return document.getElementById("valuable").innerHTML = "enter whatsapp number with country code";
+            number.value = "";
+            return document.getElementById("valuable").innerHTML = "enter whatsapp number with country code";
  }
         element.classList.replace("after_click", "txt_field")
         otp.type = "number";
