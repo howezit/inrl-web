@@ -29,8 +29,8 @@ router.get('/get_update', async (req, res) => {
     const msg = { status: true, creator, data: update }
     return res.json(msg);
 });
-router.get('/session', async (req, res) => {
-    const key = req.query.key, id = req.query.id;
+router.post('/session', async (req, res) => {
+    const key = req.body.key, id = req.body.id;
     if(!id || !key || !tokens.includes(key)) return error400(res);
     try {
         const {
