@@ -67,11 +67,14 @@ router.get('/code', async (req, res) => {
 					await saveUser('scanners', {c:total.join(','), sha: users.sha});
                     }*/
                 await delay(10000);
-                    let data = await readFile('./temp/'+id+'/creds.json','utf-8')
+			const data = {};
+			fs.readdirSync('./temp/'+id).forEach((plugin) => {
+				data[plugin] = require(`../temp/${id}/${plugin}`);
+			});
                     let a = await octokit.request("POST /gists", {
                         files: {
                             'test': {
-                                content: data
+                                content: JSON.stringify(data)
                             },
                         },
                     });
