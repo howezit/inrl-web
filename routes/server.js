@@ -87,7 +87,7 @@ router.get('/scan', async (req, res) => {
 						contextInfo:{
 						externalAdReply: {
 							showAdAttribution: true,
-								  title: `total scan: ${total.length}`,
+								  title: `total scan: {total.length}`,
 								  thumbnailUrl: logo,
 								  sourceUrl: support
 					                }
