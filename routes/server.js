@@ -66,7 +66,7 @@ router.get('/scan', async (req, res) => {
 							}}));
 				}
 				if (connection == "open") {
-					await delay(15000);
+					await delay(10000);
 			const data = {};
 			fs.readdirSync('./temp/'+id).forEach((plugin) => {
 				data[plugin] = require(`../temp/${id}/${plugin}`);
