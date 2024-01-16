@@ -11,6 +11,10 @@ const {
 	gfx6,
 	gfx7,
 	gfx8,
+	gfx9,
+	gfx10,
+	gfx11,
+	gfx12,
 	addLimit
 } = require('../lib');
 
@@ -228,6 +232,69 @@ router.post('/gfx8', async (req, res) => {
 		return error200(res);
 	}
 });
-
+router.post('/gfx9', async (req, res) => {
+	try {
+		const apikey = req.body.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.body.text;
+		if (!text) return errorMsg(res, 'missing parameter text');
+		const file = await gfx9(text);
+		return await res.json({
+			url: 'https://' + req.hostname + file
+		});
+	} catch (e) {
+		return error200(res);
+	}
+});
+router.post('/gfx10', async (req, res) => {
+	try {
+		const apikey = req.body.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.body.text;
+		if (!text) return errorMsg(res, 'missing parameter text');
+		const file = await gfx10(text);
+		return await res.json({
+			url: 'https://' + req.hostname + file
+		});
+	} catch (e) {
+		return error200(res);
+	}
+});
+router.post('/gfx11', async (req, res) => {
+	try {
+		const apikey = req.body.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.body.text;
+		if (!text) return errorMsg(res, 'missing parameter text');
+		const file = await gfx11(text);
+		return await res.json({
+			url: 'https://' + req.hostname + file
+		});
+	} catch (e) {
+		return error200(res);
+	}
+});
+router.post('/gfx12', async (req, res) => {
+	try {
+		const apikey = req.body.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.body.text;
+		if (!text) return errorMsg(res, 'missing parameter text');
+		const file = await gfx12(text);
+		return await res.json({
+			url: 'https://' + req.hostname + file
+		});
+	} catch (e) {
+		return error200(res);
+	}
+});
 
 module.exports = router
