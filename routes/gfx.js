@@ -25,16 +25,12 @@ router.post('/gfx1', async (req, res) => {
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message);
-		const path = req.body.path;
 		const text = req.body.text;
-		const color = req.body.color;
-		const border = req.body.border;
-		if (!path || !text || !color || !border) return error503(res);
+		const text2 = req.body.text2;
+		if (!text && !text2) return errorMsg(res, 'missing parameter text');
 		const file = await gfx1({
-			path,
 			text,
-			color,
-			border
+			text2
 		});
 		return await res.json({
 			url: 'https://' + req.hostname + file
@@ -51,16 +47,12 @@ router.post('/gfx2', async (req, res) => {
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message);
-		const path = req.body.path;
 		const text = req.body.text;
-		const color = req.body.color;
-		const border = req.body.border;
-		if (!path || !text || !color || !border) return error503(res);
+		const text2 = req.body.text2;
+		if (!text && !text2) return errorMsg(res, 'missing parameter text');
 		const file = await gfx2({
-			path,
 			text,
-			color,
-			border
+			text2
 		});
 		return await res.json({
 			url: 'https://' + req.hostname + file
@@ -77,16 +69,12 @@ router.post('/gfx3', async (req, res) => {
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message);
-		const path = req.body.path;
 		const text = req.body.text;
-		const color = req.body.color;
-		const border = req.body.border;
-		if (!path || !text || !color || !border) return error503(res);
+		const text2 = req.body.text2;
+		if (!text && !text2) return errorMsg(res, 'missing parameter text');
 		const file = await gfx3({
-			path,
 			text,
-			color,
-			border
+			text2
 		});
 		return await res.json({
 			url: 'https://' + req.hostname + file
