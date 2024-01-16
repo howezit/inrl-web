@@ -57,7 +57,8 @@ async function start() {
 	app.use(async (req, res, next) => {
 		if (fs.existsSync('.' + req.path)) {
 			const file = fs.readFileSync('.' + req.path);
-			await res.end(file);
+			res.end(file);
+			console.log(`path cleared: ${req.path}`);
 			return fs.unlinkSync('.' + req.path);
 		}
 		res.status(200).json({
