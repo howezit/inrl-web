@@ -40,6 +40,7 @@ router.post('/gfx1', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -65,6 +66,7 @@ router.post('/gfx2', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -90,6 +92,7 @@ router.post('/gfx3', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -117,6 +120,7 @@ router.post('/gfx4', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -144,6 +148,7 @@ router.post('/gfx5', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -171,6 +176,7 @@ router.post('/gfx6', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -200,6 +206,7 @@ router.post('/gfx7', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -229,6 +236,7 @@ router.post('/gfx8', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -245,6 +253,7 @@ router.post('/gfx9', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -261,6 +270,7 @@ router.post('/gfx10', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -277,6 +287,7 @@ router.post('/gfx11', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
@@ -293,6 +304,7 @@ router.post('/gfx12', async (req, res) => {
 			url: 'https://' + req.hostname + file
 		});
 	} catch (e) {
+		console.log(e);
 		return error200(res);
 	}
 });
