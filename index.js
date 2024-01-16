@@ -91,7 +91,8 @@ async function start() {
 		console.log(`listening on :${PORT}`);
 	});
 	cron.schedule('59 23 * * *', async() => {
-		const all = await getkeys();
+		const curent_store = await getkeys();
+		const all = curent_store;
 		const keys = Object.keys(all);
 		keys.map(a=>{
 			if(all[a].type != 'free') {
@@ -103,7 +104,7 @@ async function start() {
 			for(const i of saved) {
 				i.destroy();
 			}
-		return await updateFully(all);
+		return await updateFully(all, curent_store);
 		}, {
 			scheduled: true,
 			timezone: "Asia/Kolkata"
