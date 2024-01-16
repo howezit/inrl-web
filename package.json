@@ -8,6 +8,11 @@
     "scripts": {
     "start": "node index.js"
   },
+"browser": {
+    "fs": false,
+    "os": false,
+    "path": false
+},
   "dependencies": {
     "socket.io": "4.7.3",
     "nodemailer": "^6.8.0",
