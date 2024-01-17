@@ -2,6 +2,7 @@ require('../settings');
 const express = require('express');
 const router = express.Router();
 const {
+	addLimit,
 	morece_encode,
 	decode_morece,
 	jsObfuscate,
