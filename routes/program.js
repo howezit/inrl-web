@@ -60,7 +60,7 @@ router.post('/js_minify', async (req, res, next) => {
 		return await res.json({
 			status: true,
 			creator: `${creator}`,
-			result: await jsObfuscate(id)
+			result: await uglifyJS(id)
 		});
 	} catch (e) {
 		console.log(e);
@@ -78,7 +78,7 @@ router.post('/js_obfuscate', async (req, res, next) => {
 		return await res.json({
 			status: true,
 			creator: `${creator}`,
-			result: await uglifyJS(id)
+			result: await jsObfuscate(id)
 		});
 	} catch (e) {
 		console.log(e);
