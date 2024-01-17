@@ -33,7 +33,9 @@ router.post('/gfx1', async (req, res) => {
 			text2
 		});
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -55,7 +57,9 @@ router.post('/gfx2', async (req, res) => {
 			text2
 		});
 		return await res.json({
-			url: file//'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -77,7 +81,9 @@ router.post('/gfx3', async (req, res) => {
 			text2
 		});
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -99,7 +105,9 @@ router.post('/gfx4', async (req, res) => {
 			text2
 		});
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -123,7 +131,9 @@ router.post('/gfx5', async (req, res) => {
 			text3
 		});
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -147,7 +157,9 @@ router.post('/gfx6', async (req, res) => {
 			text3
 		});
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -177,7 +189,9 @@ router.post('/gfx7', async (req, res) => {
 			text2
 		});
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -207,7 +221,9 @@ router.post('/gfx8', async (req, res) => {
 			text2
 		});
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -224,7 +240,9 @@ router.post('/gfx9', async (req, res) => {
 		if (!text) return errorMsg(res, 'missing parameter text');
 		const file = await gfx9(text);
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -241,7 +259,9 @@ router.post('/gfx10', async (req, res) => {
 		if (!text) return errorMsg(res, 'missing parameter text');
 		const file = await gfx10(text);
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -258,7 +278,9 @@ router.post('/gfx11', async (req, res) => {
 		if (!text) return errorMsg(res, 'missing parameter text');
 		const file = await gfx11(text);
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
@@ -275,7 +297,9 @@ router.post('/gfx12', async (req, res) => {
 		if (!text) return errorMsg(res, 'missing parameter text');
 		const file = await gfx12(text);
 		return await res.json({
-			url: 'https://' + req.hostname + file
+		    status: true,
+		    creator,
+			result: file
 		});
 	} catch (e) {
 		console.log(e);
