@@ -32,8 +32,11 @@ router.post('/gfx1', async (req, res) => {
 			text,
 			text2
 		});
-		res.set("Content-Type", "image/png");
-		return res.send(file);
+		return await res.json({
+		    status: true,
+		    creator,
+		    result: file
+		});
 	} catch (e) {
 		console.log(e);
 		return error200(res);
@@ -56,7 +59,7 @@ router.post('/gfx2', async (req, res) => {
 		return await res.json({
 		    status: true,
 		    creator,
-			result: file
+		    result: file
 		});
 	} catch (e) {
 		console.log(e);
