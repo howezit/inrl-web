@@ -15,8 +15,8 @@ const {
 
 router.get('/morece_encode', async (req, res, next) => {
 	try {
-		const id = req.body.text;		
-		const apikey = req.body.apikey;
+		const id = req.query.text;		
+		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message); 
@@ -33,8 +33,8 @@ router.get('/morece_encode', async (req, res, next) => {
 });
 router.get('/morece_decode', async (req, res, next) => {
 	try {
-		const id = req.body.text;		
-		const apikey = req.body.apikey;
+		const id = req.query.text;		
+		const apikey = req.query.apikey;
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message); 
