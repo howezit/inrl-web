@@ -55,7 +55,7 @@ router.post('/gfx2', async (req, res) => {
 			text2
 		});
 		return await res.json({
-			url: 'https://' + req.hostname + file
+			url: file//'https://' + req.hostname + file
 		});
 	} catch (e) {
 		console.log(e);
