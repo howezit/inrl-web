@@ -32,11 +32,8 @@ router.post('/gfx1', async (req, res) => {
 			text,
 			text2
 		});
-		return await res.json({
-		    status: true,
-		    creator,
-			result: file
-		});
+		res.set("Content-Type", "image/png");
+		return res.send(file);
 	} catch (e) {
 		console.log(e);
 		return error200(res);
