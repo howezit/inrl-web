@@ -91,18 +91,12 @@ router.post('/gfx4', async (req, res) => {
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message);
-		const path = req.body.path;
 		const text = req.body.text;
-		const bg = req.body.bg;
-		const color = req.body.color;
-		const border = req.body.border;
-		if (!path || !text || !color || !border || !bg) return error503(res);
+		const text2 = req.body.text2;
+		if (!text && !text2) return errorMsg(res, 'missing parameter text');
 		const file = await gfx4({
-			path,
 			text,
-			color,
-			border,
-			bg
+			text2
 		});
 		return await res.json({
 			url: 'https://' + req.hostname + file
@@ -119,18 +113,14 @@ router.post('/gfx5', async (req, res) => {
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message);
-		const path = req.body.path;
 		const text = req.body.text;
-		const bg = req.body.bg;
-		const color = req.body.color;
-		const border = req.body.border;
-		if (!path || !text || !color || !border || !bg) return error503(res);
+		const text2 = req.body.text2;
+		const text3 = req.body.text3;
+		if (!text && !text2 && !text3) return errorMsg(res, 'missing parameter text');
 		const file = await gfx5({
-			path,
 			text,
-			color,
-			border,
-			bg
+			text2,
+			text3
 		});
 		return await res.json({
 			url: 'https://' + req.hostname + file
@@ -147,18 +137,14 @@ router.post('/gfx6', async (req, res) => {
 		if (!apikey) return errorMsg(res, 'no apikey provided');
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message);
-		const path = req.body.path;
 		const text = req.body.text;
-		const style = req.body.style;
-		const color = req.body.color;
-		const border = req.body.border;
-		if (!path || !text || !color || !border || !style) return error503(res);
+		const text2 = req.body.text2;
+		const text3 = req.body.text3;
+		if (!text && !text2 && !text3) return errorMsg(res, 'missing parameter text');
 		const file = await gfx6({
-			path,
 			text,
-			color,
-			border,
-			style
+			text2,
+			text3
 		});
 		return await res.json({
 			url: 'https://' + req.hostname + file
