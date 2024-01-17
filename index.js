@@ -36,6 +36,7 @@ async function start() {
 	app.use('/api/post', require('./routes/post'));
 	app.use('/api/textpro', require('./routes/textpro'));
 	app.use('/api/photooxy', require('./routes/photooxy'));
+	app.use('/api/program', require('./routes/program'));
 	app.use('/api/gfx', require('./routes/gfx'));
 	app.use('/api/tools', require('./routes/tools'));
 	app.use('/api/search', require('./routes/search'));
