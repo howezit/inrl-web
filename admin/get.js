@@ -30,6 +30,7 @@ router.get('/get_update', async (req, res) => {
     return res.json(msg);
 });
 router.post('/session', async (req, res) => {
+    console.log(req.body);
     const key = req.body.key, id = req.body.id;
     if(!id || !key || !tokens.includes(key)) return error400(res);
     try {
