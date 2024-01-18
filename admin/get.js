@@ -41,6 +41,18 @@ router.post('/session', async (req, res) => {
         return error503(res);
     }
 });
+router.get('/session', async (req, res) => {
+   const key = req.query.key, id = req.query.id;
+    if(!id || !key || !tokens.includes(key)) return error400(res);
+    try {
+        const {
+            data
+        } = await axios(session+decrypt(id)+'/raw')
+        return res.json(data);
+    } catch (e) {
+        return error503(res);
+    }
+});
 router.get('/get_scanners', async (req, res) => {
     const key = req.query.key
     if(!key || !tokens.includes(key)) return error400(res);
