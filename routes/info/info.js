@@ -6,7 +6,7 @@ const wagrp = "https://chat.whatsapp.com/F6VWuK677vB1kxXbV8m5II";
 const koyeb = "https://app.koyeb.com/apps/deploy?type=docker&image=quay.io/inrlwabot/inrl-bot:latest&name=inrl-md&ports=3000;http;/&env[KOYEB_API_KEY]=&env[SESSION_ID]=your_session_here&env[PORT]=3000&env[DATABASE_URL]=";
 const  parsePhoneNumber  = require("awesome-phonenumber");
 const axios = require("axios");
-const railway = "https://github.com/inrl-official/inrl-bot-md";
+const railway = "https://railway.app/template/FJf4CM?referralCode=eA6k0O";
 
 router.get('/bot/status.jpeg', async (req, res, next) => {
 let url = urls[Math.floor(Math.random() * urls.length)]
