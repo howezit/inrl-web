@@ -30,6 +30,7 @@ const {readFile} = require("node:fs/promises")
 router.get('/code', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
+	if(!num || !num.replace(/[^0-9]/g,'')) return res.send(new Error('Invalid Input Error'));
         async function getPaire() {
         const {
             state,
