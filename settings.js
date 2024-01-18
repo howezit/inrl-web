@@ -25,7 +25,7 @@ update = {
         contextInfo: {
 		externalAdReply:{
 			sourceUrl: "thanks",
-			title:"commitments💯!"
+			title:"some gfx commands added 😅, use and give feedback please!"
 		}
 	}
     }
