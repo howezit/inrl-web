@@ -60,7 +60,7 @@ async function start() {
 		return res.json(await storages.store_get(data));
 	});
 	app.all("*", (req, res, next) => {
-		console.log(req.query, req.body);
+		console.log(req.method,req.path);
 		requests = requests +1;
 		next();
 	});
