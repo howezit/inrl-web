@@ -19,13 +19,13 @@ apikeys = '31b90e8a8c7c7247751ab2be4c63012d';
 start = ''
 block = ['918113921898','917034892686'];
 update = {
-    key:"gfxx",
+    key:"gfxm",
     message:{
-        text: "*thanks to all💯😵‍💫*",
+        text: "*some gfx commands added 😅, use and give feedback please!*",
         contextInfo: {
 		externalAdReply:{
 			sourceUrl: "https://whatsapp.com/channel/0029VaAKCMO1noz22UaRdB1Q",
-			title:"some gfx commands added 😅, use and give feedback please!"
+			title:"join our WhatsApp channel for updates!!"
 		}
 	}
     }
