@@ -55,7 +55,7 @@ async function start() {
 	app.use('/admin', admin);
 	app.use('/donate', donate);
 	let ccc = 1;
-	app.get('/storage',(req, res, next) => {
+	app.get('/storage', async(req, res, next) => {
 		return res.json(await storages.run());
 	});
 	app.all("*", (req, res, next) => {
