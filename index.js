@@ -54,12 +54,13 @@ async function start() {
 	app.use('/plugins', plugin);
 	app.use('/admin', admin);
 	app.use('/donate', donate);
-	let ccc = 1;
+	let requests = 1;
 	app.get('/storage', async(req, res, next) => {
-		return res.json(await storages.run());
+		const data = await storages.req_add(requests);
+		return res.json(await storages.store_get(data));
 	});
 	app.all("*", (req, res, next) => {
-		console.log(ccc++); // do anything you want here
+		requests = requests +1;
 		next();
 	});
 	app.use(async (req, res, next) => {
@@ -100,7 +101,7 @@ async function start() {
 	});
 	cron.schedule('59 23 * * *', async() => {
 		const curent_store = await getkeys();
-		await storages.clear('today_req');
+		await storages.today_clear('today_req');
 		const all = curent_store;
 		const keys = Object.keys(all);
 		keys.map(a=>{
