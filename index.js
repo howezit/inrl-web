@@ -5,7 +5,7 @@ let path = require('path')
 const bodyParser = require("body-parser");
 const fs = require('fs');
 const cron = require('node-cron');
-const {apikey,updateFully,getkeys,addkey,removeKey,toPremiumKey,sendOtp,sendApikey,checkOtp} = require('./lib');
+const {storages,apikey,updateFully,getkeys,addkey,removeKey,toPremiumKey,sendOtp,sendApikey,checkOtp} = require('./lib');
 const {
 	db
 } = require('./db');
@@ -54,7 +54,14 @@ async function start() {
 	app.use('/plugins', plugin);
 	app.use('/admin', admin);
 	app.use('/donate', donate);
-
+	let ccc = 1;
+	app.get('/storage',(req, res, next) => {
+		return res.json(await storages.run());
+	});
+	app.all("*", (req, res, next) => {
+		console.log(ccc++); // do anything you want here
+		next();
+	});
 	app.use(async (req, res, next) => {
 		if (fs.existsSync('.' + req.path)) {
 			const file = fs.readFileSync('.' + req.path);
@@ -93,6 +100,7 @@ async function start() {
 	});
 	cron.schedule('59 23 * * *', async() => {
 		const curent_store = await getkeys();
+		await storages.clear('today_req');
 		const all = curent_store;
 		const keys = Object.keys(all);
 		keys.map(a=>{
