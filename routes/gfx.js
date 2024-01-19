@@ -306,5 +306,244 @@ router.post('/gfx12', async (req, res) => {
 		return error200(res);
 	}
 });
+router.get('/gfx1', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		const text2 = req.query.text2;
+		if (!text && !text2) return errorMsg(res, 'missing parameter text');
+		const file = await gfx1({
+			text,
+			text2
+		});
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+
+router.get('/gfx2', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		const text2 = req.query.text2;
+		if (!text && !text2) return errorMsg(res, 'missing parameter text');
+		const file = await gfx2({
+			text,
+			text2
+		});
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+
+router.get('/gfx3', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		const text2 = req.query.text2;
+		if (!text && !text2) return errorMsg(res, 'missing parameter text');
+		const file = await gfx3({
+			text,
+			text2
+		});
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+
+router.get('/gfx4', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		const text2 = req.query.text2;
+		if (!text && !text2) return errorMsg(res, 'missing parameter text');
+		const file = await gfx4({
+			text,
+			text2
+		});
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+
+router.get('/gfx5', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		const text2 = req.query.text2;
+		const text3 = req.query.text3;
+		if (!text && !text2 && !text3) return errorMsg(res, 'missing parameter text');
+		const file = await gfx5({
+			text,
+			text2,
+			text3
+		});
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+
+router.get('/gfx6', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		const text2 = req.query.text2;
+		const text3 = req.query.text3;
+		if (!text && !text2 && !text3) return errorMsg(res, 'missing parameter text');
+		const file = await gfx6({
+			text,
+			text2,
+			text3
+		});
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+
+router.get('/gfx7', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const path = req.query.path;
+		const text = req.query.text;
+		const style = req.query.style;
+		const color = req.query.color;
+		const border = req.query.border;
+		const text2 = req.query.text2;
+		if (!path || !text || !color || !border || !style) return error503(res);
+		const file = await gfx7({
+			path,
+			text,
+			color,
+			border,
+			style,
+			text2
+		});
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+
+router.get('/gfx8', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const path = req.query.path;
+		const text = req.query.text;
+		const style = req.query.style;
+		const color = req.query.color;
+		const border = req.query.border;
+		const text2 = req.query.text2;
+		if (!path || !text || !color || !border || !style) return error503(res);
+		const file = await gfx8({
+			path,
+			text,
+			color,
+			border,
+			style,
+			text2
+		});
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+router.get('/gfx9', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		if (!text) return errorMsg(res, 'missing parameter text');
+		const file = await gfx9(text);
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+router.get('/gfx10', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		if (!text) return errorMsg(res, 'missing parameter text');
+		const file = await gfx10(text);
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+router.get('/gfx11', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		if (!text) return errorMsg(res, 'missing parameter text');
+		const file = await gfx11(text);
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+router.get('/gfx12', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message);
+		const text = req.query.text;
+		if (!text) return errorMsg(res, 'missing parameter text');
+		const file = await gfx12(text);
+		return await res.end(file);
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
 
 module.exports = router
