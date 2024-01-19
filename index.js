@@ -9,6 +9,12 @@ const {storages,apikey,updateFully,getkeys,addkey,removeKey,toPremiumKey,sendOtp
 const {
 	db
 } = require('./db');
+function ignoreFavicon(req, res, next) {
+  if (req.originalUrl.includes('favicon.ico')) {
+    res.status(204).end()
+  }
+  next();
+}
 const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server)
@@ -28,6 +34,7 @@ async function start() {
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
+	app.use(ignoreFavicon);
 	app.use(express.static("public"));
 	app.use('/', main)
 	app.set("trust proxy", true);
