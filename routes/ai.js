@@ -4,7 +4,9 @@ const router = express.Router();
 const {
 	gpt,
 	addLimit,
-	gemini
+	gemini,
+	bardAi,
+	Bing
 } = require('../lib');
 
 router.get('/chatgpt', async (req, res) => {
@@ -21,6 +23,42 @@ router.get('/chatgpt', async (req, res) => {
 			status: true,
 			creator: `${creator}`,
 			result: res_msg
+		});
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+router.get('/bard', async (req, res) => {
+	try {
+		const id = req.query.text;
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message); 
+		if (!id) return errorMsg(res, 'missing parameter text');
+		return await res.json({
+			status: true,
+			creator: `${creator}`,
+			result: await bardAi(id)
+		});
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+router.get('/bing', async (req, res) => {
+	try {
+		const id = req.query.text;
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message); 
+		if (!id) return errorMsg(res, 'missing parameter text');
+		return await res.json({
+			status: true,
+			creator: `${creator}`,
+			result: await Bing(id)
 		});
 	} catch (e) {
 		console.log(e);
