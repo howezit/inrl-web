@@ -55,11 +55,8 @@ router.get('/bing', async (req, res) => {
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message); 
 		if (!id) return errorMsg(res, 'missing parameter text');
-		return await res.json({
-			status: true,
-			creator: `${creator}`,
-			result: await Bing(id)
-		});
+		const result = await Bing(id);
+		return await res.end(await getBuffer(result));
 	} catch (e) {
 		console.log(e);
 		return error200(res);
@@ -93,7 +90,6 @@ router.get('/diffusion', async (req, res) => {
 		if (!id) return errorMsg(res, 'missing parameter text');
 		const result = await stableDiffusion(id);
 		return await res.end(await getBuffer(result));
-
 	} catch (e) {
 		console.log(e);
 		return error200(res);
