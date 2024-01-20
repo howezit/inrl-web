@@ -4,7 +4,7 @@ const router = express.Router();
 const {
 	gpt,
 	addLimit,
-	gimini
+	gemini
 } = require('../lib');
 
 router.get('/chatgpt', async (req, res) => {
@@ -27,7 +27,7 @@ router.get('/chatgpt', async (req, res) => {
 		return error200(res);
 	}
 });
-router.get('/gimini', async (req, res) => {
+router.get('/gemini', async (req, res) => {
 	try {
 		const id = req.query.text;
 		const apikey = req.query.apikey;
@@ -35,7 +35,7 @@ router.get('/gimini', async (req, res) => {
 		const limits = await addLimit(apikey);
 		if (!limits.status) return errorMsg(res, limits.message); 
 		if (!id) return errorMsg(res, 'missing parameter text');
-		let res_msg = await gimini(id);
+		let res_msg = await gemini(id);
 		res_msg = res_msg.reply;
 		return await res.json({
 			status: true,
