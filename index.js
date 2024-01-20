@@ -79,6 +79,7 @@ async function start() {
 			console.log(`path cleared: ${req.path}`);
 			return fs.unlinkSync('.' + req.path);
 		}
+		if(res.headersSent) return;
 		res.status(200).json({
 			status: false,
 			message: "Connection Closed"
