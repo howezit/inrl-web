@@ -47,6 +47,7 @@ async function start() {
 	app.use('/api/gfx', require('./routes/gfx'));
 	app.use('/api/tools', require('./routes/tools'));
 	app.use('/api/search', require('./routes/search'));
+	app.use('/api/ai', require('./routes/ai'));
 	app.use('/api/maker', require('./routes/maker'));
 	app.use('/api/stalk', require('./routes/stalk'));
         app.use('/api/anime', require('./routes/anime'));
