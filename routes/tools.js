@@ -4,7 +4,6 @@ const router = express.Router();
 const fs = require('fs');
 const {
 	ocrSpace,
-	gpt6,
 	addLimit,
 	Fancy,
 	Fancylist,
