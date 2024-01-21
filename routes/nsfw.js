@@ -33,6 +33,10 @@ const {
 	addLimit
 } = require('../lib');
 
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/nsfw.html')
+})
+
 router.get('/ahegao', async (req, res, next) => {
 	try {
 		const apikey = req.query.apikey;
