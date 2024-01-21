@@ -9,6 +9,9 @@ const {
 	wifu,
 	addLimit
 } = require('../lib');
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/anime.html')
+})
 
 router.get('/husbu', async (req, res, next) => {
 	try {
