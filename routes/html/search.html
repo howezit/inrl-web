@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>bible-api.com</title>
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      color: #f8d249; /* Yellow text color for h2 */
+    }
+
+    table {
+  display: block;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+    th, td {
+      text-align: left;
+      border: 1px solid #555;
+      padding: 10px;
+      margin: 50%px; /* Added margin for spacing between columns */
+    }
+    
+    th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    a {
+      texts-align: center;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #8aff8a; /* Light green text color on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>search</h2>
+
+  <table border="5">
+    <tr>
+      <th>name</th>
+      <th>description</th>
+      <th>type</th>
+      <th>Parameter</th>
+      <th colspan="2">method</th>
+    </tr>
+
+<tr>
+      <td>pinterest</td>
+      <td>search on pinterest</td>
+      <td>json</td>
+      <td>text, apikey</td>
+      <td>
+      <a class="method" href="/api/search/pinterest?text=your text&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>yt</td>
+      <td>search on yt</td>
+      <td>json</td>
+      <td>text, apikey</td>
+      <td>
+      <a class="method" href="/api/search/yt?text=your text&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>gis</td>
+      <td>search on gis</td>
+      <td>json</td>
+      <td>count, text, apikey</td>
+      <td>
+      <a class="method" href="/api/search/gis?text=your text&count=5&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>lyrics</td>
+      <td>search on lyrics</td>
+      <td>json</td>
+      <td>text, apikey</td>
+      <td>
+      <a class="method" href="/api/search/lyrics?text=your text&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>reddit</td>
+      <td>search on reddit</td>
+      <td>json</td>
+      <td>text, apikey</td>
+      <td>
+      <a class="method" href="/api/search/reddit?text=your text&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>gs</td>
+      <td>search on gs</td>
+      <td>json</td>
+      <td>text, apikey</td>
+      <td>
+      <a class="method" href="/api/search/gs?text=your text&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>xvideo</td>
+      <td>search on xvideo</td>
+      <td>json</td>
+      <td>text, apikey</td>
+      <td>
+      <a class="method" href="/api/search/xvideo?text=your text&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>apk</td>
+      <td>search on apk</td>
+      <td>json</td>
+      <td>text, apikey</td>
+      <td>
+      <a class="method" href="/api/search/apk?text=your text&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+  </table>
+  <script>
+  	const type = document.getElementsByClassName("method");
+  	for(let i =0;i<type.length;i++){
+  	if(type[i].innerHTML == "GET") type[i].style.color ="green";
+  if(type[i].innerHTML == "POST") type[i].style.color ="red";
+  };
+  </script>
+</body>
+</html>
