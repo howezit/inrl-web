@@ -2,6 +2,9 @@ require('../settings');
 const {getLimit} = require('../lib');
 const express = require('express');
 const router = express.Router();
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/tokens.html')
+})
 
 router.get('/limit', async (req, res) => {
     let id = req.query.apikey;
