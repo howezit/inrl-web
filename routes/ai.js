@@ -11,6 +11,9 @@ const {
 	Bing
 } = require('../lib');
 
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/ai.html')
+})
 router.get('/chatgpt', async (req, res) => {
 	try {
 		const id = req.query.text;
