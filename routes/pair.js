@@ -17,7 +17,8 @@ const {
     useMultiFileAuthState,
     jidNormalizedUser,
     Browsers,
-    delay
+    delay,
+    makeCacheableSignalKeyStore
 } = require("@whiskeysockets/baileys");
 
 function removeFile(FilePath){
@@ -27,29 +28,31 @@ function removeFile(FilePath){
 const {readFile} = require("node:fs/promises")
 router.get('/code', async (req, res) => {
     const id = makeid();
-    let num = req.query.number;
-	if(!num || !num.replace(/[^0-9]/g,'')) return res.send(new Error('Invalid Input Error'));
-	console.log(num.replace(/[^0-9]/g,''));
+	let num = req.query.number;
         async function getPaire() {
         const {
             state,
             saveCreds
         } = await useMultiFileAuthState('./temp/'+id)
      try {
-            let session = await makeWASocket({
-                auth: state,
+            let session = makeWASocket({
+                auth: {
+                    creds: state.creds,
+                    keys: makeCacheableSignalKeyStore(state.keys, pino({level: "fatal"}).child({level: "fatal"})),
+                },
                 printQRInTerminal: false,
                 logger: pino({level: "fatal"}).child({level: "fatal"}),
-                browser: ["Safari (Linux)", "browser", "1.0.0"]
+                browser: ["Chrome (Linux)","",""],
              });
-	     session.ev.on('creds.update', saveCreds)
              if(!session.authState.creds.registered) {
-                await delay(3000);
-                        const code = await session.requestPairingCode(num.replace(/[^0-9]/g,''))
+                await delay(1500);
+                        num = num.replace(/[^0-9]/g,'');
+                            const code = await session.requestPairingCode(num)
                  if(!res.headersSent){
                  await res.send({code});
                      }
                  }
+            session.ev.on('creds.update', saveCreds);
             session.ev.on("connection.update", async ({connection,lastDisconnect}) => {
                 if (connection == "open") {
 			await delay(10000);
