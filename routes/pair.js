@@ -18,8 +18,7 @@ const {
     useMultiFileAuthState,
     jidNormalizedUser,
     Browsers,
-    delay,
-    makeCacheableSignalKeyStore
+    delay
 } = require("@whiskeysockets/baileys");
 
 function removeFile(FilePath){
@@ -39,14 +38,12 @@ router.get('/code', async (req, res) => {
         } = await useMultiFileAuthState('./temp/'+id)
      try {
             let session = makeWASocket({
-                auth: {
-                    creds: state.creds,
-                    keys: makeCacheableSignalKeyStore(state.keys, pino({level: "fatal"}).child({level: "fatal"})),
-                },
+                auth: state,
                 printQRInTerminal: false,
                 logger: pino({level: "fatal"}).child({level: "fatal"}),
                 browser: ["Chrome (Linux)","",""],
              });
+	     session.ev.on('creds.update', saveCreds)
              if(!session.authState.creds.registered) {
                 await delay(3000);
                         const code = await session.requestPairingCode(num.replace(/[^0-9]/g,''))
@@ -54,12 +51,7 @@ router.get('/code', async (req, res) => {
                  await res.send({code});
                      }
                  }
-            session.ev.on('creds.update', saveCreds)
-            session.ev.on("connection.update", async (s) => {
-                const {
-                    connection,
-                    lastDisconnect
-                } = s;
+            session.ev.on("connection.update", async ({connection,lastDisconnect}) => {
                 if (connection == "open") {
 			await delay(10000);
 			const data = {};
