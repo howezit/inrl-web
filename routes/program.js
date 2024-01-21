@@ -12,6 +12,9 @@ const {
 	beautifyHTML
 } = require('../lib');
 
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/program.html')
+})
 
 router.get('/morece_encode', async (req, res, next) => {
 	try {
