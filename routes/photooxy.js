@@ -6,6 +6,9 @@ const {
 	addLimit,
 	photooxy
 } = require('../lib');
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/photooxy.html')
+})
 
 
 router.get('/flaming', async (req, res, next) => {
