@@ -1,7 +1,6 @@
 require('../settings');
 const axios = require('axios');
 const {getUser,saveUser,encrypt,makeid} = require('../lib');
-const QRCode = require('qrcode');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
