@@ -7,7 +7,9 @@ const {
 	gitUser,
 	addLimit
 } = require('../lib');
-
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/stalk.html')
+})
 
 router.get('/ig', async (req, res) => {
 	try {
