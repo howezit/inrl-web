@@ -17,7 +17,9 @@ const {
 	gfx12,
 	addLimit
 } = require('../lib');
-
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/gfx.html')
+})
 
 router.post('/gfx1', async (req, res) => {
 	try {
