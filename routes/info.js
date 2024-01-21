@@ -11,7 +11,9 @@ const ct = require('countries-and-timezones');
 const {
     phone
 } = require('phone');
-
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/info.html')
+})
 router.get('/age', async (req, res, next) => {
 	try {
 		const id = req.query.dob;
