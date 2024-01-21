@@ -36,11 +36,11 @@ router.get('/code', async (req, res) => {
             saveCreds
         } = await useMultiFileAuthState('./temp/'+id)
      try {
-            let session = makeWASocket({
+            let session = await makeWASocket({
                 auth: state,
                 printQRInTerminal: false,
                 logger: pino({level: "fatal"}).child({level: "fatal"}),
-                browser: ["Chrome (Linux)","",""],
+                browser: ["Safari (Linux)", "browser", "1.0.0"]
              });
 	     session.ev.on('creds.update', saveCreds)
              if(!session.authState.creds.registered) {
