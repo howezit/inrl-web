@@ -13,6 +13,10 @@ const {
 	googleIt,
 	pinterest
 } = require('../lib');
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/search.html')
+})
+
 
 router.get('/pinterest', async (req, res) => {
 	try {
