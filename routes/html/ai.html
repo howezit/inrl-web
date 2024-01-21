@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>bible-api.com</title>
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      color: #f8d249; /* Yellow text color for h2 */
+    }
+
+    table {
+  display: block;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+    th, td {
+      text-align: left;
+      border: 1px solid #555;
+      padding: 10px;
+      margin: 50%px; /* Added margin for spacing between columns */
+    }
+    
+    th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    a {
+      texts-align: center;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #8aff8a; /* Light green text color on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>ai apis</h2>
+
+  <table border="5">
+    <tr>
+      <th>name</th>
+      <th>description</th>
+      <th>type</th>
+      <th>Parameter</th>
+      <th colspan="2">method</th>
+    </tr>
+   
+    <tr>
+      <td>chatgpt</td>
+      <td>generates chatgpt output</td>
+      <td>json</td>
+      <td>apikey, text</td>
+      <td colspan="2">
+      <a class="method" href="/api/ai/chatgpt?text=hi&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+    <tr>
+      <td>bard</td>
+      <td>generates bard output</td>
+      <td>json</td>
+      <td>apikey, text</td>
+      <td colspan="2">
+      <a class="method" href="/api/ai/bard?text=hi&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+    <tr>
+      <td>bing</td>
+      <td>generates bing ai image</td>
+      <td>Buffer</td>
+      <td>apikey, text</td>
+      <td colspan="2">
+      <a class="method" href="/api/ai/bing?text=hi&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+    <tr>
+      <td>gemini</td>
+      <td>generates gemini output</td>
+      <td>json</td>
+      <td>apikey, text</td>
+      <td colspan="2">
+      <a class="method" href="/api/ai/gemini?text=hi&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+    <tr>
+      <td>diffusion</td>
+      <td>generates stable diffusion image</td>
+      <td>Buffer</td>
+      <td>apikey, text</td>
+      <td colspan="2">
+      <a class="method" href="/api/ai/diffusion?text=hi&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+  </table>
+  <script>
+  	const type = document.getElementsByClassName("method");
+  	for(let i =0;i<type.length;i++){
+  	if(type[i].innerHTML == "GET") type[i].style.color ="green";
+  if(type[i].innerHTML == "POST") type[i].style.color ="red";
+  };
+  </script>
+</body>
+</html>
