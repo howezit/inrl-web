@@ -11,7 +11,9 @@ const {
 	upload
 } = require('../lib');
 const QRCode = require('qrcode');
-
+router.get('/', async (req, res, next) => {
+	res.sendFile(__path + '/routes/html/tools.html')
+})
 
 router.get('/fancy', async (req, res, next) => {
 	try {
