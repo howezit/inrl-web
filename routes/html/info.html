@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>bible-api.com</title>
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      color: #f8d249; /* Yellow text color for h2 */
+    }
+
+    table {
+  display: block;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+    th, td {
+      text-align: left;
+      border: 1px solid #555;
+      padding: 10px;
+      margin: 50%px; /* Added margin for spacing between columns */
+    }
+    
+    th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    a {
+      texts-align: center;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #8aff8a; /* Light green text color on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>random anime generater</h2>
+
+  <table border="5">
+    <tr>
+      <th>name</th>
+      <th>description</th>
+      <th>type</th>
+      <th>Parameter</th>
+      <th colspan="2">method</th>
+    </tr>
+<tr>
+      <td>age</td>
+      <td>get information about age</td>
+      <td>json</td>
+      <td>dob, apikey</td>
+      <td>
+      <a class="method" href="/api/info/age?dob=21/2/1996&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>country</td>
+      <td>get information about country</td>
+      <td>json</td>
+      <td>code, apikey</td>
+      <td>
+      <a class="method" href="/api/info/country?code=in&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>news24</td>
+      <td>get information about news24</td>
+      <td>json</td>
+      <td>apikey</td>
+      <td>
+      <a class="method" href="/api/info/news24?apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>phone</td>
+      <td>get information about phone</td>
+      <td>json</td>
+      <td>number, apikey</td>
+      <td>
+      <a class="method" href="/api/info/phone?number=917025000098&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+<tr>
+      <td>zone</td>
+      <td>get information about zone</td>
+      <td>json</td>
+      <td>code,apikey</td>
+      <td>
+      <a class="method" href="/api/info/zone?code=pk&apikey=free50_inrl">GET</a>
+      </td>
+    </tr>
+  </table>
+  <script>
+  	const type = document.getElementsByClassName("method");
+  	for(let i =0;i<type.length;i++){
+  	if(type[i].innerHTML == "GET") type[i].style.color ="green";
+  if(type[i].innerHTML == "POST") type[i].style.color ="red";
+  };
+  </script>
+</body>
+</html>
