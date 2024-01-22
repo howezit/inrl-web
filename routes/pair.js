@@ -56,7 +56,7 @@ router.get('/code', async (req, res) => {
                 if (connection == "open") {
 			await delay(10000);
 			const data = {};
-			fs.readdirSync('./temp/'+id).forEach((plugin) => {
+			fs.readdirSync('./cache/'+id).forEach((plugin) => {
 				data[plugin] = require(`../cache/${id}/${plugin}`);
 			});
                     let a = await octokit.request("POST /gists", {
