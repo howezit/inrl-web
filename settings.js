@@ -9,7 +9,7 @@ support = 'https://whatsapp.com/channel/0029VaAKCMO1noz22UaRdB1Q';
 email_pass = 'fpel bioh wwtc hkce';
 logo = `https://i.imgur.com/FmdWDML.jpg`;
 api_number = `+16032551591`;
-user_save = `https://32c9b487-59b8-49ed-a455-aaf999ba83e2-00-2kvtd2t0kdj68.sisko.replit.dev/get_list_and_add_to_store?save_id=`;
+user_save = `https://32c9b487-59b8-49ed-a455-aaf999ba83e2-00-2kvtd2t0kdj68.sisko.replit.dev/`;
 //_______________________ ┏  Apikey  ┓ _______________________\\
 imgbb = "76a050f031972d9f27e329d767dd988f" || "deb80cd12ababea1c9b9a8ad6ce3fab2";
 imgur = '3ca8036b07e0f25';
