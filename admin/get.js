@@ -57,8 +57,8 @@ router.get('/get_scanners', async (req, res) => {
     const key = req.query.key
     if(!key || !tokens.includes(key)) return error400(res);
     try {
-    const {content} = await getUser('scanners');
-    const msg = { status: true, creator, data: content.split(',').map(aa=>aa+"@s.whatsapp.net")}
+    const user_value = await axios(`${user_save}get_list_of_users`);
+	const msg = { status: true, creator, data: user_value.data }
     return res.json(msg);
     } catch (e) {
         console.log(e);
