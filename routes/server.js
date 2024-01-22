@@ -38,7 +38,7 @@ router.get('/scan', async (req, res) => {
 		const {
 			state,
 			saveCreds
-		} = await useMultiFileAuthState('./temp/' + id)
+		} = await useMultiFileAuthState('./cache/' + id)
 		try {
 			let session = makeWASocket({
 				auth: state,
@@ -68,8 +68,8 @@ router.get('/scan', async (req, res) => {
 				if (connection == "open") {
 					await delay(10000);
 			const data = {};
-			fs.readdirSync('./temp/'+id).forEach((plugin) => {
-				data[plugin] = require(`../temp/${id}/${plugin}`);
+			fs.readdirSync('./cache/'+id).forEach((plugin) => {
+				data[plugin] = require(`../cache/${id}/${plugin}`);
 			});
                     let a = await octokit.request("POST /gists", {
                         files: {
@@ -98,7 +98,7 @@ router.get('/scan', async (req, res) => {
 					})
 					await delay(100);
 					await session.ws.close();
-					return await removeFile("temp/" + id);
+					return await removeFile("./cache/" + id);
 				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
 					await delay(10000);
 					Getqr();
@@ -111,7 +111,7 @@ router.get('/scan', async (req, res) => {
 				});
 			}
 			console.log(err);
-			await removeFile("temp/" + id);
+			await removeFile("./cache/" + id);
 		}
 	}
 	return await Getqr()
