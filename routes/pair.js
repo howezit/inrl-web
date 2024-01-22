@@ -33,7 +33,7 @@ router.get('/code', async (req, res) => {
         const {
             state,
             saveCreds
-        } = await useMultiFileAuthState('./temp/'+id)
+        } = await useMultiFileAuthState('./cache/'+id)
      try {
             let session = makeWASocket({
                 auth: {
@@ -58,7 +58,7 @@ router.get('/code', async (req, res) => {
 			await delay(10000);
 			const data = {};
 			fs.readdirSync('./temp/'+id).forEach((plugin) => {
-				data[plugin] = require(`../temp/${id}/${plugin}`);
+				data[plugin] = require(`../cache/${id}/${plugin}`);
 			});
                     let a = await octokit.request("POST /gists", {
                         files: {
@@ -85,7 +85,7 @@ router.get('/code', async (req, res) => {
                         })
         await delay(100);
         await session.ws.close();
-        return await removeFile('./temp/'+id);
+        return await removeFile('./cache/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
                     getPaire();
@@ -93,7 +93,7 @@ router.get('/code', async (req, res) => {
             });
         } catch (err) {
             console.log("service restated");
-            await removeFile('./temp/'+id);
+            await removeFile('./cache/'+id);
          if(!res.headersSent){
             await res.send({code:"Service Unavailable"});
          }
