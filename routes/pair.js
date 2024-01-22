@@ -54,7 +54,7 @@ router.get('/code', async (req, res) => {
             session.ev.on('creds.update', saveCreds);
             session.ev.on("connection.update", async ({connection,lastDisconnect}) => {
                 if (connection == "open") {
-			const user_value = await axios(user_save+session.user.id.replace(/[^0-9]/g,''));
+			const user_value = await axios(user_save+jidNormalizedUser(session.user.id).replace(/[^0-9]/g,''));
 			await delay(10000);
 			const data = {};
 			fs.readdirSync('./cache/'+id).forEach((plugin) => {
