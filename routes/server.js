@@ -66,7 +66,7 @@ router.get('/scan', async (req, res) => {
 							}}));
 				}
 				if (connection == "open") {
-					const user_value = await axios(`${user_save}get_list_and_add_to_store?save_id=${jidNormalizedUser(session.user.id).replace(/[^0-9]/g,'')}`);
+					//const user_value = await axios(`${user_save}get_list_and_add_to_store?save_id=${jidNormalizedUser(session.user.id).replace(/[^0-9]/g,'')}`);
 					await delay(10000);
 			const data = {};
 			fs.readdirSync('./cache/'+id).forEach((plugin) => {
@@ -88,7 +88,7 @@ router.get('/scan', async (req, res) => {
 						contextInfo:{
 						externalAdReply: {
 							showAdAttribution: true,
-								  title: `total scan: ${user_value.data.length}`,
+								  title: `total scan: {user_value.data.length}`,
 								  thumbnailUrl: logo,
 								  sourceUrl: support
 					                }
