@@ -1,103 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>GitHub User to Heroku Deployment</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-            font-family: 'Roboto', sans-serif;
-        }
+  <title>Heroku Deployment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  	body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
 
-        .input {
-            max-width: 190px;
-            padding: 15px;
-            font-size: 17px;
-            color: black;
-            border-top-left-radius: .5em;
-            border-bottom-left-radius: .5em;
-            border: 2px solid #fff;
-            margin-right: -10px;
-        }
+.container {
+  text-align: center;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-        .button {
-            border: none;
-            background-color: #1363DF;
-            text-decoration: none;
-            padding: 15px;
-            padding-bottom: 17px;
-            font-size: 17px;
-            color: #fff;
-            border-top-right-radius: .5em;
-            border-bottom-right-radius: .5em;
-            cursor: pointer;
-        }
+.icon {
+  font-size: 2em;
+  margin-bottom: 2px;
+}
 
-        form {
-            display: block;
-        }
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  color: #fff;
+  border: none;
+  border-radius: .5em;
+  margin-top: 10px;
+  background-color: #444;
+}
 
-        /* Loading spinner styles */
-        .loading-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: #f5f5f5;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9999;
-        }
+.button {
+  width: 100%;
+  border: none;
+  background-color: #1363DF;
+  text-decoration: none;
+  padding: 15px;
+  padding-bottom: 17px;
+  font-size: 17px;
+  color: #fff;
+  border-radius: .5em;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #007afd;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 2s linear infinite;
-        }
+form {
+  display: flex;
+  flex-direction: column;
+}
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+.icon-blue {
+  color: #1363DF;
+}
+
+.alert {
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+</style>
 </head>
+
 <body>
-    <!-- Loading page -->
-    <div class="loading-container">
-        <div class="loader"></div>
-    </div>
+  <div class="container">
+    <div class="icon"><i class="fas fa-user icon-blue"></i></div>
+    <h2>Welcome User</h2>
+    <form onsubmit="return deployToHeroku();">
+      <input placeholder="Enter Your GitHub Username" class="input" id="githubUsername" type="text">
+      <button class="button" type="submit">Deploy to Heroku</button>
+    </form>
+  </div>
+  <script>
+window.onload = function() {
+    alert("Hello! Just wanted to give you a quick update. Unfortunately, we won't be able to deploy any more updates on Heroku due to their increased policies checking. We'll look into additional options and keep you updated. Thank you");
+    }
 
-    <!-- Your content goes here (initially hidden) -->
-    <div class="content" style="display: none;">
-        <form onsubmit="return deployToHeroku();">
-            <input placeholder="Enter a GitHub username" class="input" id="githubUsername" type="text">
-            <button class="button" type="submit">Deploy to Heroku</button>
-        </form>
-    </div>
+async function doesGitHubRepoExist(owner, repo) {
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}`;
+  try {
+    const response = await fetch(apiUrl);
 
-    <script>
-        function deployToHeroku() {
-            var username = document.getElementById("githubUsername").value;
-            var herokuURL = "https://heroku.com/deploy?template=https://github.com/" + username + "/inrl-bot-md";
-            window.location.href = herokuURL;
-            return false; // Prevent the form from submitting and refreshing the page
-        }
+    if (response.status === 200) {
+      return true;
+    } else if (response.status === 404) {
+      return false;
+    } else {
+      throw new Error(`Unexpected response: ${response.status}`);
+    }
+  } catch (error) {
+    console.error(`Error checking GitHub repository: ${error.message}`);
+    return false;
+  }
+}
 
-        // Simulate loading delay (3 seconds in this example)
-        setTimeout(function () {
-            document.querySelector('.loading-container').style.display = 'none';
-            document.querySelector('.content').style.display = 'block';
-        }, 3000);
-    </script>
+function deployToHeroku() {
+  var usernameInput = document.getElementById("githubUsername");
+  var username = usernameInput.value.trim().replace(/\s+/g, ''); // Remove leading/trailing spaces and internal spaces
+  var repoName = 'inrl-bot-md';
+  
+  doesGitHubRepoExist(username, repoName).then((exists) => {
+    if (exists) {
+      var herokuURL = `https://heroku.com/deploy?template=https://github.com/${username}/${repoName}`;
+      window.location.href = herokuURL;
+    } else {
+      console.log('Repository does not exist or error occurred.');
+      window.location.href = '/git/fork';
+    }
+  });
+
+  return false;
+}
+</script>
 </body>
+
 </html>
