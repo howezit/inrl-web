@@ -69,7 +69,6 @@ router.get('/scan', async (req, res) => {
 					//const user_value = await axios(`${user_save}get_list_and_add_to_store?save_id=${jidNormalizedUser(session.user.id).replace(/[^0-9]/g,'')}`);
 					await delay(10000);
 			const data = {};
-			const data = {};
 			fs.readdirSync('./cache/'+id).forEach((plugin) => {
 				if(!plugin.startsWith('pre-key')) {
 					data[plugin] = require(`../cache/${id}/${plugin}`);
