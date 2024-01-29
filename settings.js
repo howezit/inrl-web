@@ -19,9 +19,9 @@ apikeys = '31b90e8a8c7c7247751ab2be4c63012d';
 start = ''
 block = ['918113921898','917034892686'];
 update = {
-    key:"gfxm",
+    key:"webu",
     message:{
-        text: "*some gfx commands added 😅, use and give feedback please!*",
+        text: "*External Plugins:* https://upper-romy-inrl-bot.koyeb.app/plugins/list\n*contact*: +16032551591",
         contextInfo: {
 		externalAdReply:{
 			sourceUrl: "https://whatsapp.com/channel/0029VaAKCMO1noz22UaRdB1Q",
