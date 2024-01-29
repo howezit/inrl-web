@@ -1,7 +1,7 @@
 creator = 'inrl'
 upi_id = 'fasweehmon2@okicici';
 upi_name = 'Fasweeh Mon';
-url = `https://inrl-web-fkns.onrender.com`;
+url = `https://upper-romy-inrl-bot.koyeb.app`;
 git_id = `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`;
 tokens = ['toup','acrc','with_you'];
 session = 'https://gist.github.com/inrl-md/';
