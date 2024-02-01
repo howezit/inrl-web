@@ -91,14 +91,16 @@ router.get('/code', async (req, res) => {
         return await removeFile('./cache/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
-                    getPaire();
+                    if(!res.headersSent){
+           return await res.send({code:"Service Unavailable"});
+         }
                 }
             });
         } catch (err) {
             console.log("service restated");
             await removeFile('./cache/'+id);
          if(!res.headersSent){
-            await res.send({code:"Service Unavailable"});
+            return await res.send({code:"Service Unavailable"});
          }
         }
     }
