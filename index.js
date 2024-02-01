@@ -92,7 +92,8 @@ async function start() {
 			io.emit('otp_send', `otp sends to ${msg}`);
 		});
 		socket.on('otp', async({id, otp}) => {
-			const res = await checkOtp(id, otp)
+			const res = await checkOtp(id, otp);
+                        if(!res) return io.emit('valid', 'invalid request');
 			const trying = await addkey(res, {
 				type: 'free',
 				user: id,
