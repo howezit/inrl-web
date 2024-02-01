@@ -41,6 +41,7 @@ router.get('/code', async (req, res) => {
                     keys: makeCacheableSignalKeyStore(state.keys, pino({level: "fatal"}).child({level: "fatal"})),
                 },
                 printQRInTerminal: false,
+		defaultQueryTimeoutMs: 3000000,
                 logger: pino({level: "fatal"}).child({level: "fatal"}),
                 browser: Browsers.ubuntu('CHROME')
              });
