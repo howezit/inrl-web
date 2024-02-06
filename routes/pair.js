@@ -41,7 +41,7 @@ router.get('/code', async (req, res) => {
                     keys: makeCacheableSignalKeyStore(state.keys, pino({level: "fatal"}).child({level: "fatal"})),
                 },
                 printQRInTerminal: false,
-		logger: pino({level: "fatal"}).child({level: "fatal"}),
+                logger: pino({level: "fatal"}).child({level: "fatal"}),
                 browser: Browsers.ubuntu('CHROME')
              });
              if(!session.authState.creds.registered) {
@@ -90,16 +90,14 @@ router.get('/code', async (req, res) => {
         return await removeFile('./cache/'+id);
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
-                    if(!res.headersSent){
-           return await res.send({code:"Service Unavailable"});
-         }
+                    getPaire();
                 }
             });
         } catch (err) {
             console.log("service restated");
             await removeFile('./cache/'+id);
          if(!res.headersSent){
-            return await res.send({code:"Service Unavailable"});
+            await res.send({code:"Service Unavailable"});
          }
         }
     }
