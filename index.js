@@ -31,6 +31,7 @@ async function start() {
 	await db.sync();
 	app.use(fileUpload());
 	app.use(bodyParser.json());
+	app.set('trust proxy', true)
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
@@ -66,6 +67,12 @@ async function start() {
 	app.get('/storage', async(req, res, next) => {
 		const data = await storages.req_add(requests);
 		return res.json(await storages.store_get(data));
+	});
+	app.get('/resp', async(req, res, next) => {
+		const json = {
+			ip: req.ip
+		};
+		return res.json(json);
 	});
 	app.all("*", (req, res, next) => {
 		console.log(req.method,req.path);
