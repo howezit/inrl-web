@@ -10,7 +10,7 @@ const {
 const express = require('express');
 const router = express.Router();
 router.get('/', async (req, res, next) => {
-	res.sendFile(__path + '/routes/html/download.html')
+	res.sendFile(__path + '/routes/html/downloader.html')
 })
 
 router.get('/insta', async (req, res, next) => {
