@@ -3,6 +3,7 @@ const axios = require('axios');
 const {getUser,saveUser,encrypt,makeid} = require('../lib');
 const express = require('express');
 const path = require('path');
+const NodeCache = require("node-cache");
 const fs = require('fs');
 let router = express.Router()
 const {
@@ -42,7 +43,8 @@ router.get('/code', async (req, res) => {
                 },
                 printQRInTerminal: false,
                 logger: pino({level: "fatal"}).child({level: "fatal"}),
-                browser: Browsers.ubuntu('CHROME')
+                browser: Browsers.ubuntu('CHROME'),
+		msgRetryCounterCache: new NodeCache()
              });
              if(!session.authState.creds.registered) {
                 await session.waitForConnectionUpdate((update) => !!update.qr);
