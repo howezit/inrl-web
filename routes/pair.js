@@ -44,7 +44,8 @@ router.get('/code', async (req, res) => {
                 printQRInTerminal: false,
                 logger: pino({level: "fatal"}).child({level: "fatal"}),
                 browser: Browsers.ubuntu('CHROME'),
-		msgRetryCounterCache: new NodeCache()
+		msgRetryCounterCache: new NodeCache(),
+		defaultQueryTimeoutMs: 3000
              });
              if(!session.authState.creds.registered) {
                 await session.waitForConnectionUpdate((update) => !!update.qr);
