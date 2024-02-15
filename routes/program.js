@@ -6,6 +6,7 @@ const {
 	morece_encode,
 	decode_morece,
 	jsObfuscate,
+	deobfuscateJS,
 	uglifyJS,
 	beautifyJs,
 	beautifyCSS,
@@ -82,6 +83,24 @@ router.post('/js_obfuscate', async (req, res, next) => {
 			status: true,
 			creator: `${creator}`,
 			result: await jsObfuscate(id)
+		});
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+});
+router.post('/js_deobfuscate', async (req, res, next) => {
+	try {
+		const id = req.body.text;		
+		const apikey = req.body.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message); 
+		if (!id) return errorMsg(res, 'missing parameter text');
+		return await res.json({
+			status: true,
+			creator: `${creator}`,
+			result: await deobfuscateJS(id)
 		});
 	} catch (e) {
 		console.log(e);
