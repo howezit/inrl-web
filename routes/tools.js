@@ -72,6 +72,45 @@ router.post('/fancy', async (req, res, next) => {
 	}
 });
 
+router.get('/temp_mail', async (req, res) => {
+	try {
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message); 
+	        const {data} = await axios("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1");
+		return await res.json({
+			status: true,
+			creator: `${creator}`,
+			result: data[0]
+		});
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+})
+
+router.get('/get_mail', async (req, res) => {
+	try {
+                const mail_id = req.query.email;
+		const apikey = req.query.apikey;
+		if (!apikey) return errorMsg(res, 'no apikey provided');
+		const limits = await addLimit(apikey);
+		if (!limits.status) return errorMsg(res, limits.message); 
+		if (!mail_id) return errorMsg(res, 'missing parameter email');
+		const [demo, mail] = mail_id.split('@');
+	        const {data} = await axios(`https://www.1secmail.com/api/v1/?action=getMessages&login=${demo}&domain=${mail}`);
+		return await res.json({
+			status: true,
+			creator: `${creator}`,
+			result: data
+		});
+	} catch (e) {
+		console.log(e);
+		return error200(res);
+	}
+})
+
 router.get('/qrcode', async (req, res) => {
 	try {
 		const id = req.query.text;
