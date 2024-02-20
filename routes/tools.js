@@ -1,6 +1,7 @@
 require('../settings');
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 const fs = require('fs');
 const {
 	ocrSpace,
