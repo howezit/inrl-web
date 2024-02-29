@@ -40,11 +40,7 @@ router.get('/musk_tweet', async (req, res) => {
 		const footer = req.query.footer;
 		if (!text && !footer) return errorMsg(res, 'missing parameter text & footer & tz');
 		const file = await t_musk({text, footer: footer|| ' ', tz: req.query.tz || 'asia/Kolkata'});
-		return await res.json({
-		    status: true,
-		    creator,
-		    result: file
-		});
+		return await res.end(file);
 	} catch (e) {
 		console.log(e);
 		return error200(res);
