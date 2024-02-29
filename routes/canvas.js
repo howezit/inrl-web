@@ -7,7 +7,7 @@ const {
 	addLimit
 } = require('../lib');
 router.get('/', async (req, res, next) => {
-	res.sendFile(__path + '/routes/html/gfx.html')
+	res.sendFile(__path + '/routes/html/canvas.html')
 })
 router.post('/musk_tweet', async (req, res) => {
 	try {
