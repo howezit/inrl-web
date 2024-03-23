@@ -20,9 +20,9 @@ router.post('/mail', async (req, res)=>{
 	const {mail, host} = req.body;
 	if(!mail || !host) return error400(res);
 try {
-	    mailTransporter.sendMail({
+mailTransporter.sendMail({
       from: 'inrlwabots@gmail.com',
-      to: id,
+      to: mail,
       subject: 'VERIFICATION',
       html: `<html>
         <body>
@@ -31,14 +31,18 @@ try {
             <h3 align="center">copy the Below code</h2><br>
             <a size="30" href="https://${host}/${otp} align="center">Login</font>
         </body>
-    </html>`});
-} catch (e) {
-	return await res.json({
+    </html>`},function(err, data) {
+	if (err) return await res.json({
             status: false,
             creator,
             message: e
         });
-}
+	return await res.json({
+            status: true,
+            creator,
+            message: 'tried'
+        });
+});
 });
 router.get('/phone', async (req, res, next) => {
     let id = req.query.number;
