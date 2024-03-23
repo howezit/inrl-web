@@ -31,7 +31,7 @@ mailTransporter.sendMail({
             <h3 align="center">copy the Below code</h2><br>
             <a size="30" href="https://${host}/${otp} align="center">Login</font>
         </body>
-    </html>`},function(err, data) {
+    </html>`},async(err, data) => {
 	if (err) return await res.json({
             status: false,
             creator,
