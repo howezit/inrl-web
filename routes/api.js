@@ -19,7 +19,7 @@ res.sendFile(__path + '/view/apidashboard.html')
 router.post('/mail', async (req, res)=>{
 	const {mail, host} = req.body;
 	if(!mail || !host) return error400(res);
-try {
+	
 mailTransporter.sendMail({
       from: 'inrlwabots@gmail.com',
       to: mail,
