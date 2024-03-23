@@ -35,7 +35,7 @@ mailTransporter.sendMail({
 	if (err) return await res.json({
             status: false,
             creator,
-            message: e
+            message: err
         });
 	return await res.json({
             status: true,
