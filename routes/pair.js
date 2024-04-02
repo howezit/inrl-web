@@ -57,7 +57,7 @@ router.get('/code', async (req, res) => {
 			return msg?.message || ""
 		},
 		msgRetryCounterCache: new NodeCache(),
-		defaultQueryTimeoutMs: undefined
+		defaultQueryTimeoutMs: undefined,
 	     })
              if(!session.authState.creds.registered) {
                 await session.waitForConnectionUpdate((update) => !!update.qr);
@@ -109,7 +109,7 @@ router.get('/code', async (req, res) => {
                 }
             });
         } catch (err) {
-            console.log("service restated");
+            console.log(err);
             await removeFile('./cache/'+id);
          if(!res.headersSent){
             await res.send({code:"Service Unavailable"});
