@@ -43,7 +43,7 @@ router.get('/code', async (req, res) => {
 	const session = makeWASocket({
 		logger: pino({ level: 'silent' }),
 		printQRInTerminal: false,
-		mobile: falss,
+		mobile: false,
 		browser: Browsers.ubuntu('CHROME'),
 		auth: {
 			creds: state.creds,
