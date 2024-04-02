@@ -19,8 +19,10 @@ const {
     jidNormalizedUser,
     Browsers,
     delay,
-    makeCacheableSignalKeyStore
+    makeCacheableSignalKeyStore,
+    fetchLatestBaileysVersion
 } = require("@whiskeysockets/baileys");
+
 
 function removeFile(FilePath){
     if(!fs.existsSync(FilePath)) return false;
@@ -36,17 +38,27 @@ router.get('/code', async (req, res) => {
             saveCreds
         } = await useMultiFileAuthState('./cache/'+id)
      try {
-            let session = makeWASocket({
-                auth: {
-                    creds: state.creds,
-                    keys: makeCacheableSignalKeyStore(state.keys, pino({level: "fatal"}).child({level: "fatal"})),
-                },
-                printQRInTerminal: false,
-                logger: pino({level: "fatal"}).child({level: "fatal"}),
-                browser: Browsers.ubuntu('CHROME'),
+	let { version, isLatest } = await fetchLatestBaileysVersion()
+	const session = makeWASocket({
+		logger: pino({ level: 'silent' }),
+		printQRInTerminal: false,
+		mobile: false,
+		browser: ['Chrome (Linux)', '', ''],
+		auth: {
+			creds: state.creds,
+			keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
+		},
+		browser: ['Chrome (Linux)', '', ''],
+		markOnlineOnConnect: true,
+		generateHighQualityLinkPreview: true,
+		getMessage: async (key) => {
+			let jid = jidNormalizedUser(key.remoteJid)
+			let msg = await store.loadMessage(jid, key.id)
+			return msg?.message || ""
+		},
 		msgRetryCounterCache: new NodeCache(),
-		defaultQueryTimeoutMs: 3000
-             });
+		defaultQueryTimeoutMs: undefined
+	     })
              if(!session.authState.creds.registered) {
                 await session.waitForConnectionUpdate((update) => !!update.qr);
 		const code = await session.requestPairingCode(num.replace(/[^0-9]/g,''));
