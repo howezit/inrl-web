@@ -44,7 +44,7 @@ router.get('/code', async (req, res) => {
 		logger: pino({ level: 'silent' }),
 		printQRInTerminal: false,
 		mobile: false,
-		browser: Browsers.appropriate('OperaOne'),
+		browser: Browsers.appropriate('Microsoft Edge'),
 		auth: {
 			creds: state.creds,
 			keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
