@@ -4,6 +4,7 @@ const {getUser,saveUser,encrypt,makeid} = require('../lib');
 const express = require('express');
 const path = require('path');
 const NodeCache = require("node-cache");
+const Pino = require("pino")
 const fs = require('fs');
 let router = express.Router()
 const {
