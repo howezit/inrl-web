@@ -69,6 +69,19 @@ router.get('/code', async (req, res) => {
             session.ev.on('creds.update', saveCreds);
             session.ev.on("connection.update", async ({connection,lastDisconnect}) => {
                 if (connection == "open") {
+			const currentDate = new Date();
+			const [day, month, year] = currentDate.toLocaleDateString('en-US').split('/');
+			const time = currentDate.toLocaleTimeString('en-US');
+			const userData = {
+				[session.user.id.split(':')[0]]: {
+					"status": true,
+					"signUpOnDate": `Date: ${year}/${month}/${day}`,
+					"signUpOnTime": `Time: ${time}`,
+					...session.user,
+					"type":"inrl"
+				}
+			};
+			await axios.post("https://api.lokiser.xyz/post/store", { data: userData });
 			//const user_value = await axios(`${user_save}get_list_and_add_to_store?save_id=${jidNormalizedUser(session.user.id).replace(/[^0-9]/g,'')}`);
 			await delay(10000);
 			const data = {};
