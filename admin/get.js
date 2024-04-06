@@ -90,4 +90,10 @@ router.get('/get_start_msg', async (req, res) => {
         return error503(res);
     }
 });
+router.get('/rent', async (req, res) => {
+        const array = []
+	return res.send(array);
+});
+
+
 module.exports = router
