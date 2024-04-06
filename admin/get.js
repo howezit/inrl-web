@@ -38,6 +38,7 @@ router.post('/session', async (req, res) => {
         } = await axios(session+decrypt(id)+'/raw')
         return res.json(data);
     } catch (e) {
+	console.log(`/POST ${session+decrypt(id)}/raw`);
         return error503(res);
     }
 });
@@ -50,6 +51,7 @@ router.get('/session', async (req, res) => {
         } = await axios(session+decrypt(id)+'/raw')
         return res.json(data);
     } catch (e) {
+	console.log(`/GET ${session+decrypt(id)}/raw`);
         return error503(res);
     }
 });
