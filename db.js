@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const db = new Sequelize(
+const db = {} /*new Sequelize(
   "postgres://bot:5yqkwMZvrBWX4CKyuelGlaStyZigPb2U@dpg-cmhjdcun7f5s739tahh0-a.oregon-postgres.render.com/inrl_9jbg",
   {
     dialect: "postgres",
@@ -12,5 +12,5 @@ const db = new Sequelize(
     },
     logging: false,
   },
-);
+);*/
   module.exports = {db};
