@@ -2,8 +2,8 @@
     "description": "qr",
     "main": "./index.js",
     "engines": {
-        "npm": "9.7.2",
-        "node": "18.12.1"
+        "npm": ">=9.7.2",
+        "node": "18.17.0"
     },
     "scripts": {
         "start": "node index.js"
