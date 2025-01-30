@@ -6,7 +6,7 @@ git_id = `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`;
 tokens = ['toup','acrc','with_you'];
 session = 'https://gist.github.com/inr-l/';
 support = 'https://whatsapp.com/channel/0029VaAKCMO1noz22UaRdB1Q';
-email_pass = 'fpel bioh wwtc hkce';
+email_pass = 'fpel gohi wwtc hkce';
 logo = `https://i.imgur.com/FmdWDML.jpg`;
 api_number = `+16032551591`;
 user_save = `https://32c9b487-59b8-49ed-a455-aaf999ba83e2-00-2kvtd2t0kdj68.sisko.replit.dev/`;
@@ -17,7 +17,7 @@ apikeys = '31b90e8a8c7c7247751ab2be4c63012d';
 
 //message.events({});//
 start = ''
-block = ['918113921898','917034892686'];
+block = ['979788989898'];
 update = {
     key:"webu",
     message:{
